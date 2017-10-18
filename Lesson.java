@@ -11,7 +11,9 @@ public class Lesson {
     private String _class;
     private int weekly_hours;
     private Scanner sc;
-
+    
+    public Lesson(){} //Default constructor. Needed to use the jackson library.
+    
     public Lesson(int les_id,String les_name,String _class,int weekly_hours,Scanner sc){
         setLes_id(les_id);
         setLes_name(les_name);
@@ -89,5 +91,12 @@ public class Lesson {
     }
 
 
+	@Override
+	public String toString() {
+		return "Lesson [les_id=" + les_id + ", les_name=" + les_name + ", _class=" + _class + ", weekly_hours="
+				+ weekly_hours + ", sc=" + sc + "]\n";
+	}
+
+    
 
 }

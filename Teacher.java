@@ -2,7 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Teacher {
-    /*
+    
+
+	/*
      * @lastName It contains the lastname of the teacher.
      * @firstName It contains the firstname of the teacher.
      *  @teacher_id The unique id of the teacher.
@@ -15,7 +17,8 @@ public class Teacher {
     private int max_hours;
 
 
-
+    public Teacher(){} //Default constructor. Needed to use the jackson library.
+    
     public Teacher(String name, int teacher_id, ArrayList<Integer> lesson_id, int max_hours,Scanner sc) {
         setName(name);
         setTeacher_id(teacher_id);
@@ -77,6 +80,10 @@ public class Teacher {
         this.max_hours = max_hours;
 
     }
-
+    @Override
+	public String toString() {
+		return "Teacher [name=" + name + ", teacher_id=" + teacher_id + ", lesson_id=" + lesson_id + ", max_hours="
+				+ max_hours + "]\n";
+	}
 
 }
