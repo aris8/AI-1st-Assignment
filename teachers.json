@@ -1,1 +1,231 @@
-{"lastName":"Konstantinou","firstName":"Aris","teacher_id":10,"lesson_id":[10,30],"max_hours":20}
+{
+	"name":"AK",	
+	"teacher_id":101,
+	"lesson_id":[],
+	"max_hours":18
+}
+{
+	"name":"MK",	
+	"teacher_id":102,
+	"lesson_id":[],
+	"max_hours":18
+}
+{
+	"name":"PG",	
+	"teacher_id":103,
+	"lesson_id":[],
+	"max_hours":14
+}
+{
+	"name":"OK",	
+	"teacher_id":104,
+	"lesson_id":[],
+	"max_hours":14
+}
+{
+	"name":"KK",	
+	"teacher_id":105,
+	"lesson_id":[],
+	"max_hours":12
+}
+{
+	"name":"PG",	
+	"teacher_id":106,
+	"lesson_id":[],
+	"max_hours":15
+}
+{
+	"name":"PP",	
+	"teacher_id":107,
+	"lesson_id":[],
+	"max_hours":8
+}
+
+{
+	"name":"AK",	
+	"teacher_id":201,
+	"lesson_id":[],
+	"max_hours":12
+}
+{
+	"name":"LK",	
+	"teacher_id":202,
+	"lesson_id":[],
+	"max_hours":4
+}
+{
+	"name":"PK",	
+	"teacher_id":203,
+	"lesson_id":[],
+	"max_hours":16
+}
+{
+	"name":"PP",	
+	"teacher_id":204,
+	"lesson_id":[],
+	"max_hours":12
+}
+{
+	"name":"KK",	
+	"teacher_id":301,
+	"lesson_id":[],
+	"max_hours":15
+}
+{
+	"name":"YT",	
+	"teacher_id":302,
+	"lesson_id":[],
+	"max_hours":15
+}
+{
+	"name":"PY",	
+	"teacher_id":303,
+	"lesson_id":[],
+	"max_hours":15
+}
+
+{
+	"name":"SD",	
+	"teacher_id":401,
+	"lesson_id":[],
+	"max_hours":6
+}
+{
+	"name":"OO",	
+	"teacher_id":501,
+	"lesson_id":[],
+	"max_hours":6
+}
+{
+	"name":"JJ",	
+	"teacher_id":601,
+	"lesson_id":[],
+	"max_hours":18
+}
+{
+	"name":"LR",	
+	"teacher_id":701,
+	"lesson_id":[],
+	"max_hours":18
+}
+{
+	"name":"XG",	
+	"teacher_id":801,
+	"lesson_id":[],
+	"max_hours":18
+}
+{
+	"name":"MM",	
+	"teacher_id":901,
+	"lesson_id":[],
+	"max_hours":10
+}
+{
+	"name":"AA",	
+	"teacher_id":902,
+	"lesson_id":[],
+	"max_hours":10
+}
+{
+	"name":"BO",	
+	"teacher_id":1001,
+	"lesson_id":[],
+	"max_hours":18
+}
+{
+	"name":"MS",	
+	"teacher_id":1101,
+	"lesson_id":[],
+	"max_hours":9
+}
+{
+	"name":"LD",	
+	"teacher_id":1201,
+	"lesson_id":[],
+	"max_hours":9
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
