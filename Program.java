@@ -61,15 +61,18 @@ public class Program {
 		for(Teacher t : teachers) {
 			if( t.equals(teacher)) {
 				t.reduceHours(hours);
+				removeTeachers();
+				break;
 			}
 		}
-		removeTeachers();
+		
 	}
 
 	private void removeTeachers() {
 		for(Teacher t : teachers) {
 			if( t.getHours_left() == 0) {
 				teachers.remove(t);
+				break;
 			}
 		}
 		
