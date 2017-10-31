@@ -25,7 +25,6 @@ public class Teacher {
         setTeacher_id(teacher_id);
         setLesson_id(lesson_id);
         setMax_hours(max_hours,sc);
-        setHours_left(max_hours);
     }
 
     public String getName() {
@@ -83,27 +82,19 @@ public class Teacher {
 
     }
     
-    public void reduceHours(){
-    	if(this.hours_left == 0){
+    public void reduceHours(int hours){
+    	if(this.max_hours == 0){
     		System.out.printf("The teaches %s can't teach any more hours.",this.name);
     		return;
     	}
-    	this.hours_left--;
+    	this.max_hours -= hours;
     	return;    	
     }
     
-    public int getHours_left() {
-		return hours_left;
-	}
-
-	public void setHours_left(int hours_left) {
-		this.hours_left = hours_left;
-	}
 
 	@Override
 	public String toString() {
-		return "Teacher [name=" + name + ", teacher_id=" + teacher_id + ", lesson_id=" + lesson_id + ", max_hours="
-				+ max_hours + "]\n";
+		return getName();
 	}
 
 }

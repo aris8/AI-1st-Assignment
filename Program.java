@@ -1,25 +1,34 @@
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Random;
 
-import com.fasterxml.jackson.core.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Program {
 	
 	private Hour program[][];
+	private int dimension_x = 7;
+	private int dimension_y = 5;
 	static ArrayList<Teacher> teachers ;	
-	private ArrayList<Lesson> lessons ;
+	static ArrayList<Lesson> lessons ;
+	private String cls;
 	
-	public Program(int x) {
+	public Program(int x, String cls) {
 		setTeachers();
 		setLessons();
+		this.cls = cls;
+		randProgram(cls);
 	}
 	
-	public Program() {		
-		setLessons();
+	public Program(String cls) {		
+		this.cls = cls;
+		randProgram(cls);
 	}
 	
 	public Hour[][] getProgram() {
@@ -57,25 +66,68 @@ public class Program {
 		}
 	}
 	
+	public String getCls() {
+		return cls;
+	}
+
+	public void setCls(String cls) {
+		this.cls = cls;
+	}
+
 	public void reduceHours(Teacher teacher,int hours) {
 		for(Teacher t : teachers) {
 			if( t.equals(teacher)) {
 				t.reduceHours(hours);
-				removeTeachers();
+				if( t.getMax_hours() == 0) {
+					teachers.remove(t);
+				}
 				break;
 			}
 		}
 		
 	}
 
-	private void removeTeachers() {
-		for(Teacher t : teachers) {
-			if( t.getHours_left() == 0) {
-				teachers.remove(t);
-				break;
-			}
-		}
+	
+	private void randProgram(String cls) {
 		
+		program = new Hour[dimension_x][dimension_y];
+		for (Lesson lesson : lessons) {
+			
+			if (lesson.get_class().equals(cls)) {
+				Teacher teacher;
+				ArrayList<Teacher> cnd = new ArrayList<Teacher>();
+				for (Teacher temp : teachers) {
+					if(temp.getLesson_id().contains(lesson.getLes_id()) && temp.getMax_hours() >= lesson.getWeekly_hours() ) {
+						cnd.add(temp);
+					}
+				}
+				Random rand = new Random();
+				int n = rand.nextInt(cnd.size());
+				teacher = cnd.get(n);
+				Hour h = new Hour(lesson, teacher);
+				for (int i=0; i< lesson.getWeekly_hours(); i++) {
+					boolean flag = true;
+					int x_pos = 0;
+					int y_pos = 0;
+					while(flag) {
+						x_pos = rand.nextInt(dimension_x);
+						y_pos = rand.nextInt(dimension_y);
+						if (program[x_pos][y_pos] == null) flag = false;
+					}
+					program[x_pos][y_pos] = h;
+					
+				}
+				reduceHours(teacher, lesson.getWeekly_hours());
+			}
+			
+		}
+	}
+	
+	public void printArray(String filename) throws FileNotFoundException, UnsupportedEncodingException {
+		PrintWriter writer = new PrintWriter(filename, "UTF-8");
+	    for (Hour[] row : program) 
+	        writer.println(Arrays.toString(row)); 
+	    writer.close();
 	}
 
 }

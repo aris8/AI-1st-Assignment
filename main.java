@@ -1,20 +1,31 @@
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import com.fasterxml.jackson.core.JsonParseException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.FileNotFoundException;
+import java.io.UnsupportedEncodingException;
 
 public class main {
-	public static void main(String[] args) throws JsonParseException, JsonMappingException, IOException{
-		ObjectMapper mapper = new ObjectMapper();
-		ArrayList<Teacher> teacher = mapper.readValue(new File("teachers.json"), new TypeReference<ArrayList<Teacher>>(){});
-		System.out.println(teacher);
+
+	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
+		// TODO Auto-generated method stub
+
+		Program a1 = new Program(0, "A");
+		Program a2 = new Program("A");
+		Program a3 = new Program("A");
+		Program b1 = new Program("B");
+		Program b2 = new Program("B");
+		Program b3 = new Program("B");
+		Program c1 = new Program("C");
+		Program c2 = new Program("C");
+		Program c3 = new Program("C");
 		
-		ArrayList<Lesson> lessons = mapper.readValue(new File("lessons.json"), new TypeReference<ArrayList<Lesson>>(){});
-		System.out.println(lessons);
-		
+		a1.printArray("A1.txt");
+		a2.printArray("A2.txt");
+		a3.printArray("A3.txt");
+		b1.printArray("B1.txt");
+		b2.printArray("B2.txt");
+		b3.printArray("B3.txt");
+		c1.printArray("C1.txt");
+		c2.printArray("C2.txt");
+		c3.printArray("C3.txt");
+	
 	}
+
 }

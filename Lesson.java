@@ -93,8 +93,7 @@ public class Lesson {
 
 	@Override
 	public String toString() {
-		return "Lesson [les_id=" + les_id + ", les_name=" + les_name + ", _class=" + _class + ", weekly_hours="
-				+ weekly_hours + ", sc=" + sc + "]\n";
+		return getLes_name();
 	}
 
     
