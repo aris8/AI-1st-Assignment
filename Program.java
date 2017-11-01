@@ -121,13 +121,36 @@ public class Program {
 			}
 			
 		}
+		replaceNulls();
 	}
 	
+	private void replaceNulls() {
+		Lesson empty = new Lesson();
+		empty.setLes_name("----");
+		Teacher none = new Teacher();
+		none.setName("####");
+		Hour h = new Hour(empty,none);
+		for(int i = 0; i < dimension_x; i++){
+			for(int j = 0; j < dimension_y; j++){
+				if(program[i][j] == null)
+					program[i][j] =  h;							
+			}			
+		}
+	}
+
 	public void printArray(String filename) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter(filename, "UTF-8");
-	    for (Hour[] row : program) 
-	        writer.println(Arrays.toString(row)); 
+		for(int i = 0; i < dimension_x; i++){
+			for(int j = 0; j < dimension_y; j++){	
+				writer.printf("%d: %s -> %s \t",i + 1,program[i][j].getLesson(), program[i][j].getTeacher() );				
+			}
+			writer.printf("\n");
+		}
 	    writer.close();
 	}
+
+	
+	
+	
 
 }
