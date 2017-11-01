@@ -3,8 +3,8 @@ import java.util.Scanner;
 public class Lesson {
     /* @les_id The id of the lesson
      * @les_name The name of the lesson
-     * @_class The class that the lesson can be teached.
-     * @weekly_hours How many hours the lesson can be teached weekly.
+     * @_class The class that the lesson can be taught.
+     * @weekly_hours How many hours the lesson can be taught weekly.
      */
     private int les_id;
     private String les_name;
