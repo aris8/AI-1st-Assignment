@@ -128,7 +128,7 @@ public class Program {
 		Lesson empty = new Lesson();
 		empty.setLes_name("----");
 		Teacher none = new Teacher();
-		none.setName("####");
+		none.setName("##");
 		Hour h = new Hour(empty,none);
 		for(int i = 0; i < dimension_x; i++){
 			for(int j = 0; j < dimension_y; j++){
@@ -140,13 +140,35 @@ public class Program {
 
 	public void printArray(String filename) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter(filename, "UTF-8");
+		int max = this.calculateMax();
+		String spaces = "";
 		for(int i = 0; i < dimension_x; i++){
-			for(int j = 0; j < dimension_y; j++){	
-				writer.printf("%d: %s -> %s \t",i + 1,program[i][j].getLesson(), program[i][j].getTeacher() );				
+			for(int j = 0; j < dimension_y; j++){
+				spaces = addSpaces(max - program[i][j].getLesson().getLes_name().length());
+				writer.printf("%d: %s -> %s%s ",i + 1,program[i][j].getLesson(), program[i][j].getTeacher(),spaces );				
 			}
-			writer.printf("\n");
+			writer.print("\n");
 		}
 	    writer.close();
+	}
+	
+	
+	private String addSpaces(int amount) {
+		String spaces = "";
+		for(int i = 0; i < amount;i++){
+			spaces += " ";
+		}
+		return spaces;
+	}
+
+	public int calculateMax(){
+		int max = 0;
+		for(Lesson lesson : lessons){
+			if(max < lesson.getLes_name().length()){
+				max = lesson.getLes_name().length();
+			}
+		}
+		return max;
 	}
 
 	
