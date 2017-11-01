@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -187,6 +186,10 @@ public class Program {
 			}
 		}
 		return max;
+	}
+	
+	public Teacher getTeacherAtPos(int i,int j){
+		return program[i][j].getTeacher();
 	}
 
 	
