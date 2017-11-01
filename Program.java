@@ -11,14 +11,24 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Program {
-	
+	// 2 dimension table to hold the program
 	private Hour program[][];
-	private int dimension_x = 7;
-	private int dimension_y = 5;
+	//The dimensions of the table
+	private final int dimension_x = 7;
+	private final int dimension_y = 5;
+	//Static lists for teachers and lesson.
+	// We use static because we need the lists to be shared by all objects of this class.
 	static ArrayList<Teacher> teachers ;	
 	static ArrayList<Lesson> lessons ;
+	//A variable that hold the class that the program is for.
 	private String cls;
 	
+	
+	/*
+	 * Constructor that initializes the lists.
+	 * We use 2 different constructors to avoid doing initializing the lists more
+	 * times that we need to. The constructor also initializes a random program.
+	 */
 	public Program(int x, String cls) {
 		setTeachers();
 		setLessons();
@@ -26,6 +36,7 @@ public class Program {
 		randProgram(cls);
 	}
 	
+	// Constructor that initializes a random program without initializing the lists.
 	public Program(String cls) {		
 		this.cls = cls;
 		randProgram(cls);
@@ -42,7 +53,8 @@ public class Program {
 	public static ArrayList<Teacher> getTeachers() {
 		return teachers;
 	}
-
+		
+	// Retrieves the data from the teacher.json  
 	public static void setTeachers() {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -56,7 +68,8 @@ public class Program {
 	public ArrayList<Lesson> getLessons() {
 		return lessons;
 	}
-
+	
+	// Retrieves the data from the lessons.json
 	public void setLessons() {
 		ObjectMapper mapper = new ObjectMapper();
 		try {
@@ -74,6 +87,7 @@ public class Program {
 		this.cls = cls;
 	}
 
+	// This method reduces the hours of a teacher in the static list teachers.
 	public void reduceHours(Teacher teacher,int hours) {
 		for(Teacher t : teachers) {
 			if( t.equals(teacher)) {
@@ -87,7 +101,7 @@ public class Program {
 		
 	}
 
-	
+	// The method creates a random program.
 	private void randProgram(String cls) {
 		
 		program = new Hour[dimension_x][dimension_y];
@@ -124,6 +138,8 @@ public class Program {
 		replaceNulls();
 	}
 	
+	// This method replaces all nulls in the program with a specific String
+	// to avoid NullPointerExceptions when we handle the @program
 	private void replaceNulls() {
 		Lesson empty = new Lesson();
 		empty.setLes_name("----");
@@ -137,7 +153,8 @@ public class Program {
 			}			
 		}
 	}
-
+	
+	// Prints the program in a pretty format easy to interpet.
 	public void printArray(String filename) throws FileNotFoundException, UnsupportedEncodingException {
 		PrintWriter writer = new PrintWriter(filename, "UTF-8");
 		int max = this.calculateMax();
@@ -152,7 +169,7 @@ public class Program {
 	    writer.close();
 	}
 	
-	
+	// Returns a string with specific spaces.
 	private String addSpaces(int amount) {
 		String spaces = "";
 		for(int i = 0; i < amount;i++){
@@ -160,7 +177,8 @@ public class Program {
 		}
 		return spaces;
 	}
-
+	
+	// Calculates the biggest String in the lessons list.
 	public int calculateMax(){
 		int max = 0;
 		for(Lesson lesson : lessons){
