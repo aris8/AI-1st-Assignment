@@ -10,6 +10,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Program {
+	
 	// 2 dimension table to hold the program
 	private Hour program[][];
 	//The dimensions of the table

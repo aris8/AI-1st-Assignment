@@ -34,15 +34,13 @@ public class State {
 	
 	/*
 	 * Default constructor.It creates a random
-	 * program with dimensions 7x15.
+	 * program with dimensions 7x5.
 	 */
 	public State() throws FileNotFoundException, UnsupportedEncodingException{		
 		create_random();
 	}
-	/*
-	 * Creates a random program with the dimensions 
-	 * given.
-	 */
+	
+	//Creates a random program
 	private void create_random() throws FileNotFoundException, UnsupportedEncodingException  {
 		//Initialization of the program.
 		a1 = new Program(0,"A");
@@ -72,14 +70,137 @@ public class State {
 	private int euristic() {
 		score = 0;
 		score += teleportingTeachers();
+		score += spacesInProgam();
 		return score;
 	}
 	
+	
+	private int spacesInProgam() {
+		int count = 0;
+		int points = 1; // The points given as penalty for each time the restrictions is violated.
+		for(int j = 0; j < 5; j++){
+			for(int i = 0; i < 6;i++){
+				
+				// A1
+				if( i == 4 && a1.getTeacherAtPos(i, j).toString().equals("##") &&
+						( !(a1.getTeacherAtPos(i + 1, j).toString().equals("##")) 
+								|| !(a1.getTeacherAtPos(i + 2, j).toString().equals("##")) ) ){
+					count++;
+				}else if( i == 5 && a1.getTeacherAtPos(i, j).toString().equals("##") &&
+						!(a1.getTeacherAtPos(i + 1, j).toString().equals("##")) ){
+					count++;					
+				}else if(a1.getTeacherAtPos(i, j).toString().equals("##")){
+					count++;
+				}
+				
+				// A2
+				if( i == 4 && a2.getTeacherAtPos(i, j).toString().equals("##") &&
+						( !(a2.getTeacherAtPos(i + 1, j).toString().equals("##")) 
+								|| !(a2.getTeacherAtPos(i + 2, j).toString().equals("##")) ) ){
+					count++;
+				}else if( i == 5 && a2.getTeacherAtPos(i, j).toString().equals("##") &&
+						!(a2.getTeacherAtPos(i + 1, j).toString().equals("##")) ){
+					count++;					
+				}else if(a2.getTeacherAtPos(i, j).toString().equals("##")){
+					count++;
+				}
+				
+				// A3
+				if( i == 4 && a3.getTeacherAtPos(i, j).toString().equals("##") &&
+						( !(a3.getTeacherAtPos(i + 1, j).toString().equals("##")) 
+								|| !(a3.getTeacherAtPos(i + 2, j).toString().equals("##")) ) ){
+					count++;
+				}else if( i == 5 && a3.getTeacherAtPos(i, j).toString().equals("##") &&
+						!(a3.getTeacherAtPos(i + 1, j).toString().equals("##")) ){
+					count++;					
+				}else if(a3.getTeacherAtPos(i, j).toString().equals("##")){
+					count++;
+				}
+				
+				// B1
+				if( i == 4 && b1.getTeacherAtPos(i, j).toString().equals("##") &&
+						( !(b1.getTeacherAtPos(i + 1, j).toString().equals("##")) 
+								|| !(b1.getTeacherAtPos(i + 2, j).toString().equals("##")) ) ){
+					count++;
+				}else if( i == 5 && b1.getTeacherAtPos(i, j).toString().equals("##") &&
+						!(b1.getTeacherAtPos(i + 1, j).toString().equals("##")) ){
+					count++;					
+				}else if(b1.getTeacherAtPos(i, j).toString().equals("##")){
+					count++;
+				}
+				
+				// B2
+				if( i == 4 && b2.getTeacherAtPos(i, j).toString().equals("##") &&
+						( !(b2.getTeacherAtPos(i + 1, j).toString().equals("##")) 
+								|| !(b2.getTeacherAtPos(i + 2, j).toString().equals("##")) ) ){
+					count++;
+				}else if( i == 5 && b2.getTeacherAtPos(i, j).toString().equals("##") &&
+						!(b2.getTeacherAtPos(i + 1, j).toString().equals("##")) ){
+					count++;					
+				}else if(b2.getTeacherAtPos(i, j).toString().equals("##")){
+					count++;
+				}
+				
+				// B3
+				if( i == 4 && b3.getTeacherAtPos(i, j).toString().equals("##") &&
+						( !(b3.getTeacherAtPos(i + 1, j).toString().equals("##")) 
+								|| !(b3.getTeacherAtPos(i + 2, j).toString().equals("##")) ) ){
+					count++;
+				}else if( i == 5 && b3.getTeacherAtPos(i, j).toString().equals("##") &&
+						!(b3.getTeacherAtPos(i + 1, j).toString().equals("##")) ){
+					count++;					
+				}else if(b3.getTeacherAtPos(i, j).toString().equals("##")){
+					count++;
+				}
+				
+				// C1
+				if( i == 4 && c1.getTeacherAtPos(i, j).toString().equals("##") &&
+						( !(c1.getTeacherAtPos(i + 1, j).toString().equals("##")) 
+								|| !(c1.getTeacherAtPos(i + 2, j).toString().equals("##")) ) ){
+					count++;
+				}else if( i == 5 && c1.getTeacherAtPos(i, j).toString().equals("##") &&
+						!(c1.getTeacherAtPos(i + 1, j).toString().equals("##")) ){
+					count++;					
+				}else if(c1.getTeacherAtPos(i, j).toString().equals("##")){
+					count++;
+				}
+				
+				// C2
+				if( i == 4 && c2.getTeacherAtPos(i, j).toString().equals("##") &&
+						( !(c2.getTeacherAtPos(i + 1, j).toString().equals("##")) 
+								|| !(c2.getTeacherAtPos(i + 2, j).toString().equals("##")) ) ){
+					count++;
+				}else if( i == 5 && c2.getTeacherAtPos(i, j).toString().equals("##") &&
+						!(c2.getTeacherAtPos(i + 1, j).toString().equals("##")) ){
+					count++;					
+				}else if(c2.getTeacherAtPos(i, j).toString().equals("##")){
+					count++;
+				}
+				
+				// C3
+				if( i == 4 && c3.getTeacherAtPos(i, j).toString().equals("##") &&
+						( !(c3.getTeacherAtPos(i + 1, j).toString().equals("##")) 
+								|| !(c3.getTeacherAtPos(i + 2, j).toString().equals("##")) ) ){
+					count++;
+				}else if( i == 5 && c3.getTeacherAtPos(i, j).toString().equals("##") &&
+						!(c3.getTeacherAtPos(i + 1, j).toString().equals("##")) ){
+					count++;					
+				}else if(c3.getTeacherAtPos(i, j).toString().equals("##")){
+					count++;
+				}
+				
+				
+			}
+		}
+		
+		return count * points;
+	}
 	// The method that calculates the points for the Teachers doing
 	// 2 classes at the same hour.
 	private int teleportingTeachers() {
 		ArrayList<Teacher> duplicates;
 		int count = 0;
+		int points = 1; // The points given as penalty for each time the restrictions is violated.
 		for(int i = 0; i < 7; i++){
 			duplicates = new ArrayList<Teacher>(); 
 			for(int j = 0; j < 5; j++){
@@ -118,11 +239,13 @@ public class State {
 				}else duplicates.add(c3.getTeacherAtPos(i, j));
 			}
 		}
-		return count;
+		return count * points;
 	}
+	
 	public int getScore() {
 		return score;
 	}
+	
 	public void setScore(int score) {
 		this.score = score;
 	}
