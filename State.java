@@ -1,16 +1,22 @@
 
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collection;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 
 
-public class State {
+public class State implements Comparable<State> {
 	/*
-	 * We represent the program with 3 different 
-	 * 2 dimensions array 1 for each class.
+	 * We represent the program with 9 different 
+	 * 2 dimensional arrays 1 for each class.
 	 */
 	private Program a1;
 	private Program a2;
@@ -36,8 +42,10 @@ public class State {
 	 * Default constructor.It creates a random
 	 * program with dimensions 7x5.
 	 */
-	public State() throws FileNotFoundException, UnsupportedEncodingException{		
-		create_random();
+	public State(Boolean x) throws FileNotFoundException, UnsupportedEncodingException{	
+		if(x){
+			create_random();
+		}
 	}
 	
 	//Creates a random program
@@ -71,10 +79,78 @@ public class State {
 		score = 0;
 		score += teleportingTeachers();
 		score += spacesInProgam();
+		
+		score += continiousHours();
 		return score;
 	}
 	
 	
+	private int continiousHours() {
+		// A 2 dimensional array the represents the hours the teachers teach.
+		int count = 0;
+		
+		ArrayList<Teacher> teachers = null;
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			teachers = mapper.readValue(new File("teachers.json"), new TypeReference<ArrayList<Teacher>>(){});			
+		} catch (IOException e) {			
+			e.printStackTrace();
+		}
+		
+		
+		for(Teacher t : teachers){
+			Teacher[][] teach = new Teacher[7][5];
+			for(int i = 0;i < 7;i++){
+				for(int j = 0;j < 5;j++){
+					teach[i][j] = new Teacher();
+					teach[i][j].setName("##");
+				}
+			}
+			for(int i = 0;i < 7;i++){
+				for(int j = 0;j < 5;j++){
+					
+					if(a1.getTeacherAtPos(i, j).toString().equals(t.toString())){
+						teach[i][j] = a1.getTeacherAtPos(i, j);
+					}
+					if(a2.getTeacherAtPos(i, j).toString().equals(t.toString())){
+						teach[i][j] = a2.getTeacherAtPos(i, j);
+					}
+					if(a3.getTeacherAtPos(i, j).toString().equals(t.toString())){
+						teach[i][j] = a3.getTeacherAtPos(i, j);
+					}
+					if(b1.getTeacherAtPos(i, j).toString().equals(t.toString())){
+						teach[i][j] = b1.getTeacherAtPos(i, j);
+					}
+					if(b2.getTeacherAtPos(i, j).toString().equals(t.toString())){
+						teach[i][j] = b2.getTeacherAtPos(i, j);
+					}
+					if(b3.getTeacherAtPos(i, j).toString().equals(t.toString())){
+						teach[i][j] = b3.getTeacherAtPos(i, j);
+					}
+					if(c1.getTeacherAtPos(i, j).toString().equals(t.toString())){
+						teach[i][j] = c1.getTeacherAtPos(i, j);
+					}
+					if(c2.getTeacherAtPos(i, j).toString().equals(t.toString())){
+						teach[i][j] = c2.getTeacherAtPos(i, j);
+					}
+					if(c3.getTeacherAtPos(i, j).toString().equals(t.toString())){
+						
+						teach[i][j] = c3.getTeacherAtPos(i, j);
+					}
+					
+				}			
+			}
+			for(int j = 0;j < 5;j++){
+				for(int i = 0;i < 5;i++){
+					if(teach[i][j].toString().equals(teach[i + 1][j].toString()) && teach[i][j].toString().equals(teach[i + 2][j].toString()) && !(teach[i][j].toString().equals("##")) ){
+						count++;
+					}
+				}
+			}
+		}
+		return count;
+	}
+
 	private int spacesInProgam() {
 		int count = 0;
 		int points = 1; // The points given as penalty for each time the restrictions is violated.
@@ -199,10 +275,10 @@ public class State {
 	// 2 classes at the same hour.
 	private int teleportingTeachers() {
 		ArrayList<Teacher> duplicates;
+		duplicates = new ArrayList<Teacher>(); 
 		int count = 0;
 		int points = 1; // The points given as penalty for each time the restrictions is violated.
-		for(int i = 0; i < 7; i++){
-			duplicates = new ArrayList<Teacher>(); 
+		for(int i = 0; i < 7; i++){			 
 			for(int j = 0; j < 5; j++){
 				duplicates.add(a1.getTeacherAtPos(i, j));
 				
@@ -237,6 +313,7 @@ public class State {
 				if(duplicates.contains(c3.getTeacherAtPos(i, j))){
 					count++;
 				}else duplicates.add(c3.getTeacherAtPos(i, j));
+				duplicates = new ArrayList<Teacher>();
 			}
 		}
 		return count * points;
@@ -248,6 +325,117 @@ public class State {
 	
 	public void setScore(int score) {
 		this.score = score;
+	}
+
+	
+	public boolean isTerminal() {
+		
+		return score <= 30;
+	}
+
+	
+	public Collection<? extends State> getChildren(State s) throws FileNotFoundException, UnsupportedEncodingException {
+		ArrayList<State> children = new ArrayList<State>();
+		State child = s;
+		for(int p = 0;p < 9;p++){
+			
+			for(int i =0; i < 7;i++){
+				for(int j = 0; j < 5;j++){
+					if( i == 1){
+						
+						children.add(child.swap(i,j,i));
+					}
+					else if( i == 2){
+						
+						children.add(child.swap(i,j,i));
+					}
+					else if( i == 3){
+						
+						children.add(child.swap(i,j,i));
+					}
+					else if( i == 4){
+						
+						children.add(child.swap(i,j,i));
+					}
+					else if( i == 5){
+						
+						children.add(child.swap(i,j,i));
+					}
+					else if( i == 6){
+						
+						children.add(child.swap(i,j,i));
+					}
+					else if( i == 7){
+						
+						children.add(child.swap(i,j,i));
+					}
+					else if( i == 8){
+						
+						children.add(child.swap(i,j,i));
+					}
+					else{
+						
+						children.add(child.swap(i,j,i));
+					}
+					child = s;
+					
+				}
+			}
+			
+		}
+		
+		return children;
+	}
+
+	private State swap(int i, int j, int k) {
+		if(k == 1){
+			a1.swap(row_x,row_y,i,j);
+		}
+		else if(k == 2){
+			a2.swap(row_x,row_y,i,j);
+		}
+		else if(k == 3){
+			a3.swap(row_x,row_y,i,j);
+		}
+		else if(k == 4){
+			b1.swap(row_x,row_y,i,j);
+		}
+		else if(k == 5){
+			b2.swap(row_x,row_y,i,j);
+		}
+		else if(k == 6){
+			b3.swap(row_x,row_y,i,j);
+		}
+		else if(k == 7){
+			c1.swap(row_x,row_y,i,j);
+		}
+		else if(k == 8){
+			c2.swap(row_x,row_y,i,j);
+		}
+		else{
+			c3.swap(row_x,row_y,i,j);
+		}
+
+		return this;
+	}
+
+	@Override
+    //We override the compareTo function of this class so only the heuristic scores are compared
+	public int compareTo(State s)
+	{
+		return Double.compare(this.score, s.score);
+	}
+	
+	public void print() throws FileNotFoundException, UnsupportedEncodingException{
+		a1.printArray("A1.txt");
+		a2.printArray("A2.txt");
+		a3.printArray("A3.txt");
+		b1.printArray("B1.txt");
+		b2.printArray("B2.txt");
+		b3.printArray("B3.txt");
+		c1.printArray("C1.txt");
+		c2.printArray("C2.txt");
+		c3.printArray("C3.txt");
 	}
 	
 }

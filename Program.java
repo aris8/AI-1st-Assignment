@@ -194,6 +194,14 @@ public class Program {
 	}
 
 	
+	public void swap(int row_x, int row_y, int i, int j) {
+		Hour temp;
+		temp = program[row_x][row_y];
+		program[row_x][row_y] = program[i][j];
+		program[i][j] = temp;		
+	}
+
+	
 	
 	
 
