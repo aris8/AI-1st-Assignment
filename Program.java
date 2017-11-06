@@ -169,6 +169,18 @@ public class Program {
 	    writer.close();
 	}
 	
+	public void print(){
+		int max = this.calculateMax();
+		String spaces = "";
+		for(int i = 0; i < dimension_x; i++){
+			for(int j = 0; j < dimension_y; j++){
+				spaces = addSpaces(max - program[i][j].getLesson().getLes_name().length());
+				System.out.printf("%d: %s -> %s%s ",i + 1,program[i][j].getLesson(), program[i][j].getTeacher(),spaces );				
+			}
+			System.out.print("\n");
+		}
+	}
+	
 	// Returns a string with specific spaces.
 	private String addSpaces(int amount) {
 		String spaces = "";
@@ -199,6 +211,31 @@ public class Program {
 		temp = program[row_x][row_y];
 		program[row_x][row_y] = program[i][j];
 		program[i][j] = temp;		
+	}
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		boolean flag = true;
+		
+		
+			for(int i = 0; i < 7;i++){
+				for(int j = 0; j < 5;j++){
+					if(program[i][j].getTeacher() != ((Program) obj).getTeacherAtPos(i,j)  || program[i][j].getLesson() != ((Program) obj).getLessonAtPos(i,j) ){
+						flag = false;
+						break;
+					}
+				}
+				if(flag == false){
+					break;
+				}
+			}
+		return flag;
+	}
+
+	private Lesson getLessonAtPos(int i, int j) {
+		
+		return program[i][j].getLesson();
 	}
 
 	

@@ -341,35 +341,35 @@ public class State implements Comparable<State> {
 			
 			for(int i =0; i < 7;i++){
 				for(int j = 0; j < 5;j++){
-					if( i == 1){
+					if( p == 1){
 						
 						children.add(child.swap(i,j,i));
 					}
-					else if( i == 2){
+					else if( p == 2){
 						
 						children.add(child.swap(i,j,i));
 					}
-					else if( i == 3){
+					else if( p == 3){
 						
 						children.add(child.swap(i,j,i));
 					}
-					else if( i == 4){
+					else if( p == 4){
 						
 						children.add(child.swap(i,j,i));
 					}
-					else if( i == 5){
+					else if( p == 5){
 						
 						children.add(child.swap(i,j,i));
 					}
-					else if( i == 6){
+					else if( p == 6){
 						
 						children.add(child.swap(i,j,i));
 					}
-					else if( i == 7){
+					else if( p == 7){
 						
 						children.add(child.swap(i,j,i));
 					}
-					else if( i == 8){
+					else if( p == 8){
 						
 						children.add(child.swap(i,j,i));
 					}
@@ -387,7 +387,7 @@ public class State implements Comparable<State> {
 		return children;
 	}
 
-	private State swap(int i, int j, int k) {
+	public State swap(int i, int j, int k) {
 		if(k == 1){
 			a1.swap(row_x,row_y,i,j);
 		}
@@ -418,7 +418,78 @@ public class State implements Comparable<State> {
 
 		return this;
 	}
-
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		for(int p = 0;p < 9;p++){
+			
+			for(int i =0; i < 7;i++){
+				for(int j = 0; j < 5;j++){
+					if( p == 1){
+						
+					}
+					else if( p == 2){
+						
+					}
+					else if( p == 3){
+						
+					}
+					else if( p == 4){
+						
+					}
+					else if( p == 5){
+						
+					}
+					else if( p == 6){
+						
+					}
+					else if( p == 7){
+						
+					}
+					else if( p == 8){
+						
+					}
+					else{
+						
+					}
+				}
+			}
+		}
+		
+		
+		
+		return true;
+	}
+	public Program getProgram(int p){
+		if( p == 1){
+			return a1;
+		}
+		else if( p == 2){
+			return a2;
+		}
+		else if( p == 3){
+			return a3;
+		}
+		else if( p == 4){
+			return b1;
+		}
+		else if( p == 5){
+			return b2;
+		}
+		else if( p == 6){
+			return b3;
+		}
+		else if( p == 7){
+			return c1;
+		}
+		else if( p == 8){
+			return c2;
+		}
+		else{
+			return c3;
+		}
+	}
 	@Override
     //We override the compareTo function of this class so only the heuristic scores are compared
 	public int compareTo(State s)
@@ -427,15 +498,23 @@ public class State implements Comparable<State> {
 	}
 	
 	public void print() throws FileNotFoundException, UnsupportedEncodingException{
-		a1.printArray("A1.txt");
-		a2.printArray("A2.txt");
-		a3.printArray("A3.txt");
-		b1.printArray("B1.txt");
-		b2.printArray("B2.txt");
-		b3.printArray("B3.txt");
-		c1.printArray("C1.txt");
-		c2.printArray("C2.txt");
-		c3.printArray("C3.txt");
+		a1.print();
+		System.out.println();
+		a2.print();
+		System.out.println();
+		a3.print();
+		System.out.println();
+		b1.print();
+		System.out.println();
+		b2.print();
+		System.out.println();
+		b3.print();
+		System.out.println();
+		c1.print();
+		System.out.println();
+		c2.print();
+		System.out.println();
+		c3.print();
 	}
 	
 }

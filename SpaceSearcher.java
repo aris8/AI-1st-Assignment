@@ -32,7 +32,8 @@ public class SpaceSearcher
 		while(this.states.size() > 0)
 		{
 			State currentState = this.states.remove(0);
-			System.out.println(currentState);
+			currentState.print();
+			System.out.println("\n");
 			count++;
 			if(currentState.isTerminal())
 			{
