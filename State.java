@@ -422,45 +422,38 @@ public class State implements Comparable<State> {
 	@Override
 	public boolean equals(Object obj)
 	{
-		for(int p = 0;p < 9;p++){
-			
-			for(int i =0; i < 7;i++){
-				for(int j = 0; j < 5;j++){
-					if( p == 1){
-						
-					}
-					else if( p == 2){
-						
-					}
-					else if( p == 3){
-						
-					}
-					else if( p == 4){
-						
-					}
-					else if( p == 5){
-						
-					}
-					else if( p == 6){
-						
-					}
-					else if( p == 7){
-						
-					}
-					else if( p == 8){
-						
-					}
-					else{
-						
-					}
-				}
-			}
+		if(a1.equals(   ((State) obj).getProgram(1) ) ){
+			return true;
+		}
+		else if(a2.equals(   ((State) obj).getProgram(2) ) ){
+			return true;
+		}
+		else if(a3.equals(   ((State) obj).getProgram(3) ) ){
+			return true;
+		}
+		else if(b1.equals(   ((State) obj).getProgram(4) ) ){
+			return true;
+		}
+		else if(b2.equals(   ((State) obj).getProgram(5) ) ){
+			return true;
+		}
+		else if(b3.equals(   ((State) obj).getProgram(6) ) ){
+			return true;
+		}
+		else if(c1.equals(   ((State) obj).getProgram(7) ) ){
+			return true;
+		}
+		else if(c2.equals(   ((State) obj).getProgram(8) ) ){
+			return true;
+		}
+		else if(c3.equals(   ((State) obj).getProgram(9) ) ){
+			return true;
 		}
 		
 		
-		
-		return true;
+		return false;
 	}
+	
 	public Program getProgram(int p){
 		if( p == 1){
 			return a1;
@@ -490,8 +483,9 @@ public class State implements Comparable<State> {
 			return c3;
 		}
 	}
-	@Override
+		
     //We override the compareTo function of this class so only the heuristic scores are compared
+	@Override
 	public int compareTo(State s)
 	{
 		return Double.compare(this.score, s.score);

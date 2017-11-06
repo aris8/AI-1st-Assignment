@@ -9,7 +9,7 @@ import java.util.Random;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class Program {
+public class Program implements Cloneable {
 	
 	// 2 dimension table to hold the program
 	private Hour program[][];
@@ -120,6 +120,12 @@ public class Program {
 				teacher = cnd.get(n);
 				Hour h = new Hour(lesson, teacher);
 				for (int i=0; i< lesson.getWeekly_hours(); i++) {
+					Hour x = null;
+					try {
+						x = (Hour) h.clone();
+					} catch (CloneNotSupportedException e) {
+						e.printStackTrace();
+					}
 					boolean flag = true;
 					int x_pos = 0;
 					int y_pos = 0;
@@ -128,7 +134,7 @@ public class Program {
 						y_pos = rand.nextInt(dimension_y);
 						if (program[x_pos][y_pos] == null) flag = false;
 					}
-					program[x_pos][y_pos] = h;
+					program[x_pos][y_pos] = x;
 					
 				}
 				reduceHours(teacher, lesson.getWeekly_hours());
@@ -204,32 +210,39 @@ public class Program {
 	public Teacher getTeacherAtPos(int i,int j){
 		return program[i][j].getTeacher();
 	}
+	
+	public void setTeacher(Teacher t,int i,int j) {
+		this.program[i][j].setTeacher(t);
+	}
+	
+	public void setLesson(Lesson l,int i,int j) {
+		this.program[i][j].setLesson(l);
+	}
 
 	
 	public void swap(int row_x, int row_y, int i, int j) {
 		Hour temp;
 		temp = program[row_x][row_y];
 		program[row_x][row_y] = program[i][j];
-		program[i][j] = temp;		
+		program[i][j] = temp;
+		
 	}
 	
 	@Override
 	public boolean equals(Object obj)
 	{
 		boolean flag = true;
-		
-		
-			for(int i = 0; i < 7;i++){
-				for(int j = 0; j < 5;j++){
-					if(program[i][j].getTeacher() != ((Program) obj).getTeacherAtPos(i,j)  || program[i][j].getLesson() != ((Program) obj).getLessonAtPos(i,j) ){
-						flag = false;
-						break;
-					}
-				}
-				if(flag == false){
+		for(int i = 0; i < 7;i++){
+			for(int j = 0; j < 5;j++){
+				if(program[i][j].getTeacher() != ((Program) obj).getTeacherAtPos(i,j)  || program[i][j].getLesson() != ((Program) obj).getLessonAtPos(i,j) ){
+					flag = false;
 					break;
 				}
 			}
+			if(flag == false){
+				break;
+			}
+		}
 		return flag;
 	}
 
@@ -238,6 +251,26 @@ public class Program {
 		return program[i][j].getLesson();
 	}
 
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		Program cloned = (Program) super.clone();
+		
+		Hour a;
+		
+		for(int i =0; i < 7;i++) {
+			for(int j = 0; j < 5; j++) {
+				
+				a =  (Hour) program[i][j].clone();				
+				a.setTeacher((Teacher) a.getTeacher().clone());
+				a.setLesson((Lesson) a.getLesson().clone());				
+				cloned.setTeacher((Teacher)a.getTeacher().clone(), i, j);
+				cloned.setLesson((Lesson)a.getLesson().clone(), i, j);
+				
+			}
+		}
+		
+	    return cloned;
+	}
 	
 	
 	
