@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Lesson {
+public class Lesson implements Cloneable {
     /* @les_id The id of the lesson
      * @les_name The name of the lesson
      * @_class The class that the lesson can be taught.
@@ -14,11 +14,11 @@ public class Lesson {
     
     public Lesson(){} //Default constructor. Needed to use the jackson library.
     
-    public Lesson(int les_id,String les_name,String _class,int weekly_hours,Scanner sc){
+    public Lesson(int les_id,String les_name,String _class,int weekly_hours){
         setLes_id(les_id);
         setLes_name(les_name);
-        set_class(_class,sc);
-        setWeekly_hours(weekly_hours,sc);
+        set_class(_class);
+        setWeekly_hours(weekly_hours);
     }
 
 
@@ -47,21 +47,15 @@ public class Lesson {
     }
 
 
-    public void set_class(String _class,Scanner sc) {
-		/*We perform parameters check to ensure
-		 * that our program does not go out of bounds.
-		 * _class = {A,B,C}
-		 */
+    public void set_class(String _class) {
+    	/*We perform parameters check to ensure
+    	 * that our program does not go out of bounds.
+    	 * _class = {A,B,C}
+    	 */
 
-        while(true){
 
-            if(_class.equals("A") || _class.equals("B") || _class.equals("C")){
-                this._class = _class;
-                break;
-            }
-            System.out.printf("Please enter a correct class to assing the Lesson to: ");
-            _class = sc.nextLine();
-        }
+    	this._class = _class;
+
 
     }
 
@@ -71,25 +65,28 @@ public class Lesson {
     }
 
 
-    public void setWeekly_hours(int weekly_hours,Scanner sc) {
+    public void setWeekly_hours(int weekly_hours) {
 		/*We perform parameters check to ensure
 		 * that our program does not go out of bounds.
 		 * weekly_hours = {0*}
 		 */
 
-        while(true){
-            if(weekly_hours < 0){
-                System.out.printf("The number of weekly hours of class "
-                        + "%s are not correct.Please enter an appropriate number of hours: ",get_class());
-                weekly_hours = sc.nextInt();
-                continue;
-            }
-            break;
-        }
         this.weekly_hours = weekly_hours;
 
     }
-
+    
+    @Override
+    public boolean equals(Object obj) {
+    	if(this.les_name.equals((((Lesson) obj).getLes_name())) && this._class.equals((((Lesson) obj).get_class()))    ) {
+    		return true;
+    	}
+    	return false;
+    }
+    
+    @Override
+	protected Object clone() throws CloneNotSupportedException {
+	    return super.clone();
+	}
 
 	@Override
 	public String toString() {

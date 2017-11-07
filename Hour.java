@@ -2,7 +2,7 @@
  * A class that holds the teacher and the 
  * lesson for 1 hour of the program.
  */
-public class Hour {
+public class Hour implements Cloneable {
 	private Lesson lesson;
 	private Teacher teacher;
 	
@@ -34,4 +34,21 @@ public class Hour {
 		return "Hour [lesson=" + lesson + ", teacher=" + teacher + "]";
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if(this.lesson.equals((((Hour) obj).getLesson())) && (this.teacher.equals((((Hour) obj).getTeacher()))) ){
+			return true;
+		}		
+		return false;
+	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		Hour hour = (Hour) super.clone();
+		Teacher cloned_t = (Teacher) this.teacher.clone();
+		Lesson cloned_l = (Lesson) this.lesson.clone(); 
+		hour.setLesson(cloned_l);
+		hour.setTeacher(cloned_t);
+	    return hour;
+	}
 }

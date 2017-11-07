@@ -9,7 +9,7 @@ import java.util.Random;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-public class Program {
+public class Program implements Cloneable {
 	
 	// 2 dimension table to hold the program
 	private Hour program[][];
@@ -23,7 +23,17 @@ public class Program {
 	//A variable that hold the class that the program is for.
 	private String cls;
 	
+	//Copy constructor
+	public static Program newInstance(Program p) {
+		return new Program(p.getCls(),p.getProgram());
+	}
 	
+	
+	public Program(String cls,Hour[][] program) {
+		this.cls =cls;
+		this.program = program;
+	}
+ 
 	/*
 	 * Constructor that initializes the lists.
 	 * We use 2 different constructors to avoid doing initializing the lists more
@@ -120,6 +130,12 @@ public class Program {
 				teacher = cnd.get(n);
 				Hour h = new Hour(lesson, teacher);
 				for (int i=0; i< lesson.getWeekly_hours(); i++) {
+					Hour x = null;
+					try {
+						x = (Hour) h.clone();
+					} catch (CloneNotSupportedException e) {
+						e.printStackTrace();
+					}
 					boolean flag = true;
 					int x_pos = 0;
 					int y_pos = 0;
@@ -128,7 +144,7 @@ public class Program {
 						y_pos = rand.nextInt(dimension_y);
 						if (program[x_pos][y_pos] == null) flag = false;
 					}
-					program[x_pos][y_pos] = h;
+					program[x_pos][y_pos] = x;
 					
 				}
 				reduceHours(teacher, lesson.getWeekly_hours());
@@ -204,40 +220,50 @@ public class Program {
 	public Teacher getTeacherAtPos(int i,int j){
 		return program[i][j].getTeacher();
 	}
+	
+	public void setTeacher(Teacher t,int i,int j) throws CloneNotSupportedException {
+		Teacher t1 = (Teacher) t.clone();
+		this.program[i][j].setTeacher(t);
+	}
+	
+	public void setLesson(Lesson l,int i,int j) throws CloneNotSupportedException {
+		Lesson l1 = (Lesson) l.clone();
+		this.program[i][j].setLesson(l1);
+	}
 
 	
 	public void swap(int row_x, int row_y, int i, int j) {
 		Hour temp;
 		temp = program[row_x][row_y];
 		program[row_x][row_y] = program[i][j];
-		program[i][j] = temp;		
+		program[i][j] = temp;
+		
 	}
 	
 	@Override
 	public boolean equals(Object obj)
 	{
 		boolean flag = true;
-		
-		
-			for(int i = 0; i < 7;i++){
-				for(int j = 0; j < 5;j++){
-					if(program[i][j].getTeacher() != ((Program) obj).getTeacherAtPos(i,j)  || program[i][j].getLesson() != ((Program) obj).getLessonAtPos(i,j) ){
-						flag = false;
-						break;
-					}
-				}
-				if(flag == false){
+		for(int i = 0; i < 7;i++){
+			for(int j = 0; j < 5;j++){
+				if(program[i][j].getTeacher() != ((Program) obj).getTeacherAtPos(i,j)  || program[i][j].getLesson() != ((Program) obj).getLessonAtPos(i,j) ){
+					flag = false;
 					break;
 				}
 			}
+			if(flag == false){
+				break;
+			}
+		}
 		return flag;
 	}
 
-	public Lesson getLessonAtPos(int i, int j) {
+	private Lesson getLessonAtPos(int i, int j) {
 		
 		return program[i][j].getLesson();
 	}
 
+	
 	
 	
 	

@@ -23,7 +23,7 @@ public class SpaceSearcher
 
 
     //BestFS Algorithm Implementation with Closed Set
-	public State BestFSClosedSet(State initialState) throws FileNotFoundException, UnsupportedEncodingException
+	public State BestFSClosedSet(State initialState) throws FileNotFoundException, UnsupportedEncodingException, CloneNotSupportedException
 	{
 		int count = 0;
 		this.states = new ArrayList<State>();
@@ -32,9 +32,8 @@ public class SpaceSearcher
 		while(this.states.size() > 0)
 		{
 			State currentState = this.states.remove(0);
-			currentState.print();
-			System.out.println("\n");
 			count++;
+			System.out.println("Current state" + currentState.getScore());
 			if(currentState.isTerminal())
 			{
 				return currentState;
@@ -42,9 +41,8 @@ public class SpaceSearcher
 			if(!closedSet.contains(currentState))
 			{
 				this.closedSet.add(currentState);
-				this.states.addAll(currentState.getChildren(currentState));
+				this.states.addAll(currentState.getChildren());
 				Collections.sort(this.states);
-				System.out.println("Size:" + (this.states.size()));
 				
 			}
 		}

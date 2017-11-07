@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Teacher {
+public class Teacher implements Cloneable {
     
 
 	/*
@@ -20,11 +20,11 @@ public class Teacher {
 
     public Teacher(){} //Default constructor. Needed to use the jackson library.
     
-    public Teacher(String name, int teacher_id, ArrayList<Integer> lesson_id, int max_hours,Scanner sc) {
+    public Teacher(String name, int teacher_id, ArrayList<Integer> lesson_id, int max_hours) {
         setName(name);
         setTeacher_id(teacher_id);
         setLesson_id(lesson_id);
-        setMax_hours(max_hours,sc);
+        setMax_hours(max_hours);
     }
 
     public String getName() {
@@ -63,21 +63,11 @@ public class Teacher {
         return max_hours;
     }
 
-    public void setMax_hours(int max_hours,Scanner sc) {
+    public void setMax_hours(int max_hours) {
 		/*We perform parameters check to ensure
 		 * that our program does not go out of bounds.
 		 * max_hours = {0*}
 		 */
-
-        while(true){
-            if(max_hours < 0){
-                System.out.printf("The number of weekly teaching hours of "
-                        + "%s %s are not correct.Please enter an appropriate number of hours: ",getName());
-                max_hours = sc.nextInt();
-                continue;
-            }
-            break;
-        }
         this.max_hours = max_hours;
 
     }
@@ -91,10 +81,21 @@ public class Teacher {
     	return;    	
     }
     
-
+    @Override
+    public boolean equals(Object obj) {
+    	if(this.name.equals(((Teacher) obj).getName() ) ){
+    		return true;
+    	}
+    	return false;
+    }
+    
 	@Override
 	public String toString() {
 		return getName();
 	}
 
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+	    return super.clone();
+	}
 }
