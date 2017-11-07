@@ -233,7 +233,7 @@ public class Program {
 		return flag;
 	}
 
-	private Lesson getLessonAtPos(int i, int j) {
+	public Lesson getLessonAtPos(int i, int j) {
 		
 		return program[i][j].getLesson();
 	}

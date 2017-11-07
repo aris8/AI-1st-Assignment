@@ -77,10 +77,12 @@ public class State implements Comparable<State> {
 	// The euristic that calculates the score of the state.
 	private int euristic() {
 		score = 0;
-		score += teleportingTeachers();
-		score += spacesInProgam();
-		
-		score += continiousHours();
+//		score += teleportingTeachers();
+//		score += spacesInProgam();
+//		
+//		score += continiousHours();
+//		score += equality();
+		score += evenlyDistributed();
 		return score;
 	}
 	
@@ -319,6 +321,197 @@ public class State implements Comparable<State> {
 		return count * points;
 	}
 	
+	private int equality() {
+		
+		int count = 0;
+		for (int p=1; p < 10; p++) {
+			
+			int count1, count2, count3, count4, count5, count6, count7, count8, count9;
+			for(int j =0; j < 5;j++){
+				count1 = 0;
+				count2 = 0;
+				count3 = 0;
+				count4 = 0;
+				count5 = 0;
+				count6 = 0;
+				count7 = 0;
+				count8 = 0;
+				count9 = 0;
+				for(int i = 0; i < 7;i++){
+					if( p == 1){
+						if (a1.getLessonAtPos(i, j).getLes_name().equals("----")) count1++;						
+					}
+					else if( p == 2){
+						if (a2.getLessonAtPos(i, j).getLes_name().equals("----")) count2++;
+					}
+					else if( p == 3){
+						if (a3.getLessonAtPos(i, j).getLes_name().equals("----")) count3++;
+					}
+					else if( p == 4){
+						if (b1.getLessonAtPos(i, j).getLes_name().equals("----")) count4++;
+					}
+					else if( p == 5){
+						if (b2.getLessonAtPos(i, j).getLes_name().equals("----")) count5++;
+					}
+					else if( p == 6){
+						if (b3.getLessonAtPos(i, j).getLes_name().equals("----")) count6++;
+					}
+					else if( p == 7){
+						if (c1.getLessonAtPos(i, j).getLes_name().equals("----")) count7++;
+					}
+					else if( p == 8){
+						if (c2.getLessonAtPos(i, j).getLes_name().equals("----")) count8++;
+					}
+					else{
+						if (c3.getLessonAtPos(i, j).getLes_name().equals("----")) count9++;
+					}
+					
+				}
+				if (count1 > 1) count++;
+				if (count2 > 1) count++;
+				if (count3 > 1) count++;
+				if (count4 > 1) count++;
+				if (count5 > 1) count++;
+				if (count6 > 1) count++;
+				if (count7 > 1) count++;
+				if (count8 > 1) count++;
+				if (count9 > 1) count++;
+			}
+		}
+		return count;
+		
+		
+	}
+	
+	private int evenlyDistributed() {
+		
+		int count = 0;
+		for (int p=1; p < 10; p++) {
+			for(int j =0; j < 5;j++){
+				ArrayList<Lesson> duplicates;
+				duplicates = new ArrayList<Lesson>();
+				int value = 7;
+				for(int i = 0; i < 7;i++){
+					if( p == 1){
+						if (a1.getLessonAtPos(i, j).getLes_name().equals("----")){
+							value--;
+						} else {
+							if (i == 0) duplicates.add(a1.getLessonAtPos(i, j));
+							if (i > 0) {
+								if(!duplicates.contains(a1.getLessonAtPos(i, j))){
+									duplicates.add(a1.getLessonAtPos(i, j));
+								}
+							}
+						}
+						
+					}
+					else if( p == 2){
+						if (a2.getLessonAtPos(i, j).getLes_name().equals("----")){
+							value--;
+						} else {
+							if (i == 0) duplicates.add(a2.getLessonAtPos(i, j));
+							if (i > 0) {
+								if(!duplicates.contains(a2.getLessonAtPos(i, j))){
+									duplicates.add(a2.getLessonAtPos(i, j));
+								}
+							}
+						}
+					}
+					else if( p == 3){
+						if (a3.getLessonAtPos(i, j).getLes_name().equals("----")){
+							value--;
+						} else {
+							if (i == 0) duplicates.add(a3.getLessonAtPos(i, j));
+							if (i > 0) {
+								if(!duplicates.contains(a3.getLessonAtPos(i, j))){
+									duplicates.add(a3.getLessonAtPos(i, j));
+								}
+							}
+						}
+					}
+					else if( p == 4){
+						if (b1.getLessonAtPos(i, j).getLes_name().equals("----")){
+							value--;
+						} else {
+							if (i == 0) duplicates.add(b1.getLessonAtPos(i, j));
+							if (i > 0) {
+								if(!duplicates.contains(b1.getLessonAtPos(i, j))){
+									duplicates.add(b1.getLessonAtPos(i, j));
+								}
+							}
+						}
+					}
+					else if( p == 5){
+						if (b2.getLessonAtPos(i, j).getLes_name().equals("----")){
+							value--;
+						} else {
+							if (i == 0) duplicates.add(b2.getLessonAtPos(i, j));
+							if (i > 0) {
+								if(!duplicates.contains(b2.getLessonAtPos(i, j))){
+									duplicates.add(b2.getLessonAtPos(i, j));
+								}
+							}
+						}
+					}
+					else if( p == 6){
+						if (b3.getLessonAtPos(i, j).getLes_name().equals("----")){
+							value--;
+						} else {
+							if (i == 0) duplicates.add(b3.getLessonAtPos(i, j));
+							if (i > 0) {
+								if(!duplicates.contains(b3.getLessonAtPos(i, j))){
+									duplicates.add(b3.getLessonAtPos(i, j));
+								}
+							}
+						}
+					}
+					else if( p == 7){
+						if (c1.getLessonAtPos(i, j).getLes_name().equals("----")){
+							value--;
+						} else {
+							if (i == 0) duplicates.add(c1.getLessonAtPos(i, j));
+							if (i > 0) {
+								if(!duplicates.contains(c1.getLessonAtPos(i, j))){
+									duplicates.add(c1.getLessonAtPos(i, j));
+								}
+							}
+						}
+					}
+					else if( p == 8){
+						if (c2.getLessonAtPos(i, j).getLes_name().equals("----")){
+							value--;
+						} else {
+							if (i == 0) duplicates.add(c2.getLessonAtPos(i, j));
+							if (i > 0) {
+								if(!duplicates.contains(c2.getLessonAtPos(i, j))){
+									duplicates.add(c2.getLessonAtPos(i, j));
+								}
+							}
+						}
+					}
+					else{
+						if (c3.getLessonAtPos(i, j).getLes_name().equals("----")){
+							value--;
+						} else {
+							if (i == 0) duplicates.add(c3.getLessonAtPos(i, j));
+							if (i > 0) {
+								if(!duplicates.contains(c3.getLessonAtPos(i, j))){
+									duplicates.add(c3.getLessonAtPos(i, j));
+								}
+							}
+						}
+					}
+					
+				}
+				count += value - duplicates.size();
+				
+			}
+		}
+		return count;
+	}
+	
+	
+	
 	public int getScore() {
 		return score;
 	}
@@ -337,7 +530,7 @@ public class State implements Comparable<State> {
 	public Collection<? extends State> getChildren(State s) throws FileNotFoundException, UnsupportedEncodingException {
 		ArrayList<State> children = new ArrayList<State>();
 		State child = s;
-		for(int p = 0;p < 9;p++){
+		for(int p = 1;p < 10;p++){
 			
 			for(int i =0; i < 7;i++){
 				for(int j = 0; j < 5;j++){

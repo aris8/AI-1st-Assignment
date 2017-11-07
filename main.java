@@ -5,14 +5,14 @@ public class main {
 
 	public static void main(String[] args) throws FileNotFoundException, UnsupportedEncodingException {
 		
-		State initial;
+		/*State initial;
 		State terminalState = null;
 		initial = new State(true);
 		initial.print();
 		
 		State ending = initial.swap(1,1,1);
 		ending.print();
-		System.out.println(ending.equals(initial));
+		System.out.println(ending.equals(initial));*/
 		
 		
 		/*State initial;
@@ -37,6 +37,11 @@ public class main {
 		}
 		System.out.println("BestFS (1st heuristic) with closed set search time: " + (double)(end - start) / 1000 /60 + "min.");
 		System.out.println("***************");*/
+		
+		State initial;
+		initial = new State(true);
+		initial.print();
+		System.out.println(initial.getScore());
 		
 	
 	}
