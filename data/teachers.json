@@ -42,6 +42,12 @@
 		"max_hours":8
 	},
 	{
+		"name":"ZZ",	
+		"teacher_id":108,
+		"lesson_id":[101,201,301,102,202,302,103,203,303,104,204,304,111,211,311],
+		"max_hours":16
+	},
+	{
 		"name":"BK",	
 		"teacher_id":201,
 		"lesson_id":[106,206,306,207,307,108,208,308,109,209],
@@ -66,6 +72,12 @@
 		"max_hours":12
 	},
 	{
+		"name":"WW",	
+		"teacher_id":205,
+		"lesson_id":[106,206,306,207,307,108,208,308,109,209],
+		"max_hours":14
+	},
+	{
 		"name":"FK",	
 		"teacher_id":301,
 		"lesson_id":[105,205,305],
@@ -82,6 +94,12 @@
 		"teacher_id":303,
 		"lesson_id":[105,205,305],
 		"max_hours":15
+	},
+	{
+		"name":"LT",	
+		"teacher_id":304,
+		"lesson_id":[105,205,305],
+		"max_hours":12
 	},
 	{
 		"name":"SD",	
