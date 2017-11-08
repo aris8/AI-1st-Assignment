@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Teacher implements Cloneable {
+public class Teacher implements Cloneable, Comparable<Teacher> {
     
 
 	/*
@@ -97,5 +97,11 @@ public class Teacher implements Cloneable {
 	@Override
 	protected Object clone() throws CloneNotSupportedException {
 	    return super.clone();
+	}
+	
+	@Override
+	public int compareTo(Teacher t)
+	{
+		return Double.compare(this.max_hours, t.max_hours);
 	}
 }
