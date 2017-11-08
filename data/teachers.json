@@ -3,25 +3,25 @@
 		"name":"AK",	
 		"teacher_id":101,
 		"lesson_id":[101,201,301,102,202,302,103,203,303,104,204,304,111,211,311],
-		"max_hours":18
+		"max_hours":12
 	},
 	{
 		"name":"MK",	
 		"teacher_id":102,
 		"lesson_id":[101,201,301,102,202,302,103,203,303,104,204,304,111,211,311],
-		"max_hours":18
+		"max_hours":12
 	},
 	{
 		"name":"PG",	
 		"teacher_id":103,
 		"lesson_id":[101,201,301,102,202,302,103,203,303,104,204,304,111,211,311],
-		"max_hours":14
+		"max_hours":12
 	},
 	{
 		"name":"OK",	
 		"teacher_id":104,
 		"lesson_id":[101,201,301,102,202,302,103,203,303,104,204,304,111,211,311],
-		"max_hours":14
+		"max_hours":12
 	},
 	{
 		"name":"KK",	
@@ -33,73 +33,103 @@
 		"name":"LG",	
 		"teacher_id":106,
 		"lesson_id":[101,201,301,102,202,302,103,203,303,104,204,304,111,211,311],
-		"max_hours":15
+		"max_hours":12
 	},
 	{
 		"name":"PP",	
 		"teacher_id":107,
 		"lesson_id":[101,201,301,102,202,302,103,203,303,104,204,304,111,211,311],
-		"max_hours":8
+		"max_hours":12
 	},
 	{
 		"name":"ZZ",	
 		"teacher_id":108,
 		"lesson_id":[101,201,301,102,202,302,103,203,303,104,204,304,111,211,311],
-		"max_hours":16
+		"max_hours":12
+	},
+	{
+		"name":"FT",	
+		"teacher_id":109,
+		"lesson_id":[101,201,301,102,202,302,103,203,303,104,204,304,111,211,311],
+		"max_hours":12
+	},
+	{
+		"name":"QQ",	
+		"teacher_id":110,
+		"lesson_id":[101,201,301,102,202,302,103,203,303,104,204,304,111,211,311],
+		"max_hours":12
 	},
 	{
 		"name":"BK",	
 		"teacher_id":201,
 		"lesson_id":[106,206,306,207,307,108,208,308,109,209],
-		"max_hours":12
+		"max_hours":6
 	},
 	{
 		"name":"LK",	
 		"teacher_id":202,
 		"lesson_id":[106,206,306,207,307,108,208,308,109,209],
-		"max_hours":4
+		"max_hours":6
 	},
 	{
 		"name":"PK",	
 		"teacher_id":203,
 		"lesson_id":[106,206,306,207,307,108,208,308,109,209],
-		"max_hours":16
+		"max_hours":6
 	},
 	{
 		"name":"PR",	
 		"teacher_id":204,
 		"lesson_id":[106,206,306,207,307,108,208,308,109,209],
-		"max_hours":12
+		"max_hours":6
 	},
 	{
 		"name":"WW",	
 		"teacher_id":205,
 		"lesson_id":[106,206,306,207,307,108,208,308,109,209],
-		"max_hours":14
+		"max_hours":6
+	},
+	{
+		"name":"HH",	
+		"teacher_id":206,
+		"lesson_id":[106,206,306,207,307,108,208,308,109,209],
+		"max_hours":6
+	},
+	{
+		"name":"FR",	
+		"teacher_id":207,
+		"lesson_id":[106,206,306,207,307,108,208,308,109,209],
+		"max_hours":6
 	},
 	{
 		"name":"FK",	
 		"teacher_id":301,
 		"lesson_id":[105,205,305],
-		"max_hours":15
+		"max_hours":8
 	},
 	{
 		"name":"YT",	
 		"teacher_id":302,
 		"lesson_id":[105,205,305],
-		"max_hours":15
+		"max_hours":8
 	},
 	{
 		"name":"PY",	
 		"teacher_id":303,
 		"lesson_id":[105,205,305],
-		"max_hours":15
+		"max_hours":8
 	},
 	{
 		"name":"LT",	
 		"teacher_id":304,
 		"lesson_id":[105,205,305],
-		"max_hours":12
+		"max_hours":8
+	},
+	{
+		"name":"HT",	
+		"teacher_id":305,
+		"lesson_id":[105,205,305],
+		"max_hours":8
 	},
 	{
 		"name":"SD",	
