@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Teacher implements Cloneable, Comparable<Teacher> {
+public class Teacher implements Cloneable,Comparable<Teacher> {
     
 
 	/*
@@ -100,8 +100,8 @@ public class Teacher implements Cloneable, Comparable<Teacher> {
 	}
 	
 	@Override
-	public int compareTo(Teacher t)
+	public int compareTo(Teacher s)
 	{
-		return Double.compare(this.max_hours, t.max_hours);
+		return Double.compare(this.max_hours, s.max_hours);
 	}
 }

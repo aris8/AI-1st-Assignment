@@ -47,6 +47,205 @@ public class State implements Comparable<State> {
 	private int row_x;
 	private int row_y;
 	
+
+	
+	public State(int x) {
+		Teacher AK = new Teacher();
+		AK.setName("AK");
+		Teacher MK = new Teacher();
+		MK.setName("MK");
+		Teacher PG = new Teacher();
+		PG.setName("PG");
+		Teacher OK = new Teacher();
+		OK.setName("OK");
+		Teacher KK = new Teacher();
+		KK.setName("KK");
+		Teacher LG = new Teacher();
+		LG.setName("LG");
+		Teacher PP = new Teacher();
+		PP.setName("PP");
+		Teacher ZZ = new Teacher();
+		ZZ.setName("ZZ");
+		Teacher FT = new Teacher();
+		FT.setName("FT");
+		Teacher QQ = new Teacher();
+		QQ.setName("QQ");
+		Teacher BK = new Teacher();
+		BK.setName("BK");
+		Teacher LK = new Teacher();
+		LK.setName("LK");
+		Teacher PK = new Teacher();
+		PK.setName("PK");
+		Teacher PR = new Teacher();
+		PR.setName("PR");
+		Teacher WW = new Teacher();
+		WW.setName("WW");
+		Teacher HH = new Teacher();
+		HH.setName("HH");
+		Teacher FR = new Teacher();
+		FR.setName("FR");
+		Teacher FK = new Teacher();
+		FK.setName("FK");
+		Teacher YT = new Teacher();
+		YT.setName("YT");
+		Teacher PY = new Teacher();
+		PY.setName("PY");
+		Teacher LT = new Teacher();
+		LT.setName("LT");
+		Teacher HT = new Teacher();
+		HT.setName("HT");
+		Teacher SD = new Teacher();
+		SD.setName("SD");
+		Teacher OO = new Teacher();
+		OO.setName("OO");
+		Teacher JJ = new Teacher();
+		JJ.setName("JJ");
+		Teacher LR = new Teacher();
+		LR.setName("LR");
+		Teacher XG = new Teacher();
+		XG.setName("XG");
+		Teacher MM = new Teacher();
+		MM.setName("MM");
+		Teacher AA = new Teacher();
+		AA.setName("AA");
+		Teacher BO = new Teacher();
+		BO.setName("BO");
+		Teacher MS = new Teacher();
+		MS.setName("MS");
+		Teacher LD = new Teacher();
+		LD.setName("LD");
+		
+		Lesson l1 = new Lesson();
+		l1.setLes_name("Γλωσσική Διδασκαλία");
+		Lesson l2 = new Lesson();
+		l2.setLes_name("Νεοελληνική Λογοτεχνία");
+		Lesson l3 = new Lesson();
+		l3.setLes_name("Αρχαία Ελληνική Γλώσσα");
+		Lesson l4 = new Lesson();
+		l4.setLes_name("Αρχαία Ελληνικά Κείμενα");
+		Lesson l5 = new Lesson();
+		l5.setLes_name("Μαθηματικά");
+		Lesson l6 = new Lesson();
+		l6.setLes_name("Φυσική");
+		Lesson l7 = new Lesson();
+		l7.setLes_name("Χημεία");
+		Lesson l8 = new Lesson();
+		l8.setLes_name("Βιολογία");
+		Lesson l9 = new Lesson();
+		l9.setLes_name("Γεωγραφία");
+		Lesson l10 = new Lesson();
+		l10.setLes_name("Οικιακή Οικονομία");
+		Lesson l11 = new Lesson();
+		l11.setLes_name("Ιστορία");
+		Lesson l12 = new Lesson();
+		l12.setLes_name("Κ.Π.Α.");
+		Lesson l13 = new Lesson();
+		l13.setLes_name("Θρησκευτικά");
+		Lesson l14 = new Lesson();
+		l14.setLes_name("Αγγλικά");
+		Lesson l15 = new Lesson();
+		l15.setLes_name("Ξένη Γλώσσα");
+		Lesson l16 = new Lesson();
+		l16.setLes_name("Φυσική Αγωγή");
+		Lesson l17 = new Lesson();
+		l17.setLes_name("Τεχνολογία");
+		Lesson l18 = new Lesson();
+		l18.setLes_name("Πληροφορική");
+		Lesson l19 = new Lesson();
+		l19.setLes_name("Μουσική");
+		Lesson l20 = new Lesson();
+		l20.setLes_name("Καλλιτεχνικά");
+		
+		Teacher space = new Teacher();
+		space.setName("##");
+		Lesson space1 = new Lesson();
+		space1.setLes_name("----");
+		
+		//Finished
+		a1[0][0] = new Hour(l6,YT);
+		a1[1][0] = new Hour(l15,XG);
+		a1[2][0] = new Hour(l11,MK);
+		a1[3][0] = new Hour(l9,PR);
+		a1[4][0] = new Hour(l11,MK);
+		a1[5][0] = new Hour(l3,KK);
+		a1[6][0] = new Hour(l18,BO);
+		
+		a1[0][1] = new Hour(l3,KK);
+		a1[1][1] = new Hour(l4,MK);
+		a1[2][1] = new Hour(l13,JJ);
+		a1[3][1] = new Hour(l5,YT);
+		a1[4][1] = new Hour(l16,MM);
+		a1[5][1] = new Hour(l2,PG);
+		a1[6][1] = new Hour(space1,space);
+		
+		a1[0][2] = new Hour(l8,LK);
+		a1[1][2] = new Hour(l13,JJ);
+		a1[2][2] = new Hour(l2,PG);
+		a1[3][2] = new Hour(space1,space);
+		a1[4][2] = new Hour(l10,SD);
+		a1[5][2] = new Hour(l14,LR);
+		a1[6][2] = new Hour(l5,YT);
+		
+		a1[0][3] = new Hour(l1,AK);
+		a1[1][3] = new Hour(l17,BO);
+		a1[2][3] = new Hour(l20,LD);
+		a1[3][3] = new Hour(space1,space);
+		a1[4][3] = new Hour(l15,XG);
+		a1[5][3] = new Hour(l5,YT);
+		a1[6][3] = new Hour(l1,AK);
+		
+		a1[0][4] = new Hour(l16,MM);
+		a1[1][4] = new Hour(l6,PR);
+		a1[2][4] = new Hour(l1,AK);
+		a1[3][4] = new Hour(l4,MK);
+		a1[4][4] = new Hour(l19,MS);
+		a1[5][4] = new Hour(l10,SD);
+		a1[6][4] = new Hour(l14,LR);
+		//finished
+		
+		//Not finished
+		a2[0][0] = new Hour(l6,YT);
+		a2[1][0] = new Hour(l15,XG);
+		a2[2][0] = new Hour(l11,MK);
+		a2[3][0] = new Hour(l9,PR);
+		a2[4][0] = new Hour(l11,MK);
+		a2[5][0] = new Hour(l3,KK);
+		a2[6][0] = new Hour(l18,BO);
+		
+		a2[0][1] = new Hour(l3,KK);
+		a2[1][1] = new Hour(l4,MK);
+		a2[2][1] = new Hour(l13,JJ);
+		a2[3][1] = new Hour(l5,YT);
+		a2[4][1] = new Hour(l16,MM);
+		a2[5][1] = new Hour(l2,PG);
+		a2[6][1] = new Hour(space1,space);
+		
+		a2[0][2] = new Hour(l8,LK);
+		a2[1][2] = new Hour(l13,JJ);
+		a2[2][2] = new Hour(l2,PG);
+		a2[3][2] = new Hour(space1,space);
+		a2[4][2] = new Hour(l10,SD);
+		a2[5][2] = new Hour(l14,LR);
+		a2[6][2] = new Hour(l5,YT);
+		
+		a2[0][3] = new Hour(l1,AK);
+		a2[1][3] = new Hour(l17,BO);
+		a2[2][3] = new Hour(l20,LD);
+		a2[3][3] = new Hour(space1,space);
+		a2[4][3] = new Hour(l15,XG);
+		a2[5][3] = new Hour(l5,YT);
+		a2[6][3] = new Hour(l1,AK);
+		
+		a2[0][4] = new Hour(l16,MM);
+		a2[1][4] = new Hour(l6,PR);
+		a2[2][4] = new Hour(l1,AK);
+		a2[3][4] = new Hour(l4,MK);
+		a2[4][4] = new Hour(l19,MS);
+		a2[5][4] = new Hour(l10,SD);
+		a2[6][4] = new Hour(l14,LR);
+		
+	}
+	
 	/*
 	 * Default constructor.It creates a random
 	 * program with dimensions 7x5.
@@ -57,6 +256,11 @@ public class State implements Comparable<State> {
 		create_random();
 		this.row_x = 0;
 		this.row_y = 0;
+		Teacher t;
+		while(teachers.size() > 0) {
+			t = teachers.remove(0);
+			System.out.println("Teacher :" + t.getTeacher_id() + " With max hours: " + t.getMax_hours());
+		}
 		
 	}
 	
@@ -136,7 +340,7 @@ public class State implements Comparable<State> {
 				}
 				Random rand = new Random();
 				Collections.sort(cnd);
-				teacher = cnd.get(0);
+				teacher = cnd.get(cnd.size() -1 );
 				Hour h1 = new Hour(lesson, teacher);
 				for (int i=0; i< lesson.getWeekly_hours(); i++) {
 					Hour x = null;
@@ -695,7 +899,7 @@ public class State implements Comparable<State> {
 		return score < 400;
 	}
 	
-public boolean isSwapValid(int i, int j, int p) {
+	public boolean isSwapValid(int i, int j, int p) {
 		
 		if( p == 1){
 			Teacher t1 = a1[row_x][row_y].getTeacher();
@@ -819,55 +1023,55 @@ public boolean isSwapValid(int i, int j, int p) {
 			
 			for(int i =0; i < 7;i++){
 				for(int j = 0; j < 5;j++){
-					if( p == 1){
+					if( p == 1 && isSwapValid(i,j,p)){
 						child.swap(i,j,p);
 						child.euristic();
 						children.add(child);
 						child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3);
 					}
-					else if( p == 2){
+					else if( p == 2 && isSwapValid(i,j,p)){
 						child.swap(i,j,p);
 						child.euristic();
 						children.add(child);
 						child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3);
 					}
-					else if( p == 3){
+					else if( p == 3 && isSwapValid(i,j,p)){
 						child.swap(i,j,p);
 						child.euristic();
 						children.add(child);
 						child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3);
 					}
-					else if( p == 4){
+					else if( p == 4 && isSwapValid(i,j,p)){
 						child.swap(i,j,p);
 						child.euristic();
 						children.add(child);
 						child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3);
 					}
-					else if( p == 5){
+					else if( p == 5 && isSwapValid(i,j,p)){
 						child.swap(i,j,p);
 						child.euristic();
 						children.add(child);
 						child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3);
 					}
-					else if( p == 6){
+					else if( p == 6 && isSwapValid(i,j,p)){
 						child.swap(i,j,p);
 						child.euristic();
 						children.add(child);
 						child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3);
 					}
-					else if( p == 7){
+					else if( p == 7 && isSwapValid(i,j,p)){
 						child.swap(i,j,p);
 						child.euristic();
 						children.add(child);
 						child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3);
 					}
-					else if( p == 8){
+					else if( p == 8 && isSwapValid(i,j,p)){
 						child.swap(i,j,p);
 						child.euristic();
 						children.add(child);
 						child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3);
 					}
-					else{
+					else if(isSwapValid(i,j,p)){
 						child.swap(i,j,p);
 						child.euristic();
 						children.add(child);
