@@ -30,6 +30,15 @@ public class State implements Comparable<State> {
 	private Hour c1[][];
 	private Hour c2[][];
 	private Hour c3[][];
+	private int[][] va1;
+	private int[][] va2;
+	private int[][] va3;
+	private int[][] vb1;
+	private int[][] vb2;
+	private int[][] vb3;
+	private int[][] vc1;
+	private int[][] vc2;
+	private int[][] vc3;
 	
 	private final int dimension_x = 7;
 	private final int dimension_y = 5;
@@ -50,110 +59,125 @@ public class State implements Comparable<State> {
 
 	
 	public State(int x) {
-		Teacher AK = new Teacher();
+		this.setTeachers();
+		this.setLessons();
+		a1 = this.randProgram("A", a1);		
+		a2 = this.randProgram("A", a2);
+		a3 = this.randProgram("A", a3);
+		b1 = this.randProgram("B", b1);
+		b2 = this.randProgram("B", b2);
+		b3 = this.randProgram("B", b3);
+		c1 = this.randProgram("C", c1);
+		c2 = this.randProgram("C", c2);
+		c3 = this.randProgram("C", c3);
+		
+		ArrayList<Integer> t1 = new ArrayList<Integer>();
+		t1.add(9);
+		t1.add(10);
+		Teacher AK = new Teacher("name",100,t1,10);
 		AK.setName("AK");
-		Teacher MK = new Teacher();
+		Teacher MK = new Teacher("name",100,t1,10);
 		MK.setName("MK");
-		Teacher PG = new Teacher();
+		Teacher PG = new Teacher("name",100,t1,10);
 		PG.setName("PG");
-		Teacher OK = new Teacher();
+		Teacher OK = new Teacher("name",100,t1,10);
 		OK.setName("OK");
-		Teacher KK = new Teacher();
+		Teacher KK = new Teacher("name",100,t1,10);
 		KK.setName("KK");
-		Teacher LG = new Teacher();
+		Teacher LG = new Teacher("name",100,t1,10);
 		LG.setName("LG");
-		Teacher PP = new Teacher();
+		Teacher PP = new Teacher("name",100,t1,10);
 		PP.setName("PP");
-		Teacher ZZ = new Teacher();
+		Teacher ZZ = new Teacher("name",100,t1,10);
 		ZZ.setName("ZZ");
-		Teacher FT = new Teacher();
+		Teacher FT = new Teacher("name",100,t1,10);
 		FT.setName("FT");
-		Teacher QQ = new Teacher();
+		Teacher QQ = new Teacher("name",100,t1,10);
 		QQ.setName("QQ");
-		Teacher BK = new Teacher();
+		Teacher BK = new Teacher("name",100,t1,10);
 		BK.setName("BK");
-		Teacher LK = new Teacher();
+		Teacher LK = new Teacher("name",100,t1,10);
 		LK.setName("LK");
-		Teacher PK = new Teacher();
+		Teacher PK = new Teacher("name",100,t1,10);
 		PK.setName("PK");
-		Teacher PR = new Teacher();
+		Teacher PR = new Teacher("name",100,t1,10);
 		PR.setName("PR");
-		Teacher WW = new Teacher();
+		Teacher WW = new Teacher("name",100,t1,10);
 		WW.setName("WW");
-		Teacher HH = new Teacher();
+		Teacher HH = new Teacher("name",100,t1,10);
 		HH.setName("HH");
-		Teacher FR = new Teacher();
+		Teacher FR = new Teacher("name",100,t1,10);
 		FR.setName("FR");
-		Teacher FK = new Teacher();
+		Teacher FK = new Teacher("name",100,t1,10);
 		FK.setName("FK");
-		Teacher YT = new Teacher();
+		Teacher YT = new Teacher("name",100,t1,10);
 		YT.setName("YT");
-		Teacher PY = new Teacher();
+		Teacher PY = new Teacher("name",100,t1,10);
 		PY.setName("PY");
-		Teacher LT = new Teacher();
+		Teacher LT = new Teacher("name",100,t1,10);
 		LT.setName("LT");
-		Teacher HT = new Teacher();
+		Teacher HT = new Teacher("name",100,t1,10);
 		HT.setName("HT");
-		Teacher SD = new Teacher();
+		Teacher SD = new Teacher("name",100,t1,10);
 		SD.setName("SD");
-		Teacher OO = new Teacher();
+		Teacher OO = new Teacher("name",100,t1,10);
 		OO.setName("OO");
-		Teacher JJ = new Teacher();
+		Teacher JJ = new Teacher("name",100,t1,10);
 		JJ.setName("JJ");
-		Teacher LR = new Teacher();
+		Teacher LR = new Teacher("name",100,t1,10);
 		LR.setName("LR");
-		Teacher XG = new Teacher();
+		Teacher XG = new Teacher("name",100,t1,10);
 		XG.setName("XG");
-		Teacher MM = new Teacher();
+		Teacher MM = new Teacher("name",100,t1,10);
 		MM.setName("MM");
-		Teacher AA = new Teacher();
+		Teacher AA = new Teacher("name",100,t1,10);
 		AA.setName("AA");
-		Teacher BO = new Teacher();
+		Teacher BO = new Teacher("name",100,t1,10);
 		BO.setName("BO");
-		Teacher MS = new Teacher();
+		Teacher MS = new Teacher("name",100,t1,10);
 		MS.setName("MS");
-		Teacher LD = new Teacher();
+		Teacher LD = new Teacher("name",100,t1,10);
 		LD.setName("LD");
 		
-		Lesson l1 = new Lesson();
+		Lesson l1 = new Lesson(10,"A","A",10);
 		l1.setLes_name("Γλωσσική Διδασκαλία");
-		Lesson l2 = new Lesson();
+		Lesson l2 = new Lesson(10,"A","A",10);
 		l2.setLes_name("Νεοελληνική Λογοτεχνία");
-		Lesson l3 = new Lesson();
+		Lesson l3 = new Lesson(10,"A","A",10);
 		l3.setLes_name("Αρχαία Ελληνική Γλώσσα");
-		Lesson l4 = new Lesson();
+		Lesson l4 = new Lesson(10,"A","A",10);
 		l4.setLes_name("Αρχαία Ελληνικά Κείμενα");
-		Lesson l5 = new Lesson();
+		Lesson l5 = new Lesson(10,"A","A",10);
 		l5.setLes_name("Μαθηματικά");
-		Lesson l6 = new Lesson();
+		Lesson l6 = new Lesson(10,"A","A",10);
 		l6.setLes_name("Φυσική");
-		Lesson l7 = new Lesson();
+		Lesson l7 = new Lesson(10,"A","A",10);
 		l7.setLes_name("Χημεία");
-		Lesson l8 = new Lesson();
+		Lesson l8 = new Lesson(10,"A","A",10);
 		l8.setLes_name("Βιολογία");
-		Lesson l9 = new Lesson();
+		Lesson l9 = new Lesson(10,"A","A",10);
 		l9.setLes_name("Γεωγραφία");
-		Lesson l10 = new Lesson();
+		Lesson l10 = new Lesson(10,"A","A",10);
 		l10.setLes_name("Οικιακή Οικονομία");
-		Lesson l11 = new Lesson();
+		Lesson l11 = new Lesson(10,"A","A",10);
 		l11.setLes_name("Ιστορία");
-		Lesson l12 = new Lesson();
+		Lesson l12 = new Lesson(10,"A","A",10);
 		l12.setLes_name("Κ.Π.Α.");
-		Lesson l13 = new Lesson();
+		Lesson l13 = new Lesson(10,"A","A",10);
 		l13.setLes_name("Θρησκευτικά");
-		Lesson l14 = new Lesson();
+		Lesson l14 = new Lesson(10,"A","A",10);
 		l14.setLes_name("Αγγλικά");
-		Lesson l15 = new Lesson();
+		Lesson l15 = new Lesson(10,"A","A",10);
 		l15.setLes_name("Ξένη Γλώσσα");
-		Lesson l16 = new Lesson();
+		Lesson l16 = new Lesson(10,"A","A",10);
 		l16.setLes_name("Φυσική Αγωγή");
-		Lesson l17 = new Lesson();
+		Lesson l17 = new Lesson(10,"A","A",10);
 		l17.setLes_name("Τεχνολογία");
-		Lesson l18 = new Lesson();
+		Lesson l18 = new Lesson(10,"A","A",10);
 		l18.setLes_name("Πληροφορική");
-		Lesson l19 = new Lesson();
+		Lesson l19 = new Lesson(10,"A","A",10);
 		l19.setLes_name("Μουσική");
-		Lesson l20 = new Lesson();
+		Lesson l20 = new Lesson(10,"A","A",10);
 		l20.setLes_name("Καλλιτεχνικά");
 		
 		Teacher space = new Teacher();
@@ -161,8 +185,10 @@ public class State implements Comparable<State> {
 		Lesson space1 = new Lesson();
 		space1.setLes_name("----");
 		
+		
 		//Finished
-		a1[0][0] = new Hour(l6,YT);
+		
+		a1[0][0] = new Hour(l5,YT);
 		a1[1][0] = new Hour(l15,XG);
 		a1[2][0] = new Hour(l11,MK);
 		a1[3][0] = new Hour(l9,PR);
@@ -203,46 +229,339 @@ public class State implements Comparable<State> {
 		a1[6][4] = new Hour(l14,LR);
 		//finished
 		
-		//Not finished
-		a2[0][0] = new Hour(l6,YT);
-		a2[1][0] = new Hour(l15,XG);
-		a2[2][0] = new Hour(l11,MK);
-		a2[3][0] = new Hour(l9,PR);
-		a2[4][0] = new Hour(l11,MK);
-		a2[5][0] = new Hour(l3,KK);
+		// finished
+		a2[0][0] = new Hour(l14,LR);
+		a2[1][0] = new Hour(l19,MS);
+		a2[2][0] = new Hour(l5,FK);
+		a2[3][0] = new Hour(space1,space);
+		a2[4][0] = new Hour(l5,FK);
+		a2[5][0] = new Hour(l1,LG);
 		a2[6][0] = new Hour(l18,BO);
 		
-		a2[0][1] = new Hour(l3,KK);
-		a2[1][1] = new Hour(l4,MK);
-		a2[2][1] = new Hour(l13,JJ);
-		a2[3][1] = new Hour(l5,YT);
-		a2[4][1] = new Hour(l16,MM);
-		a2[5][1] = new Hour(l2,PG);
-		a2[6][1] = new Hour(space1,space);
+		a2[0][1] = new Hour(space1,space);
+		a2[1][1] = new Hour(l10,SD);
+		a2[2][1] = new Hour(l5,FK);
+		a2[3][1] = new Hour(space1,space);
+		a2[4][1] = new Hour(l13,JJ);
+		a2[5][1] = new Hour(l14,LR);
+		a2[6][1] = new Hour(l8,PR);
 		
-		a2[0][2] = new Hour(l8,LK);
-		a2[1][2] = new Hour(l13,JJ);
-		a2[2][2] = new Hour(l2,PG);
-		a2[3][2] = new Hour(space1,space);
-		a2[4][2] = new Hour(l10,SD);
-		a2[5][2] = new Hour(l14,LR);
-		a2[6][2] = new Hour(l5,YT);
+		a2[0][2] = new Hour(l20,LD);
+		a2[1][2] = new Hour(l3,PG);
+		a2[2][2] = new Hour(l2,MK);
+		a2[3][2] = new Hour(l4,PP);
+		a2[4][2] = new Hour(l16,AA);
+		a2[5][2] = new Hour(l3,PG);
+		a2[6][2] = new Hour(l4,PP);
 		
-		a2[0][3] = new Hour(l1,AK);
-		a2[1][3] = new Hour(l17,BO);
-		a2[2][3] = new Hour(l20,LD);
-		a2[3][3] = new Hour(space1,space);
-		a2[4][3] = new Hour(l15,XG);
-		a2[5][3] = new Hour(l5,YT);
-		a2[6][3] = new Hour(l1,AK);
+		a2[0][3] = new Hour(l15,XG);
+		a2[1][3] = new Hour(l11,AK);
+		a2[2][3] = new Hour(l11,AK);
+		a2[3][3] = new Hour(l13,JJ);
+		a2[4][3] = new Hour(l9,PR);
+		a2[5][3] = new Hour(l1,LG);
+		a2[6][3] = new Hour(l10,SD);
 		
-		a2[0][4] = new Hour(l16,MM);
-		a2[1][4] = new Hour(l6,PR);
-		a2[2][4] = new Hour(l1,AK);
-		a2[3][4] = new Hour(l4,MK);
-		a2[4][4] = new Hour(l19,MS);
-		a2[5][4] = new Hour(l10,SD);
-		a2[6][4] = new Hour(l14,LR);
+		a2[0][4] = new Hour(l17,BO);
+		a2[1][4] = new Hour(l2,MK);
+		a2[2][4] = new Hour(l5,FK);
+		a2[3][4] = new Hour(l15,XG);
+		a2[4][4] = new Hour(l1,LG);
+		a2[5][4] = new Hour(l6,LK);
+		a2[6][4] = new Hour(l16,AA);
+		
+
+		a3[0][0] = new Hour(l16,AA);
+		a3[1][0] = new Hour(l5,PY);
+		a3[2][0] = new Hour(space1,space);
+		a3[3][0] = new Hour(l1,KK);
+		a3[4][0] = new Hour(l2,PG);
+		a3[5][0] = new Hour(l14,LR);
+		a3[6][0] = new Hour(l16,AA);
+		
+		a3[0][1] = new Hour(l11,PG);
+		a3[1][1] = new Hour(l2,PG);
+		a3[2][1] = new Hour(l5,PY);
+		a3[3][1] = new Hour(space1,space);
+		a3[4][1] = new Hour(l19,MS);
+		a3[5][1] = new Hour(l3,MK);
+		a3[6][1] = new Hour(l6,LK);
+		
+		a3[0][2] = new Hour(l5,PY);
+		a3[1][2] = new Hour(l18,BO);
+		a3[2][2] = new Hour(l13,JJ);
+		a3[3][2] = new Hour(l10,SD);
+		a3[4][2] = new Hour(l5,PY);
+		a3[5][2] = new Hour(l4,OK);
+		a3[6][2] = new Hour(l15,XG);
+		
+		a3[0][3] = new Hour(l17,BO);
+		a3[1][3] = new Hour(l13,JJ);
+		a3[2][3] = new Hour(l11,PG);
+		a3[3][3] = new Hour(l10,SD);
+		a3[4][3] = new Hour(l15,XG);
+		a3[5][3] = new Hour(l1,KK);
+		a3[6][3] = new Hour(l4,OK);
+		
+		a3[0][4] = new Hour(l14,LR);
+		a3[1][4] = new Hour(l1,KK);
+		a3[2][4] = new Hour(l20,LD);
+		a3[3][4] = new Hour(space1,space);
+		a3[4][4] = new Hour(l3,MK);
+		a3[5][4] = new Hour(l8,LK);
+		a3[6][4] = new Hour(l9,PK);
+		
+		
+		b1[0][0] = new Hour(l7,PR);
+		b1[1][0] = new Hour(l4,AK);
+		b1[2][0] = new Hour(l19,MS);
+		b1[3][0] = new Hour(l5,FK);
+		b1[4][0] = new Hour(l17,BO);
+		b1[5][0] = new Hour(l8,BK);
+		b1[6][0] = new Hour(l5,FK);
+		
+		b1[0][1] = new Hour(l14,LR);
+		b1[1][1] = new Hour(l9,PR);
+		b1[2][1] = new Hour(l6,BK);
+		b1[3][1] = new Hour(l20,LD);
+		b1[4][1] = new Hour(l6,BK);
+		b1[5][1] = new Hour(space1,space);
+		b1[6][1] = new Hour(space1,space);
+		
+		b1[0][2] = new Hour(l15,XG);
+		b1[1][2] = new Hour(l11,LG);
+		b1[2][2] = new Hour(l18,BO);
+		b1[3][2] = new Hour(l9,PR);
+		b1[4][2] = new Hour(l14,LR);
+		b1[5][2] = new Hour(l15,XG);
+		b1[6][2] = new Hour(l3,MK);
+		
+		b1[0][3] = new Hour(l2,MK);
+		b1[1][3] = new Hour(l4,AK);
+		b1[2][3] = new Hour(l1,OK);
+		b1[3][3] = new Hour(l11,LG);
+		b1[4][3] = new Hour(l5,FK);
+		b1[5][3] = new Hour(l16,MM);
+		b1[6][3] = new Hour(l13,JJ);
+		
+		b1[0][4] = new Hour(space1,space);
+		b1[1][4] = new Hour(l1,OK);
+		b1[2][4] = new Hour(l5,FK);
+		b1[3][4] = new Hour(l13,JJ);
+		b1[4][4] = new Hour(l16,MM);
+		b1[5][4] = new Hour(l2,MK);
+		b1[6][4] = new Hour(l13,MK);
+		
+
+		b2[0][0] = new Hour(l8,PR);
+		b2[1][0] = new Hour(l5,FK);
+		b2[2][0] = new Hour(l19,MS);
+		b2[3][0] = new Hour(space1,space);
+		b2[4][0] = new Hour(l5,FK);
+		b2[5][0] = new Hour(l15,XG);
+		b2[6][0] = new Hour(l4,KK);
+		
+		b2[0][1] = new Hour(l13,JJ);
+		b2[1][1] = new Hour(l1,LG);
+		b2[2][1] = new Hour(l5,FK);
+		b2[3][1] = new Hour(l14,LR);
+		b2[4][1] = new Hour(l11,OK);
+		b2[5][1] = new Hour(l6,PR);
+		b2[6][1] = new Hour(l1,LG);
+		
+		b2[0][2] = new Hour(space1,space);
+		b2[1][2] = new Hour(l2,MK);
+		b2[2][2] = new Hour(l16,AA);
+		b2[3][2] = new Hour(l16,AA);
+		b2[4][2] = new Hour(l4,KK);
+		b2[5][2] = new Hour(l5,FK);
+		b2[6][2] = new Hour(l9,PK);
+		
+		b2[0][3] = new Hour(l3,PG);
+		b2[1][3] = new Hour(l20,LD);
+		b2[2][3] = new Hour(l14,LR);
+		b2[3][3] = new Hour(space1,space);
+		b2[4][3] = new Hour(l9,PK);
+		b2[5][3] = new Hour(l17,BO);
+		b2[6][3] = new Hour(l6,PR);
+		
+		b2[0][4] = new Hour(l11,OK);
+		b2[1][4] = new Hour(l3,PG);
+		b2[2][4] = new Hour(l15,XG);
+		b2[3][4] = new Hour(l2,MK);
+		b2[4][4] = new Hour(l18,BO);
+		b2[5][4] = new Hour(l13,JJ);
+		b2[6][4] = new Hour(l7,PR);
+		
+
+		b3[0][0] = new Hour(l3,PP);
+		b3[1][0] = new Hour(l1,PG);
+		b3[2][0] = new Hour(l6,PK);
+		b3[3][0] = new Hour(l2,PG);
+		b3[4][0] = new Hour(l11,MK);
+		b3[5][0] = new Hour(l9,PK);
+		b3[6][0] = new Hour(l17,BO);
+		
+		b3[0][1] = new Hour(l7,PR);
+		b3[1][1] = new Hour(l11,MK);
+		b3[2][1] = new Hour(l20,LD);
+		b3[3][1] = new Hour(l5,PY);
+		b3[4][1] = new Hour(l5,PY);
+		b3[5][1] = new Hour(l9,PK);
+		b3[6][1] = new Hour(l5,PY);
+		
+		b3[0][2] = new Hour(l5,PY);
+		b3[1][2] = new Hour(l6,PK);
+		b3[2][2] = new Hour(l1,PG);
+		b3[3][2] = new Hour(space1,space);
+		b3[4][2] = new Hour(l3,PP);
+		b3[5][2] = new Hour(l13,JJ);
+		b3[6][2] = new Hour(l16,AA);
+		
+		b3[0][3] = new Hour(l16,AA);
+		b3[1][3] = new Hour(l13,JJ);
+		b3[2][3] = new Hour(l4,PP);
+		b3[3][3] = new Hour(l14,LR);
+		b3[4][3] = new Hour(space1,space);
+		b3[5][3] = new Hour(l18,BO);
+		b3[6][3] = new Hour(space1,space);
+		
+		b3[0][4] = new Hour(l15,XG);
+		b3[1][4] = new Hour(l15,XG);
+		b3[2][4] = new Hour(l2,PG);
+		b3[3][4] = new Hour(l4,PP);
+		b3[4][4] = new Hour(l19,MS);
+		b3[5][4] = new Hour(l14,LR);
+		b3[6][4] = new Hour(l8,PK);
+		
+
+		c1[0][0] = new Hour(l5,YT);
+		c1[1][0] = new Hour(l4,PP);
+		c1[2][0] = new Hour(l6,BK);
+		c1[3][0] = new Hour(l11,AK);
+		c1[4][0] = new Hour(l7,PK);
+		c1[5][0] = new Hour(l4,PP);
+		c1[6][0] = new Hour(l13,JJ);
+		
+		c1[0][1] = new Hour(l15,XG);
+		c1[1][1] = new Hour(l2,LG);
+		c1[2][1] = new Hour(l12,OO);
+		c1[3][1] = new Hour(l16,MM);
+		c1[4][1] = new Hour(l5,YT);
+		c1[5][1] = new Hour(l20,LD);
+		c1[6][1] = new Hour(l6,BK);
+		
+		c1[0][2] = new Hour(l5,YT);
+		c1[1][2] = new Hour(l1,OK);
+		c1[2][2] = new Hour(l11,AK);
+		c1[3][2] = new Hour(l2,LG);
+		c1[4][2] = new Hour(l1,OK);
+		c1[5][2] = new Hour(l18,BO);
+		c1[6][2] = new Hour(space1,space);
+		
+		c1[0][3] = new Hour(l16,MM);
+		c1[1][3] = new Hour(l13,JJ);
+		c1[2][3] = new Hour(l8,BK);
+		c1[3][3] = new Hour(l3,LG);
+		c1[4][3] = new Hour(l14,LR);
+		c1[5][3] = new Hour(l19,MS);
+		c1[6][3] = new Hour(l12,OO);
+		
+		c1[0][4] = new Hour(l15,XG);
+		c1[1][4] = new Hour(space1,space);
+		c1[2][4] = new Hour(l17,BO);
+		c1[3][4] = new Hour(l5,YT);
+		c1[4][4] = new Hour(l14,LR);
+		c1[5][4] = new Hour(space1,space);
+		c1[6][4] = new Hour(l3,LG);
+		
+
+		c2[0][0] = new Hour(l3,MK);
+		c2[1][0] = new Hour(l14,LR);
+		c2[2][0] = new Hour(l3,MK);
+		c2[3][0] = new Hour(l5,YT);
+		c2[4][0] = new Hour(space1,space);
+		c2[5][0] = new Hour(l18,BO);
+		c2[6][0] = new Hour(l6,BK);
+		
+		c2[0][1] = new Hour(l16,AA);
+		c2[1][1] = new Hour(l12,OO);
+		c2[2][1] = new Hour(l5,YT);
+		c2[3][1] = new Hour(l14,LR);
+		c2[4][1] = new Hour(l8,BK);
+		c2[5][1] = new Hour(l7,BK);
+		c2[6][1] = new Hour(l15,XG);
+		
+		c2[0][2] = new Hour(l4,LG);
+		c2[1][2] = new Hour(l11,OK);
+		c2[2][2] = new Hour(l13,JJ);
+		c2[3][2] = new Hour(l16,AA);
+		c2[4][2] = new Hour(l1,KK);
+		c2[5][2] = new Hour(l17,BO);
+		c2[6][2] = new Hour(l15,XG);
+		
+		c2[0][3] = new Hour(l19,MS);
+		c2[1][3] = new Hour(l2,KK);
+		c2[2][3] = new Hour(l6,BK);
+		c2[3][3] = new Hour(l11,OK);
+		c2[4][3] = new Hour(l20,LD);
+		c2[5][3] = new Hour(l12,OO);
+		c2[6][3] = new Hour(l5,YT);
+		
+		c2[0][4] = new Hour(space1,space);
+		c2[1][4] = new Hour(l2,KK);
+		c2[2][4] = new Hour(l4,LG);
+		c2[3][4] = new Hour(space1,space);
+		c2[4][4] = new Hour(l1,KK);
+		c2[5][4] = new Hour(l13,JJ);
+		c2[6][4] = new Hour(l5,YT);
+		
+
+		c3[0][0] = new Hour(l5,PY);
+		c3[1][0] = new Hour(l12,OO);
+		c3[2][0] = new Hour(l7,PK);
+		c3[3][0] = new Hour(l3,OK);
+		c3[4][0] = new Hour(l20,LD);
+		c3[5][0] = new Hour(l5,PY);
+		c3[6][0] = new Hour(l14,LR);
+		
+		c3[0][1] = new Hour(l4,AK);
+		c3[1][1] = new Hour(l16,MM);
+		c3[2][1] = new Hour(space1,space);
+		c3[3][1] = new Hour(l13,JJ);
+		c3[4][1] = new Hour(l5,PY);
+		c3[5][1] = new Hour(l18,BO);
+		c3[6][1] = new Hour(l19,MS);
+		
+		c3[0][2] = new Hour(l1,LG);
+		c3[1][2] = new Hour(l4,AK);
+		c3[2][2] = new Hour(l8,PK);
+		c3[3][2] = new Hour(l11,AK);
+		c3[4][2] = new Hour(l11,AK);
+		c3[5][2] = new Hour(l14,LR);
+		c3[6][2] = new Hour(l13,JJ);
+		
+		c3[0][3] = new Hour(space1,space);
+		c3[1][3] = new Hour(l2,AK);
+		c3[2][3] = new Hour(l6,BK);
+		c3[3][3] = new Hour(l3,OK);
+		c3[4][3] = new Hour(l5,PY);
+		c3[5][3] = new Hour(space1,space);
+		c3[6][3] = new Hour(l16,MM);
+		
+		c3[0][4] = new Hour(l15,XG);
+		c3[1][4] = new Hour(l1,LG);
+		c3[2][4] = new Hour(l6,BK);
+		c3[3][4] = new Hour(l17,BO);
+		c3[4][4] = new Hour(l15,XG);
+		c3[5][4] = new Hour(l12,OO);
+		c3[6][4] = new Hour(l2,AK);
+
+
+
+		this.euristic();
+
+
 		
 	}
 	
@@ -325,6 +644,8 @@ public class State implements Comparable<State> {
 		
 	}
 
+	
+	
 	private Hour[][] randProgram(String cls,Hour[][] h) {
 		
 		h = new Hour[dimension_x][dimension_y];
@@ -449,9 +770,19 @@ public class State implements Comparable<State> {
 	
 	// The heuristic that calculates the score of the state.
 	private void euristic() {
+		va1 = new int[7][5];
+		va2 = new int[7][5];
+		va3 = new int[7][5];
+		vb1 = new int[7][5];
+		vb2 = new int[7][5];
+		vb3 = new int[7][5];
+		vc1 = new int[7][5];
+		vc2 = new int[7][5];
+		vc3 = new int[7][5];
+		
 		this.score = 0;
 		this.score += this.teleportingTeachers();
-//		this.score += this.spacesInProgam();
+		// this.score += this.spacesInProgam();
 //		this.score += this.continiousHours();
 //		this.score += this.equality();
 //		this.score += this.evenlyDistributed();
@@ -658,6 +989,7 @@ public class State implements Comparable<State> {
 				duplicates.add(a1[i][j].getTeacher());
 				
 				if(duplicates.contains(a2[i][j].getTeacher())){
+					
 					count++;
 				}else duplicates.add(a2[i][j].getTeacher());
 				
@@ -899,8 +1231,7 @@ public class State implements Comparable<State> {
 		return score < 400;
 	}
 	
-	public boolean isSwapValid(int i, int j, int p) {
-		
+	public boolean isSwapValid(int i, int j, int p) {		
 		if( p == 1){
 			Teacher t1 = a1[row_x][row_y].getTeacher();
 			Teacher t2 = a1[i][j].getTeacher();
@@ -1088,55 +1419,55 @@ public class State implements Comparable<State> {
 	}
 
 	public State swap(int i, int j, int k) {
-		if(k == 1){
+		if(k == 1 && isSwapValid(i,j,k)){
 			Hour temp;
 			temp = a1[row_x][row_y];
 			a1[row_x][row_y] = a1[i][j];
 			a1[i][j] = temp;
 		}
-		else if(k == 2){
+		else if(k == 2 && isSwapValid(i,j,k)){
 			Hour temp;
 			temp = a2[row_x][row_y];
 			a2[row_x][row_y] = a2[i][j];
 			a2[i][j] = temp;
 		}
-		else if(k == 3){
+		else if(k == 3 && isSwapValid(i,j,k)){
 			Hour temp;
 			temp = a3[row_x][row_y];
 			a3[row_x][row_y] = a3[i][j];
 			a3[i][j] = temp;
 		}
-		else if(k == 4){
+		else if(k == 4 && isSwapValid(i,j,k)){
 			Hour temp;
 			temp = b1[row_x][row_y];
 			b1[row_x][row_y] = b1[i][j];
 			b1[i][j] = temp;
 		}
-		else if(k == 5){
+		else if(k == 5 && isSwapValid(i,j,k)){
 			Hour temp;
 			temp = b2[row_x][row_y];
 			b2[row_x][row_y] = b2[i][j];
 			b2[i][j] = temp;
 		}
-		else if(k == 6){
+		else if(k == 6 && isSwapValid(i,j,k)){
 			Hour temp;
 			temp = b3[row_x][row_y];
 			b3[row_x][row_y] = b3[i][j];
 			b3[i][j] = temp;
 		}
-		else if(k == 7){
+		else if(k == 7 && isSwapValid(i,j,k)){
 			Hour temp;
 			temp = c1[row_x][row_y];
 			c1[row_x][row_y] = c1[i][j];
 			c1[i][j] = temp;
 		}
-		else if(k == 8){
+		else if(k == 8 && isSwapValid(i,j,k)){
 			Hour temp;
 			temp = c2[row_x][row_y];
 			c2[row_x][row_y] = c2[i][j];
 			c2[i][j] = temp;
 		}
-		else{
+		else if( isSwapValid(i,j,k)){
 			Hour temp;
 			temp = c3[row_x][row_y];
 			c3[row_x][row_y] = c3[i][j];
