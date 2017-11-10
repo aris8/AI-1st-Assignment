@@ -1,0 +1,147 @@
+private int spacesInProgam() {
+		int count = 0;
+		int points = 400; // The points given as penalty for each time the restrictions is violated.
+		for(int j = 0; j < 5; j++){
+			for(int i = 0; i < 6;i++){
+				
+				// A1
+				if( i == 4 && a1[i][j].getTeacher().toString().equals("##") &&
+						( !(a1[i +1][j].getTeacher().toString().equals("##")) 
+								|| !(a1[i +2][j].getTeacher().toString().equals("##")) ) ){
+					count++;
+					va1[i][j]++;
+				}else if( i == 5 && a1[i][j].getTeacher().toString().equals("##") &&
+						!(a1[i +1][j].getTeacher().toString().equals("##")) ){
+					count++;
+					va1[i][j]++;
+				}else if(a1[i][j].getTeacher().toString().equals("##")){
+					count++;
+					va1[i][j]++;
+				}
+				
+				// A2
+				if( i == 4 && a2[i][j].getTeacher().toString().equals("##") &&
+						( !(a2[i +1][j].getTeacher().toString().equals("##")) 
+								|| !(a2[i +2][j].getTeacher().toString().equals("##")) ) ){
+					count++;
+					va2[i][j]++;
+				}else if( i == 5 && a2[i][j].getTeacher().toString().equals("##") &&
+						!(a2[i +1][j].getTeacher().toString().equals("##")) ){
+					count++;
+					va2[i][j]++;
+				}else if(a2[i][j].getTeacher().toString().equals("##")){
+					count++;
+					va2[i][j]++;
+				}
+				
+				// A3
+				if( i == 4 && a3[i][j].getTeacher().toString().equals("##") &&
+						( !(a3[i +1][j].getTeacher().toString().equals("##")) 
+								|| !(a3[i +2][j].getTeacher().toString().equals("##")) ) ){
+					count++;
+					va3[i][j]++;
+				}else if( i == 5 && a3[i][j].getTeacher().toString().equals("##") &&
+						!(a3[i +1][j].getTeacher().toString().equals("##")) ){
+					count++;
+					va3[i][j]++;
+				}else if(a3[i][j].getTeacher().toString().equals("##")){
+					count++;
+					va3[i][j]++;
+				}
+				
+				// B1
+				if( i == 4 && b1[i][j].getTeacher().toString().equals("##") &&
+						( !(b1[i +1][j].getTeacher().toString().equals("##")) 
+								|| !(b1[i +2][j].getTeacher().toString().equals("##")) ) ){
+					count++;
+					vb1[i][j]++;
+				}else if( i == 5 && b1[i][j].getTeacher().toString().equals("##") &&
+						!(b1[i +1][j].getTeacher().toString().equals("##")) ){
+					count++;
+					vb1[i][j]++;
+				}else if(b1[i][j].getTeacher().toString().equals("##")){
+					count++;
+					vb1[i][j]++;
+				}
+				
+				// B2
+				if( i == 4 && b2[i][j].getTeacher().toString().equals("##") &&
+						( !(b2[i +1][j].getTeacher().toString().equals("##")) 
+								|| !(b2[i +2][j].getTeacher().toString().equals("##")) ) ){
+					count++;
+					vb2[i][j]++;
+				}else if( i == 5 && b2[i][j].getTeacher().toString().equals("##") &&
+						!(b2[i +1][j].getTeacher().toString().equals("##")) ){
+					count++;
+					vb2[i][j]++;
+				}else if(b2[i][j].getTeacher().toString().equals("##")){
+					count++;
+					vb2[i][j]++;
+				}
+				
+				// B3
+				if( i == 4 && b3[i][j].getTeacher().toString().equals("##") &&
+						( !(b3[i +1][j].getTeacher().toString().equals("##")) 
+								|| !(b3[i +2][j].getTeacher().toString().equals("##")) ) ){
+					count++;
+					vb3[i][j]++;
+				}else if( i == 5 && b3[i][j].getTeacher().toString().equals("##") &&
+						!(b3[i +1][j].getTeacher().toString().equals("##")) ){
+					count++;
+					vb3[i][j]++;
+				}else if(b3[i][j].getTeacher().toString().equals("##")){
+					count++;
+					vb3[i][j]++;
+				}
+				
+				// C1
+				if( i == 4 && c1[i][j].getTeacher().toString().equals("##") &&
+						( !(c1[i +1][j].getTeacher().toString().equals("##")) 
+								|| !(c1[i +2][j].getTeacher().toString().equals("##")) ) ){
+					count++;
+					vc1[i][j]++;
+				}else if( i == 5 && c1[i][j].getTeacher().toString().equals("##") &&
+						!(c1[i +1][j].getTeacher().toString().equals("##")) ){
+					count++;
+					vc1[i][j]++;
+				}else if(c1[i][j].getTeacher().toString().equals("##")){
+					count++;
+					vc1[i][j]++;
+				}
+				
+				// C2
+				if( i == 4 && c2[i][j].getTeacher().toString().equals("##") &&
+						( !(c2[i +1][j].getTeacher().toString().equals("##")) 
+								|| !(c2[i +2][j].getTeacher().toString().equals("##")) ) ){
+					count++;
+					vc2[i][j]++;
+				}else if( i == 5 && c2[i][j].getTeacher().toString().equals("##") &&
+						!(c2[i +1][j].getTeacher().toString().equals("##")) ){
+					count++;
+					vc2[i][j]++;
+				}else if(c2[i][j].getTeacher().toString().equals("##")){
+					count++;
+					vc2[i][j]++;
+				}
+				
+				// C3
+				if( i == 4 && c3[i][j].getTeacher().toString().equals("##") &&
+						( !(c3[i +1][j].getTeacher().toString().equals("##")) 
+								|| !(c3[i +2][j].getTeacher().toString().equals("##")) ) ){
+					count++;
+					vc3[i][j]++;
+				}else if( i == 5 && c3[i][j].getTeacher().toString().equals("##") &&
+						!(c3[i +1][j].getTeacher().toString().equals("##")) ){
+					count++;
+					vc3[i][j]++;
+				}else if(c3[i][j].getTeacher().toString().equals("##")){
+					count++;
+					vc3[i][j]++;
+				}
+				
+				
+			}
+		}
+		
+		return count * points;
+	}
