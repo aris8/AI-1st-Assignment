@@ -38,7 +38,7 @@ public class SpaceSearcher
 			State currentState = this.states.remove(0);
 			count++;
 			//currentState.print();
-			System.out.println("Current state" + currentState.getScore());
+			System.out.println("Current state : " + currentState.getScore());
 			if(currentState.isTerminal())
 			{
 				System.out.println("Times we produced childs: " + count);
