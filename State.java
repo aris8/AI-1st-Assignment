@@ -1,4 +1,7 @@
-
+/*
+ * 3110095 Άρης Κωνσταντίνου
+ * 3130033 Παναγιώτης Γερασιμάτος
+ * */
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +20,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 public class State implements Comparable<State> {
+
 	/*
 	 * We represent the program with 9 different 
 	 * 2 dimensional arrays 1 for each class.
@@ -71,6 +75,7 @@ public class State implements Comparable<State> {
 	private int row_y8;
 	private int row_x9;
 	private int row_y9;
+	private final int terminal = 2;
 	
 
 	
@@ -742,8 +747,7 @@ public class State implements Comparable<State> {
 		}
 	}
 	
-	public void printArray(String filename,Hour[][] h) throws FileNotFoundException, UnsupportedEncodingException {
-		PrintWriter writer = new PrintWriter(filename, "UTF-8");
+	public void printArray(PrintWriter writer,Hour[][] h) throws FileNotFoundException, UnsupportedEncodingException {
 		int max = this.calculateMax();
 		String spaces = "";
 		for(int i = 0; i < dimension_x; i++){
@@ -752,8 +756,7 @@ public class State implements Comparable<State> {
 				writer.printf("%d: %s -> %s%s ",i + 1,h[i][j].getLesson(), h[i][j].getTeacher(),spaces );				
 			}
 			writer.print("\n");
-		}
-	    writer.close();
+		}  
 	}
 	
 	public void print(Hour[][] h){
@@ -1467,7 +1470,7 @@ public class State implements Comparable<State> {
 	private int equality() {
 		
 		int count = 0;
-		int points = 2;
+		int points = 5;
 		for (int p=1; p < 10; p++) {
 			
 			int count1, count2, count3, count4, count5, count6, count7, count8, count9;
@@ -1528,7 +1531,7 @@ public class State implements Comparable<State> {
 	}
 	
 	private int evenlyDistributed() {
-		int points = 5;
+		int points = 2;
 		int count = 0;
 		for (int p=1; p < 10; p++) {
 			for(int j =0; j < 5;j++){
@@ -1666,7 +1669,7 @@ public class State implements Comparable<State> {
 	
 	public boolean isTerminal() {
 		
-		return score < 400;
+		return score <= terminal ;
 	}
 	
 	public boolean isSwapValid(int i, int j, int p) {		
@@ -2445,14 +2448,14 @@ public class State implements Comparable<State> {
 					sum += va1[k][l];
 				}
 			}
-			if(sum == 0){
-				row_x1 = -1;
-				row_y1 = -1;
-				sum = 0;
-				break;
-			}
 			i = rand.nextInt(7);
 			j = rand.nextInt(5);
+			if(sum == 0){
+				row_x1 = i;
+				row_y1 = j;
+				sum = 0;
+				break;
+			}			
 			if(va1[i][j] > 0){
 				row_x1 = i;
 				row_y1 = j;
@@ -2466,14 +2469,14 @@ public class State implements Comparable<State> {
 					sum += va2[k][l];
 				}
 			}
-			if(sum == 0){
-				row_x2 = -1;
-				row_y2 = -1;
-				sum = 0;
-				break;
-			}
 			i = rand.nextInt(7);
 			j = rand.nextInt(5);
+			if(sum == 0){
+				row_x2 = i;
+				row_y2 = j;
+				sum = 0;
+				break;
+			}			
 			if(va2[i][j] > 0){
 				row_x2 = i;
 				row_y2 = j;
@@ -2487,14 +2490,14 @@ public class State implements Comparable<State> {
 					sum += va3[k][l];
 				}
 			}
+			i = rand.nextInt(7);
+			j = rand.nextInt(5);
 			if(sum == 0){
-				row_x3 = -1;
-				row_y3 = -1;
+				row_x3 = i;
+				row_y3 = j;
 				sum = 0;
 				break;
 			}
-			i = rand.nextInt(7);
-			j = rand.nextInt(5);
 			if(va3[i][j] > 0){
 				row_x3 = i;
 				row_y3 = j;
@@ -2508,14 +2511,14 @@ public class State implements Comparable<State> {
 					sum += vb1[k][l];
 				}
 			}
+			i = rand.nextInt(7);
+			j = rand.nextInt(5);
 			if(sum == 0){
-				row_x4 = -1;
-				row_y4 = -1;
+				row_x4 = i;
+				row_y4 = j;
 				sum = 0;
 				break;
 			}
-			i = rand.nextInt(7);
-			j = rand.nextInt(5);
 			if(vb1[i][j] > 0){
 				row_x4 = i;
 				row_y4 = j;
@@ -2529,14 +2532,14 @@ public class State implements Comparable<State> {
 					sum += vb2[k][l];
 				}
 			}
+			i = rand.nextInt(7);
+			j = rand.nextInt(5);
 			if(sum == 0){
-				row_x5 = -1;
-				row_y5 = -1;
+				row_x5 = i;
+				row_y5 = j;
 				sum = 0;
 				break;
 			}
-			i = rand.nextInt(7);
-			j = rand.nextInt(5);
 			if(vb2[i][j] > 0){
 				row_x5 = i;
 				row_y5 = j;
@@ -2550,14 +2553,14 @@ public class State implements Comparable<State> {
 					sum += vb3[k][l];
 				}
 			}
+			i = rand.nextInt(7);
+			j = rand.nextInt(5);
 			if(sum == 0){
-				row_x6 = -1;
-				row_y6 = -1;
+				row_x6 = i;
+				row_y6 = j;
 				sum = 0;
 				break;
 			}
-			i = rand.nextInt(7);
-			j = rand.nextInt(5);
 			if(vb3[i][j] > 0){
 				row_x6 = i;
 				row_y6 = j;
@@ -2571,14 +2574,14 @@ public class State implements Comparable<State> {
 					sum += vc1[k][l];
 				}
 			}
+			i = rand.nextInt(7);
+			j = rand.nextInt(5);
 			if(sum == 0){
-				row_x7 = -1;
-				row_y7 = -1;
+				row_x7 = i;
+				row_y7 = j;
 				sum = 0;
 				break;
 			}
-			i = rand.nextInt(7);
-			j = rand.nextInt(5);
 			if(vc1[i][j] > 0){
 				row_x7 = i;
 				row_y7 = j;
@@ -2592,14 +2595,14 @@ public class State implements Comparable<State> {
 					sum += vc2[k][l];
 				}
 			}
+			i = rand.nextInt(7);
+			j = rand.nextInt(5);
 			if(sum == 0){
-				row_x8 = -1;
-				row_y8 = -1;
+				row_x8 = i;
+				row_y8 = j;
 				sum = 0;
 				break;
 			}
-			i = rand.nextInt(7);
-			j = rand.nextInt(5);
 			if(vc2[i][j] > 0){
 				row_x8 = i;
 				row_y8 = j;
@@ -2613,14 +2616,14 @@ public class State implements Comparable<State> {
 					sum += vc3[k][l];
 				}
 			}
+			i = rand.nextInt(7);
+			j = rand.nextInt(5);
 			if(sum == 0){
-				row_x9 = -1;
-				row_y9 = -1;
+				row_x9 = i;
+				row_y9 = j;
 				sum = 0;
 				break;
 			}
-			i = rand.nextInt(7);
-			j = rand.nextInt(5);
 			if(vc3[i][j] > 0){
 				row_x9 = i;
 				row_y9 = j;
@@ -2768,24 +2771,30 @@ public class State implements Comparable<State> {
 		return Double.compare(this.score, s.score);
 	}
 	
-	public void print() throws FileNotFoundException, UnsupportedEncodingException{
-		this.print(a1);
-		System.out.println();
-		this.print(a2);
-		System.out.println();
-		this.print(a3);
-		System.out.println();
-		this.print(b1);
-		System.out.println();
-		this.print(b2);
-		System.out.println();
-		this.print(b3);
-		System.out.println();
-		this.print(c1);
-		System.out.println();
-		this.print(c2);
-		System.out.println();
-		this.print(c3);
+	public void print(String filename) throws FileNotFoundException, UnsupportedEncodingException{
+		PrintWriter writer = new PrintWriter(filename, "UTF-8");
+		this.printArray(writer,a1);
+		writer.println();
+		this.printArray(writer,a2);
+		writer.println();
+		this.printArray(writer,a3);
+		writer.println();
+		this.printArray(writer,b1);
+		writer.println();
+		this.printArray(writer,b2);
+		writer.println();
+		this.printArray(writer,b3);
+		writer.println();
+		this.printArray(writer,c1);
+		writer.println();
+		this.printArray(writer,c2);
+		writer.println();
+		this.printArray(writer,c3);
+		writer.close();
+	}
+	
+	public int getTerminal() {
+		return terminal;
 	}
 	
 }

@@ -1,4 +1,7 @@
-
+/*
+ * 3110095 Άρης Κωνσταντίνου
+ * 3130033 Παναγιώτης Γερασιμάτος
+ * */
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -29,6 +32,7 @@ public class SpaceSearcher
 		this.states = new ArrayList<State>();
 		this.closedSet = new HashSet<State>();
 		this.states.add(initialState);
+		final int FRONT = 100;
 		while(this.states.size() > 0)
 		{
 			State currentState = this.states.remove(0);
@@ -45,8 +49,8 @@ public class SpaceSearcher
 				this.closedSet.add(currentState);
 				this.states.addAll(currentState.getChildren());
 				Collections.sort(this.states);
-				while(states.size() > 200){
-					states.remove(200);
+				while(states.size() > FRONT){
+					states.remove(FRONT);
 				}
 				
 			}

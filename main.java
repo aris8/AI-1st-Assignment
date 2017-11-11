@@ -1,4 +1,10 @@
+/*
+ * 3110095 Άρης Κωνσταντίνου
+ * 3130033 Παναγιώτης Γερασιμάτος
+ * */
+
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,17 +19,10 @@ public class main {
 		SpaceSearcher spaceSearcher = new SpaceSearcher();
 		State terminalState = null;
 		initial = new State();
-		initial.print();
-		System.out.printf("Score of intial state: %d \n", initial.getScore());
-		System.out.println(Arrays.deepToString(initial.getVa1()));
-		System.out.println(Arrays.deepToString(initial.getVa2()));
-		System.out.println(Arrays.deepToString(initial.getVa3()));
-		System.out.println(Arrays.deepToString(initial.getVb1()));
-		System.out.println(Arrays.deepToString(initial.getVb2()));
-		System.out.println(Arrays.deepToString(initial.getVb3()));
-		System.out.println(Arrays.deepToString(initial.getVc1()));
-		System.out.println(Arrays.deepToString(initial.getVc2()));
-		System.out.println(Arrays.deepToString(initial.getVc3()));
+		initial.print("start.txt");
+		PrintWriter writer = new PrintWriter("stats.txt", "UTF-8");
+		writer.printf("Minimum terminal state score: %d \n", initial.getTerminal());
+		writer.printf("Score of intial state: %d \n", initial.getScore());
 		
 		
 		long start = System.currentTimeMillis();
@@ -31,24 +30,16 @@ public class main {
 		long end = System.currentTimeMillis();
 		if(terminalState == null)
 		{
-			System.out.println("Could not find solution");
+			writer.println("Could not find solution");
 		}
 		else
 		{
-			terminalState.print();
-			System.out.printf("Score of terminal state: %d \n", terminalState.getScore());
+			terminalState.print("final.txt");
+			writer.printf("Score of terminal state: %d \n", terminalState.getScore());
 		}
-		System.out.println("BestFS (1st heuristic) with closed set search time: " + (double)(end - start) / 1000 /60 + "min.");
+		writer.println("BestFS (1st heuristic) with closed set search time: " + (double)(end - start) / 1000 + "sec.");
 		System.out.println("***************");
-		System.out.println(Arrays.deepToString(terminalState.getVa1()));
-		System.out.println(Arrays.deepToString(terminalState.getVa2()));
-		System.out.println(Arrays.deepToString(terminalState.getVa3()));
-		System.out.println(Arrays.deepToString(terminalState.getVb1()));
-		System.out.println(Arrays.deepToString(terminalState.getVb2()));
-		System.out.println(Arrays.deepToString(terminalState.getVb3()));
-		System.out.println(Arrays.deepToString(terminalState.getVc1()));
-		System.out.println(Arrays.deepToString(terminalState.getVc2()));
-		System.out.println(Arrays.deepToString(terminalState.getVc3()));
+		writer.close();
 		
 	
 	}
