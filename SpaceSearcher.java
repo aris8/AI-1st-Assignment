@@ -33,9 +33,11 @@ public class SpaceSearcher
 		{
 			State currentState = this.states.remove(0);
 			count++;
+			//currentState.print();
 			System.out.println("Current state" + currentState.getScore());
 			if(currentState.isTerminal())
 			{
+				System.out.println("Times we produced childs: " + count);
 				return currentState;
 			}
 			if(!closedSet.contains(currentState))
@@ -43,10 +45,13 @@ public class SpaceSearcher
 				this.closedSet.add(currentState);
 				this.states.addAll(currentState.getChildren());
 				Collections.sort(this.states);
+				while(states.size() > 200){
+					states.remove(200);
+				}
 				
 			}
 		}
-		System.out.println(count);
+		System.out.println("Times we produced childs: " + count);
 		return null;
 	}
 }

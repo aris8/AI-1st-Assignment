@@ -825,11 +825,11 @@ public class State implements Comparable<State> {
 		vc3 = new int[7][5];
 		
 		this.score = 0;
+		this.score += this.continiousHours();
 		this.score += this.teleportingTeachers();
-		this.score += this.spacesInProgam();
-//		this.score += this.continiousHours();
-//		this.score += this.equality();
-//		this.score += this.evenlyDistributed();
+		this.score += this.spacesInProgam();		
+		this.score += this.equality();
+		this.score += this.evenlyDistributed();
 	}
 	
 	
@@ -892,6 +892,89 @@ public class State implements Comparable<State> {
 				for(int i = 0;i < 5;i++){
 					if(teach[i][j].toString().equals(teach[i + 1][j].toString()) && teach[i][j].toString().equals(teach[i + 2][j].toString()) && !(teach[i][j].toString().equals("##")) ){
 						count++;
+						if(teach[i][j].equals(a1[i][j].getTeacher())){
+							va1[i][j]++;
+						}
+						if(teach[i][j].equals(a2[i][j].getTeacher())){
+							va2[i][j]++;
+						}
+						if(teach[i][j].equals(a3[i][j].getTeacher())){
+							va3[i][j]++;
+						}
+						if(teach[i][j].equals(b1[i][j].getTeacher())){
+							vb1[i][j]++;
+						}
+						if(teach[i][j].equals(b2[i][j].getTeacher())){
+							vb2[i][j]++;
+						}
+						if(teach[i][j].equals(b3[i][j].getTeacher())){
+							vb3[i][j]++;
+						}
+						if(teach[i][j].equals(c1[i][j].getTeacher())){
+							vc1[i][j]++;
+						}
+						if(teach[i][j].equals(c2[i][j].getTeacher())){
+							vc2[i][j]++;
+						}
+						if(teach[i][j].equals(c3[i][j].getTeacher())){
+							vc3[i][j]++;
+						}
+						
+						if(teach[i + 1][j].equals(a1[i + 1][j].getTeacher())){
+							va1[i + 1][j]++;
+						}
+						if(teach[i + 1][j].equals(a2[i + 1][j].getTeacher())){
+							va2[i + 1][j]++;
+						}
+						if(teach[i + 1][j].equals(a3[i + 1][j].getTeacher())){
+							va3[i + 1][j]++;
+						}
+						if(teach[i + 1][j].equals(b1[i + 1][j].getTeacher())){
+							vb1[i + 1][j]++;
+						}
+						if(teach[i + 1][j].equals(b2[i + 1][j].getTeacher())){
+							vb2[i + 1][j]++;
+						}
+						if(teach[i + 1][j].equals(b3[i + 1][j].getTeacher())){
+							vb3[i + 1][j]++;
+						}
+						if(teach[i + 1][j].equals(c1[i + 1][j].getTeacher())){
+							vc1[i + 1][j]++;
+						}
+						if(teach[i + 1][j].equals(c2[i + 1][j].getTeacher())){
+							vc2[i + 1][j]++;
+						}
+						if(teach[i + 1][j].equals(c3[i + 1][j].getTeacher())){
+							vc3[i + 1][j]++;
+						}
+						
+						if(teach[i + 2][j].equals(a1[i + 2][j].getTeacher())){
+							va1[i + 2][j]++;
+						}
+						if(teach[i + 2][j].equals(a2[i + 2][j].getTeacher())){
+							va2[i + 2][j]++;
+						}
+						if(teach[i + 2][j].equals(a3[i + 2][j].getTeacher())){
+							va3[i + 2][j]++;
+						}
+						if(teach[i + 2][j].equals(b1[i + 2][j].getTeacher())){
+							vb1[i + 2][j]++;
+						}
+						if(teach[i + 2][j].equals(b2[i + 2][j].getTeacher())){
+							vb2[i + 2][j]++;
+						}
+						if(teach[i + 2][j].equals(b3[i + 2][j].getTeacher())){
+							vb3[i + 2][j]++;
+						}
+						if(teach[i + 2][j].equals(c1[i + 2][j].getTeacher())){
+							vc1[i + 2][j]++;
+						}
+						if(teach[i + 2][j].equals(c2[i + 2][j].getTeacher())){
+							vc2[i + 2][j]++;
+						}
+						if(teach[i + 2][j].equals(c3[i + 2][j].getTeacher())){
+							vc3[i + 2][j]++;
+						}
 					}
 				}
 			}
@@ -1591,118 +1674,190 @@ public class State implements Comparable<State> {
 			Teacher t1 = a1[row_x1][row_y1].getTeacher();
 			Teacher t2 = a1[i][j].getTeacher();
 			if (t1.equals(t2)) return false;
-			if (a2[i][j].getTeacher().equals(t1) || a2[row_x1][row_y1].getTeacher().equals(t2)) return false;
-			if (a3[i][j].getTeacher().equals(t1) || a3[row_x1][row_y1].getTeacher().equals(t2)) return false;
-			if (b1[i][j].getTeacher().equals(t1) || b1[row_x1][row_y1].getTeacher().equals(t2)) return false;
-			if (b2[i][j].getTeacher().equals(t1) || b2[row_x1][row_y1].getTeacher().equals(t2)) return false;
-			if (b3[i][j].getTeacher().equals(t1) || b3[row_x1][row_y1].getTeacher().equals(t2)) return false;
-			if (c1[i][j].getTeacher().equals(t1) || c1[row_x1][row_y1].getTeacher().equals(t2)) return false;
-			if (c2[i][j].getTeacher().equals(t1) || c2[row_x1][row_y1].getTeacher().equals(t2)) return false;
-			if (c3[i][j].getTeacher().equals(t1) || c3[row_x1][row_y1].getTeacher().equals(t2)) return false;
+			if ( (a2[i][j].getTeacher().equals(t1) && !(a2[i][j].getTeacher().toString().equals("##"))) 
+					|| (a2[row_x1][row_y1].getTeacher().equals(t2) && (!(a2[row_x1][row_y1].getTeacher().toString().equals("##"))) )) return false;
+			if ((a3[i][j].getTeacher().equals(t1) && !(a3[i][j].getTeacher().toString().equals("##"))) 
+					|| (a3[row_x1][row_y1].getTeacher().equals(t2) && (!(a3[row_x1][row_y1].getTeacher().toString().equals("##"))) )) return false;
+			if ((b1[i][j].getTeacher().equals(t1) && !(b1[i][j].getTeacher().toString().equals("##"))) 
+					|| (b1[row_x1][row_y1].getTeacher().equals(t2) && (!(b1[row_x1][row_y1].getTeacher().toString().equals("##"))) )) return false;
+			if ((b2[i][j].getTeacher().equals(t1) && !(b2[i][j].getTeacher().toString().equals("##"))) 
+					|| (b2[row_x1][row_y1].getTeacher().equals(t2) && (!(b2[row_x1][row_y1].getTeacher().toString().equals("##"))) )) return false;
+			if ((b3[i][j].getTeacher().equals(t1) && !(b3[i][j].getTeacher().toString().equals("##"))) 
+					|| (b3[row_x1][row_y1].getTeacher().equals(t2) && (!(b3[row_x1][row_y1].getTeacher().toString().equals("##"))) )) return false;
+			if ((c1[i][j].getTeacher().equals(t1) && !(c1[i][j].getTeacher().toString().equals("##"))) 
+					|| (c1[row_x1][row_y1].getTeacher().equals(t2) && (!(c1[row_x1][row_y1].getTeacher().toString().equals("##"))) )) return false;
+			if ((c2[i][j].getTeacher().equals(t1) && !(c2[i][j].getTeacher().toString().equals("##"))) 
+					|| (c2[row_x1][row_y1].getTeacher().equals(t2) && (!(c2[row_x1][row_y1].getTeacher().toString().equals("##"))) )) return false;
+			if ((c3[i][j].getTeacher().equals(t1) && !(c3[i][j].getTeacher().toString().equals("##"))) 
+					|| (c3[row_x1][row_y1].getTeacher().equals(t2) && (!(c3[row_x1][row_y1].getTeacher().toString().equals("##"))) )) return false;
 		}
 		else if( p == 2){
 			Teacher t1 = a2[row_x2][row_y2].getTeacher();
 			Teacher t2 = a2[i][j].getTeacher();
 			if (t1.equals(t2)) return false;
-			if (a1[i][j].getTeacher().equals(t1) || a1[row_x2][row_y2].getTeacher().equals(t2)) return false;
-			if (a3[i][j].getTeacher().equals(t1) || a3[row_x2][row_y2].getTeacher().equals(t2)) return false;
-			if (b1[i][j].getTeacher().equals(t1) || b1[row_x2][row_y2].getTeacher().equals(t2)) return false;
-			if (b2[i][j].getTeacher().equals(t1) || b2[row_x2][row_y2].getTeacher().equals(t2)) return false;
-			if (b3[i][j].getTeacher().equals(t1) || b3[row_x2][row_y2].getTeacher().equals(t2)) return false;
-			if (c1[i][j].getTeacher().equals(t1) || c1[row_x2][row_y2].getTeacher().equals(t2)) return false;
-			if (c2[i][j].getTeacher().equals(t1) || c2[row_x2][row_y2].getTeacher().equals(t2)) return false;
-			if (c3[i][j].getTeacher().equals(t1) || c3[row_x2][row_y2].getTeacher().equals(t2)) return false;
+			if ( (a1[i][j].getTeacher().equals(t1) && !(a1[i][j].getTeacher().toString().equals("##"))) 
+					|| (a1[row_x2][row_y2].getTeacher().equals(t2) && (!(a1[row_x2][row_y2].getTeacher().toString().equals("##"))) )) return false;
+			if ((a3[i][j].getTeacher().equals(t1) && !(a3[i][j].getTeacher().toString().equals("##"))) 
+					|| (a3[row_x2][row_y2].getTeacher().equals(t2) && (!(a3[row_x2][row_y2].getTeacher().toString().equals("##"))) )) return false;
+			if ((b1[i][j].getTeacher().equals(t1) && !(b1[i][j].getTeacher().toString().equals("##"))) 
+					|| (b1[row_x2][row_y2].getTeacher().equals(t2) && (!(b1[row_x2][row_y2].getTeacher().toString().equals("##"))) )) return false;
+			if ((b2[i][j].getTeacher().equals(t1) && !(b2[i][j].getTeacher().toString().equals("##"))) 
+					|| (b2[row_x2][row_y2].getTeacher().equals(t2) && (!(b2[row_x2][row_y2].getTeacher().toString().equals("##"))) )) return false;
+			if ((b3[i][j].getTeacher().equals(t1) && !(b3[i][j].getTeacher().toString().equals("##"))) 
+					|| (b3[row_x2][row_y2].getTeacher().equals(t2) && (!(b3[row_x2][row_y2].getTeacher().toString().equals("##"))) )) return false;
+			if ((c1[i][j].getTeacher().equals(t1) && !(c1[i][j].getTeacher().toString().equals("##"))) 
+					|| (c1[row_x2][row_y2].getTeacher().equals(t2) && (!(c1[row_x2][row_y2].getTeacher().toString().equals("##"))) )) return false;
+			if ((c2[i][j].getTeacher().equals(t1) && !(c2[i][j].getTeacher().toString().equals("##"))) 
+					|| (c2[row_x2][row_y2].getTeacher().equals(t2) && (!(c2[row_x2][row_y2].getTeacher().toString().equals("##"))) )) return false;
+			if ((c3[i][j].getTeacher().equals(t1) && !(c3[i][j].getTeacher().toString().equals("##"))) 
+					|| (c3[row_x2][row_y2].getTeacher().equals(t2) && (!(c3[row_x2][row_y2].getTeacher().toString().equals("##"))) )) return false;
 		}
 		else if( p == 3){
 			Teacher t1 = a3[row_x3][row_y3].getTeacher();
 			Teacher t2 = a3[i][j].getTeacher();
 			if (t1.equals(t2)) return false;
-			if (a2[i][j].getTeacher().equals(t1) || a2[row_x3][row_y3].getTeacher().equals(t2)) return false;
-			if (a1[i][j].getTeacher().equals(t1) || a1[row_x3][row_y3].getTeacher().equals(t2)) return false;
-			if (b1[i][j].getTeacher().equals(t1) || b1[row_x3][row_y3].getTeacher().equals(t2)) return false;
-			if (b2[i][j].getTeacher().equals(t1) || b2[row_x3][row_y3].getTeacher().equals(t2)) return false;
-			if (b3[i][j].getTeacher().equals(t1) || b3[row_x3][row_y3].getTeacher().equals(t2)) return false;
-			if (c1[i][j].getTeacher().equals(t1) || c1[row_x3][row_y3].getTeacher().equals(t2)) return false;
-			if (c2[i][j].getTeacher().equals(t1) || c2[row_x3][row_y3].getTeacher().equals(t2)) return false;
-			if (c3[i][j].getTeacher().equals(t1) || c3[row_x3][row_y3].getTeacher().equals(t2)) return false;
+			if ( (a2[i][j].getTeacher().equals(t1) && !(a2[i][j].getTeacher().toString().equals("##"))) 
+					|| (a2[row_x3][row_y3].getTeacher().equals(t2) && (!(a2[row_x3][row_y3].getTeacher().toString().equals("##"))) )) return false;
+			if ((a1[i][j].getTeacher().equals(t1) && !(a1[i][j].getTeacher().toString().equals("##"))) 
+					|| (a1[row_x3][row_y3].getTeacher().equals(t2) && (!(a1[row_x3][row_y3].getTeacher().toString().equals("##"))) )) return false;
+			if ((b1[i][j].getTeacher().equals(t1) && !(b1[i][j].getTeacher().toString().equals("##"))) 
+					|| (b1[row_x3][row_y3].getTeacher().equals(t2) && (!(b1[row_x3][row_y3].getTeacher().toString().equals("##"))) )) return false;
+			if ((b2[i][j].getTeacher().equals(t1) && !(b2[i][j].getTeacher().toString().equals("##"))) 
+					|| (b2[row_x3][row_y3].getTeacher().equals(t2) && (!(b2[row_x3][row_y3].getTeacher().toString().equals("##"))) )) return false;
+			if ((b3[i][j].getTeacher().equals(t1) && !(b3[i][j].getTeacher().toString().equals("##"))) 
+					|| (b3[row_x3][row_y3].getTeacher().equals(t2) && (!(b3[row_x3][row_y3].getTeacher().toString().equals("##"))) )) return false;
+			if ((c1[i][j].getTeacher().equals(t1) && !(c1[i][j].getTeacher().toString().equals("##"))) 
+					|| (c1[row_x3][row_y3].getTeacher().equals(t2) && (!(c1[row_x3][row_y3].getTeacher().toString().equals("##"))) )) return false;
+			if ((c2[i][j].getTeacher().equals(t1) && !(c2[i][j].getTeacher().toString().equals("##"))) 
+					|| (c2[row_x3][row_y3].getTeacher().equals(t2) && (!(c2[row_x3][row_y3].getTeacher().toString().equals("##"))) )) return false;
+			if ((c3[i][j].getTeacher().equals(t1) && !(c3[i][j].getTeacher().toString().equals("##"))) 
+					|| (c3[row_x3][row_y3].getTeacher().equals(t2) && (!(c3[row_x3][row_y3].getTeacher().toString().equals("##"))) )) return false;
 		}
 		else if( p == 4){
 			Teacher t1 = b1[row_x4][row_y4].getTeacher();
 			Teacher t2 = b1[i][j].getTeacher();
 			if (t1.equals(t2)) return false;
-			if (a2[i][j].getTeacher().equals(t1) || a2[row_x4][row_y4].getTeacher().equals(t2)) return false;
-			if (a3[i][j].getTeacher().equals(t1) || a3[row_x4][row_y4].getTeacher().equals(t2)) return false;
-			if (a1[i][j].getTeacher().equals(t1) || a1[row_x4][row_y4].getTeacher().equals(t2)) return false;
-			if (b2[i][j].getTeacher().equals(t1) || b2[row_x4][row_y4].getTeacher().equals(t2)) return false;
-			if (b3[i][j].getTeacher().equals(t1) || b3[row_x4][row_y4].getTeacher().equals(t2)) return false;
-			if (c1[i][j].getTeacher().equals(t1) || c1[row_x4][row_y4].getTeacher().equals(t2)) return false;
-			if (c2[i][j].getTeacher().equals(t1) || c2[row_x4][row_y4].getTeacher().equals(t2)) return false;
-			if (c3[i][j].getTeacher().equals(t1) || c3[row_x4][row_y4].getTeacher().equals(t2)) return false;
+			if ( (a2[i][j].getTeacher().equals(t1) && !(a2[i][j].getTeacher().toString().equals("##"))) 
+					|| (a2[row_x4][row_y4].getTeacher().equals(t2) && (!(a2[row_x4][row_y4].getTeacher().toString().equals("##"))) )) return false;
+			if ((a3[i][j].getTeacher().equals(t1) && !(a3[i][j].getTeacher().toString().equals("##"))) 
+					|| (a3[row_x4][row_y4].getTeacher().equals(t2) && (!(a3[row_x4][row_y4].getTeacher().toString().equals("##"))) )) return false;
+			if ((a1[i][j].getTeacher().equals(t1) && !(a1[i][j].getTeacher().toString().equals("##"))) 
+					|| (a1[row_x4][row_y4].getTeacher().equals(t2) && (!(a1[row_x4][row_y4].getTeacher().toString().equals("##"))) )) return false;
+			if ((b2[i][j].getTeacher().equals(t1) && !(b2[i][j].getTeacher().toString().equals("##"))) 
+					|| (b2[row_x4][row_y4].getTeacher().equals(t2) && (!(b2[row_x4][row_y4].getTeacher().toString().equals("##"))) )) return false;
+			if ((b3[i][j].getTeacher().equals(t1) && !(b3[i][j].getTeacher().toString().equals("##"))) 
+					|| (b3[row_x4][row_y4].getTeacher().equals(t2) && (!(b3[row_x4][row_y4].getTeacher().toString().equals("##"))) )) return false;
+			if ((c1[i][j].getTeacher().equals(t1) && !(c1[i][j].getTeacher().toString().equals("##"))) 
+					|| (c1[row_x4][row_y4].getTeacher().equals(t2) && (!(c1[row_x4][row_y4].getTeacher().toString().equals("##"))) )) return false;
+			if ((c2[i][j].getTeacher().equals(t1) && !(c2[i][j].getTeacher().toString().equals("##"))) 
+					|| (c2[row_x4][row_y4].getTeacher().equals(t2) && (!(c2[row_x4][row_y4].getTeacher().toString().equals("##"))) )) return false;
+			if ((c3[i][j].getTeacher().equals(t1) && !(c3[i][j].getTeacher().toString().equals("##"))) 
+					|| (c3[row_x4][row_y4].getTeacher().equals(t2) && (!(c3[row_x4][row_y4].getTeacher().toString().equals("##"))) )) return false;
 		}
 		else if( p == 5){
 			Teacher t1 = b2[row_x5][row_y5].getTeacher();
 			Teacher t2 = b2[i][j].getTeacher();
 			if (t1.equals(t2)) return false;
-			if (a2[i][j].getTeacher().equals(t1) || a2[row_x5][row_y5].getTeacher().equals(t2)) return false;
-			if (a3[i][j].getTeacher().equals(t1) || a3[row_x5][row_y5].getTeacher().equals(t2)) return false;
-			if (b1[i][j].getTeacher().equals(t1) || b1[row_x5][row_y5].getTeacher().equals(t2)) return false;
-			if (a1[i][j].getTeacher().equals(t1) || a1[row_x5][row_y5].getTeacher().equals(t2)) return false;
-			if (b3[i][j].getTeacher().equals(t1) || b3[row_x5][row_y5].getTeacher().equals(t2)) return false;
-			if (c1[i][j].getTeacher().equals(t1) || c1[row_x5][row_y5].getTeacher().equals(t2)) return false;
-			if (c2[i][j].getTeacher().equals(t1) || c2[row_x5][row_y5].getTeacher().equals(t2)) return false;
-			if (c3[i][j].getTeacher().equals(t1) || c3[row_x5][row_y5].getTeacher().equals(t2)) return false;
+			if ( (a2[i][j].getTeacher().equals(t1) && !(a2[i][j].getTeacher().toString().equals("##"))) 
+					|| (a2[row_x5][row_y5].getTeacher().equals(t2) && (!(a2[row_x5][row_y5].getTeacher().toString().equals("##"))) )) return false;
+			if ((a3[i][j].getTeacher().equals(t1) && !(a3[i][j].getTeacher().toString().equals("##"))) 
+					|| (a3[row_x5][row_y5].getTeacher().equals(t2) && (!(a3[row_x5][row_y5].getTeacher().toString().equals("##"))) )) return false;
+			if ((b1[i][j].getTeacher().equals(t1) && !(b1[i][j].getTeacher().toString().equals("##"))) 
+					|| (b1[row_x5][row_y5].getTeacher().equals(t2) && (!(b1[row_x5][row_y5].getTeacher().toString().equals("##"))) )) return false;
+			if ((a1[i][j].getTeacher().equals(t1) && !(a1[i][j].getTeacher().toString().equals("##"))) 
+					|| (a1[row_x5][row_y5].getTeacher().equals(t2) && (!(a1[row_x5][row_y5].getTeacher().toString().equals("##"))) )) return false;
+			if ((b3[i][j].getTeacher().equals(t1) && !(b3[i][j].getTeacher().toString().equals("##"))) 
+					|| (b3[row_x5][row_y5].getTeacher().equals(t2) && (!(b3[row_x5][row_y5].getTeacher().toString().equals("##"))) )) return false;
+			if ((c1[i][j].getTeacher().equals(t1) && !(c1[i][j].getTeacher().toString().equals("##"))) 
+					|| (c1[row_x5][row_y5].getTeacher().equals(t2) && (!(c1[row_x5][row_y5].getTeacher().toString().equals("##"))) )) return false;
+			if ((c2[i][j].getTeacher().equals(t1) && !(c2[i][j].getTeacher().toString().equals("##"))) 
+					|| (c2[row_x5][row_y5].getTeacher().equals(t2) && (!(c2[row_x5][row_y5].getTeacher().toString().equals("##"))) )) return false;
+			if ((c3[i][j].getTeacher().equals(t1) && !(c3[i][j].getTeacher().toString().equals("##"))) 
+					|| (c3[row_x5][row_y5].getTeacher().equals(t2) && (!(c3[row_x5][row_y5].getTeacher().toString().equals("##"))) )) return false;
 		}
 		else if( p == 6){
 			Teacher t1 = b3[row_x6][row_y6].getTeacher();
 			Teacher t2 = b3[i][j].getTeacher();
 			if (t1.equals(t2)) return false;
-			if (a2[i][j].getTeacher().equals(t1) || a2[row_x6][row_y6].getTeacher().equals(t2)) return false;
-			if (a3[i][j].getTeacher().equals(t1) || a3[row_x6][row_y6].getTeacher().equals(t2)) return false;
-			if (b1[i][j].getTeacher().equals(t1) || b1[row_x6][row_y6].getTeacher().equals(t2)) return false;
-			if (b2[i][j].getTeacher().equals(t1) || b2[row_x6][row_y6].getTeacher().equals(t2)) return false;
-			if (a1[i][j].getTeacher().equals(t1) || a1[row_x6][row_y6].getTeacher().equals(t2)) return false;
-			if (c1[i][j].getTeacher().equals(t1) || c1[row_x6][row_y6].getTeacher().equals(t2)) return false;
-			if (c2[i][j].getTeacher().equals(t1) || c2[row_x6][row_y6].getTeacher().equals(t2)) return false;
-			if (c3[i][j].getTeacher().equals(t1) || c3[row_x6][row_y6].getTeacher().equals(t2)) return false;
+			if ( (a2[i][j].getTeacher().equals(t1) && !(a2[i][j].getTeacher().toString().equals("##"))) 
+					|| (a2[row_x6][row_y6].getTeacher().equals(t2) && (!(a2[row_x6][row_y6].getTeacher().toString().equals("##"))) )) return false;
+			if ((a3[i][j].getTeacher().equals(t1) && !(a3[i][j].getTeacher().toString().equals("##"))) 
+					|| (a3[row_x6][row_y6].getTeacher().equals(t2) && (!(a3[row_x6][row_y6].getTeacher().toString().equals("##"))) )) return false;
+			if ((b1[i][j].getTeacher().equals(t1) && !(b1[i][j].getTeacher().toString().equals("##"))) 
+					|| (b1[row_x6][row_y6].getTeacher().equals(t2) && (!(b1[row_x6][row_y6].getTeacher().toString().equals("##"))) )) return false;
+			if ((b2[i][j].getTeacher().equals(t1) && !(b2[i][j].getTeacher().toString().equals("##"))) 
+					|| (b2[row_x6][row_y6].getTeacher().equals(t2) && (!(b2[row_x6][row_y6].getTeacher().toString().equals("##"))) )) return false;
+			if ((a1[i][j].getTeacher().equals(t1) && !(a1[i][j].getTeacher().toString().equals("##"))) 
+					|| (a1[row_x6][row_y6].getTeacher().equals(t2) && (!(a1[row_x6][row_y6].getTeacher().toString().equals("##"))) )) return false;
+			if ((c1[i][j].getTeacher().equals(t1) && !(c1[i][j].getTeacher().toString().equals("##"))) 
+					|| (c1[row_x6][row_y6].getTeacher().equals(t2) && (!(c1[row_x6][row_y6].getTeacher().toString().equals("##"))) )) return false;
+			if ((c2[i][j].getTeacher().equals(t1) && !(c2[i][j].getTeacher().toString().equals("##"))) 
+					|| (c2[row_x6][row_y6].getTeacher().equals(t2) && (!(c2[row_x6][row_y6].getTeacher().toString().equals("##"))) )) return false;
+			if ((c3[i][j].getTeacher().equals(t1) && !(c3[i][j].getTeacher().toString().equals("##"))) 
+					|| (c3[row_x6][row_y6].getTeacher().equals(t2) && (!(c3[row_x6][row_y6].getTeacher().toString().equals("##"))) )) return false;
 		}
 		else if( p == 7){
 			Teacher t1 = c1[row_x7][row_y7].getTeacher();
 			Teacher t2 = c1[i][j].getTeacher();
 			if (t1.equals(t2)) return false;
-			if (a2[i][j].getTeacher().equals(t1) || a2[row_x7][row_y7].getTeacher().equals(t2)) return false;
-			if (a3[i][j].getTeacher().equals(t1) || a3[row_x7][row_y7].getTeacher().equals(t2)) return false;
-			if (b1[i][j].getTeacher().equals(t1) || b1[row_x7][row_y7].getTeacher().equals(t2)) return false;
-			if (b2[i][j].getTeacher().equals(t1) || b2[row_x7][row_y7].getTeacher().equals(t2)) return false;
-			if (b3[i][j].getTeacher().equals(t1) || b3[row_x7][row_y7].getTeacher().equals(t2)) return false;
-			if (a1[i][j].getTeacher().equals(t1) || a1[row_x7][row_y7].getTeacher().equals(t2)) return false;
-			if (c2[i][j].getTeacher().equals(t1) || c2[row_x7][row_y7].getTeacher().equals(t2)) return false;
-			if (c3[i][j].getTeacher().equals(t1) || c3[row_x7][row_y7].getTeacher().equals(t2)) return false;
+			if ( (a2[i][j].getTeacher().equals(t1) && !(a2[i][j].getTeacher().toString().equals("##"))) 
+					|| (a2[row_x7][row_y7].getTeacher().equals(t2) && (!(a2[row_x7][row_y7].getTeacher().toString().equals("##"))) )) return false;
+			if ((a3[i][j].getTeacher().equals(t1) && !(a3[i][j].getTeacher().toString().equals("##"))) 
+					|| (a3[row_x7][row_y7].getTeacher().equals(t2) && (!(a3[row_x7][row_y7].getTeacher().toString().equals("##"))) )) return false;
+			if ((b1[i][j].getTeacher().equals(t1) && !(b1[i][j].getTeacher().toString().equals("##"))) 
+					|| (b1[row_x7][row_y7].getTeacher().equals(t2) && (!(b1[row_x7][row_y7].getTeacher().toString().equals("##"))) )) return false;
+			if ((b2[i][j].getTeacher().equals(t1) && !(b2[i][j].getTeacher().toString().equals("##"))) 
+					|| (b2[row_x7][row_y7].getTeacher().equals(t2) && (!(b2[row_x7][row_y7].getTeacher().toString().equals("##"))) )) return false;
+			if ((b3[i][j].getTeacher().equals(t1) && !(b3[i][j].getTeacher().toString().equals("##"))) 
+					|| (b3[row_x7][row_y7].getTeacher().equals(t2) && (!(b3[row_x7][row_y7].getTeacher().toString().equals("##"))) )) return false;
+			if ((a1[i][j].getTeacher().equals(t1) && !(a1[i][j].getTeacher().toString().equals("##"))) 
+					|| (a1[row_x7][row_y7].getTeacher().equals(t2) && (!(a1[row_x7][row_y7].getTeacher().toString().equals("##"))) )) return false;
+			if ((c2[i][j].getTeacher().equals(t1) && !(c2[i][j].getTeacher().toString().equals("##"))) 
+					|| (c2[row_x7][row_y7].getTeacher().equals(t2) && (!(c2[row_x7][row_y7].getTeacher().toString().equals("##"))) )) return false;
+			if ((c3[i][j].getTeacher().equals(t1) && !(c3[i][j].getTeacher().toString().equals("##"))) 
+					|| (c3[row_x7][row_y7].getTeacher().equals(t2) && (!(c3[row_x7][row_y7].getTeacher().toString().equals("##"))) )) return false;
 		}
 		else if( p == 8){
 			Teacher t1 = c2[row_x8][row_y8].getTeacher();
 			Teacher t2 = c2[i][j].getTeacher();
 			if (t1.equals(t2)) return false;
-			if (a2[i][j].getTeacher().equals(t1) || a2[row_x8][row_y8].getTeacher().equals(t2)) return false;
-			if (a3[i][j].getTeacher().equals(t1) || a3[row_x8][row_y8].getTeacher().equals(t2)) return false;
-			if (b1[i][j].getTeacher().equals(t1) || b1[row_x8][row_y8].getTeacher().equals(t2)) return false;
-			if (b2[i][j].getTeacher().equals(t1) || b2[row_x8][row_y8].getTeacher().equals(t2)) return false;
-			if (b3[i][j].getTeacher().equals(t1) || b3[row_x8][row_y8].getTeacher().equals(t2)) return false;
-			if (c1[i][j].getTeacher().equals(t1) || c1[row_x8][row_y8].getTeacher().equals(t2)) return false;
-			if (a1[i][j].getTeacher().equals(t1) || a1[row_x8][row_y8].getTeacher().equals(t2)) return false;
-			if (c3[i][j].getTeacher().equals(t1) || c3[row_x8][row_y8].getTeacher().equals(t2)) return false;
+			if ( (a2[i][j].getTeacher().equals(t1) && !(a2[i][j].getTeacher().toString().equals("##"))) 
+					|| (a2[row_x8][row_y8].getTeacher().equals(t2) && (!(a2[row_x8][row_y8].getTeacher().toString().equals("##"))) )) return false;
+			if ((a3[i][j].getTeacher().equals(t1) && !(a3[i][j].getTeacher().toString().equals("##"))) 
+					|| (a3[row_x8][row_y8].getTeacher().equals(t2) && (!(a3[row_x8][row_y8].getTeacher().toString().equals("##"))) )) return false;
+			if ((b1[i][j].getTeacher().equals(t1) && !(b1[i][j].getTeacher().toString().equals("##"))) 
+					|| (b1[row_x8][row_y8].getTeacher().equals(t2) && (!(b1[row_x8][row_y8].getTeacher().toString().equals("##"))) )) return false;
+			if ((b2[i][j].getTeacher().equals(t1) && !(b2[i][j].getTeacher().toString().equals("##"))) 
+					|| (b2[row_x8][row_y8].getTeacher().equals(t2) && (!(b2[row_x8][row_y8].getTeacher().toString().equals("##"))) )) return false;
+			if ((b3[i][j].getTeacher().equals(t1) && !(b3[i][j].getTeacher().toString().equals("##"))) 
+					|| (b3[row_x8][row_y8].getTeacher().equals(t2) && (!(b3[row_x8][row_y8].getTeacher().toString().equals("##"))) )) return false;
+			if ((c1[i][j].getTeacher().equals(t1) && !(c1[i][j].getTeacher().toString().equals("##"))) 
+					|| (c1[row_x8][row_y8].getTeacher().equals(t2) && (!(c1[row_x8][row_y8].getTeacher().toString().equals("##"))) )) return false;
+			if ((a1[i][j].getTeacher().equals(t1) && !(a1[i][j].getTeacher().toString().equals("##"))) 
+					|| (a1[row_x8][row_y8].getTeacher().equals(t2) && (!(a1[row_x8][row_y8].getTeacher().toString().equals("##"))) )) return false;
+			if ((c3[i][j].getTeacher().equals(t1) && !(c3[i][j].getTeacher().toString().equals("##"))) 
+					|| (c3[row_x8][row_y8].getTeacher().equals(t2) && (!(c3[row_x8][row_y8].getTeacher().toString().equals("##"))) )) return false;
 		}
 		else{
 			Teacher t1 = c3[row_x9][row_y9].getTeacher();
 			Teacher t2 = c3[i][j].getTeacher();
 			if (t1.equals(t2)) return false;
-			if (a2[i][j].getTeacher().equals(t1) || a2[row_x9][row_y9].getTeacher().equals(t2)) return false;
-			if (a3[i][j].getTeacher().equals(t1) || a3[row_x9][row_y9].getTeacher().equals(t2)) return false;
-			if (b1[i][j].getTeacher().equals(t1) || b1[row_x9][row_y9].getTeacher().equals(t2)) return false;
-			if (b2[i][j].getTeacher().equals(t1) || b2[row_x9][row_y9].getTeacher().equals(t2)) return false;
-			if (b3[i][j].getTeacher().equals(t1) || b3[row_x9][row_y9].getTeacher().equals(t2)) return false;
-			if (c1[i][j].getTeacher().equals(t1) || c1[row_x9][row_y9].getTeacher().equals(t2)) return false;
-			if (c2[i][j].getTeacher().equals(t1) || c2[row_x9][row_y9].getTeacher().equals(t2)) return false;
-			if (a1[i][j].getTeacher().equals(t1) || a1[row_x9][row_y9].getTeacher().equals(t2)) return false;
+			if ( (a2[i][j].getTeacher().equals(t1) && !(a2[i][j].getTeacher().toString().equals("##"))) 
+					|| (a2[row_x9][row_y9].getTeacher().equals(t2) && (!(a2[row_x9][row_y9].getTeacher().toString().equals("##"))) )) return false;
+			if ((a3[i][j].getTeacher().equals(t1) && !(a3[i][j].getTeacher().toString().equals("##"))) 
+					|| (a3[row_x9][row_y9].getTeacher().equals(t2) && (!(a3[row_x9][row_y9].getTeacher().toString().equals("##"))) )) return false;
+			if ((b1[i][j].getTeacher().equals(t1) && !(b1[i][j].getTeacher().toString().equals("##"))) 
+					|| (b1[row_x9][row_y9].getTeacher().equals(t2) && (!(b1[row_x9][row_y9].getTeacher().toString().equals("##"))) )) return false;
+			if ((b2[i][j].getTeacher().equals(t1) && !(b2[i][j].getTeacher().toString().equals("##"))) 
+					|| (b2[row_x9][row_y9].getTeacher().equals(t2) && (!(b2[row_x9][row_y9].getTeacher().toString().equals("##"))) )) return false;
+			if ((b3[i][j].getTeacher().equals(t1) && !(b3[i][j].getTeacher().toString().equals("##"))) 
+					|| (b3[row_x9][row_y9].getTeacher().equals(t2) && (!(b3[row_x9][row_y9].getTeacher().toString().equals("##"))) )) return false;
+			if ((c1[i][j].getTeacher().equals(t1) && !(c1[i][j].getTeacher().toString().equals("##"))) 
+					|| (c1[row_x9][row_y9].getTeacher().equals(t2) && (!(c1[row_x9][row_y9].getTeacher().toString().equals("##"))) )) return false;
+			if ((c2[i][j].getTeacher().equals(t1) && !(c2[i][j].getTeacher().toString().equals("##"))) 
+					|| (c2[row_x9][row_y9].getTeacher().equals(t2) && (!(c2[row_x9][row_y9].getTeacher().toString().equals("##"))) )) return false;
+			if ((a1[i][j].getTeacher().equals(t1) && !(a1[i][j].getTeacher().toString().equals("##"))) 
+					|| (a1[row_x9][row_y9].getTeacher().equals(t2) && (!(a1[row_x9][row_y9].getTeacher().toString().equals("##"))) )) return false;
 		}
 		
 		
@@ -1841,6 +1996,333 @@ public class State implements Comparable<State> {
 		return true;
 	}
 	
+	public boolean isContiniousValid(int i,int j,int p){
+		if(p == 1){
+			Teacher t1 = a1[row_x1][row_y1].getTeacher();
+			Teacher t2 = a1[i][j].getTeacher();
+			if(i == 0 && t1.equals(a1[i+1][j].getTeacher()) && t1.equals(a1[i+2][j].getTeacher())){
+				return false;
+			}else if(i == 6  && t1.equals(a1[i-1][j].getTeacher()) && t1.equals(a1[i-2][j].getTeacher())){
+				return false;
+			}else if(i == 1 && t1.equals(a1[i+1][j].getTeacher()) && (t1.equals(a1[i+2][j].getTeacher()) ||
+					t1.equals(a1[i-1][j].getTeacher()))){
+				return false;
+			}else if(i == 5 && t1.equals(a1[i-1][j].getTeacher()) && (t1.equals(a1[i-2][j].getTeacher()) ||
+					t1.equals(a1[i+1][j].getTeacher()))){
+				return false;
+			}else if( (t1.equals(a1[i+1][j].getTeacher()) && (t1.equals(a1[i+2][j].getTeacher()))) ||
+					(t1.equals(a1[i-1][j].getTeacher()) && (t1.equals(a1[i-2][j].getTeacher()))) ||
+					(t1.equals(a1[i+1][j].getTeacher()) && (t1.equals(a1[i-1][j].getTeacher()))) ){
+				return false;
+			}
+			if(row_x1 == 0 && t2.equals(a1[row_x1+1][row_y1].getTeacher()) && t2.equals(a1[row_x1+2][row_y1].getTeacher())){
+				return false;
+			}else if(row_x1 == 6  && t2.equals(a1[row_x1-1][row_y1].getTeacher()) && t2.equals(a1[row_x1-2][row_y1].getTeacher())){
+				return false;
+			}else if(row_x1 == 1 && t2.equals(a1[row_x1+1][row_y1].getTeacher()) && (t2.equals(a1[row_x1+2][row_y1].getTeacher()) ||
+					t2.equals(a1[row_x1-1][row_y1].getTeacher()))){
+				return false;
+			}else if(row_x1 == 5 && t2.equals(a1[row_x1-1][row_y1].getTeacher()) && (t2.equals(a1[row_x1-2][row_y1].getTeacher()) ||
+					t2.equals(a1[row_x1+1][row_y1].getTeacher()))){
+				return false;
+			}else if( (t2.equals(a1[row_x1+1][row_y1].getTeacher()) && (t2.equals(a1[row_x1+2][row_y1].getTeacher()))) ||
+					(t2.equals(a1[row_x1-1][row_y1].getTeacher()) && (t2.equals(a1[row_x1-2][row_y1].getTeacher()))) ||
+					(t2.equals(a1[row_x1+1][row_y1].getTeacher()) && (t2.equals(a1[row_x1-1][row_y1].getTeacher()))) ){
+				return false;
+			}
+			
+		}else if(p == 2){
+			
+			Teacher t1 = a2[row_x2][row_y2].getTeacher();
+			Teacher t2 = a2[i][j].getTeacher();
+			if(i == 0 && t1.equals(a2[i+1][j].getTeacher()) && t1.equals(a2[i+2][j].getTeacher())){
+				return false;
+			}else if(i == 6  && t1.equals(a2[i-1][j].getTeacher()) && t1.equals(a2[i-2][j].getTeacher())){
+				return false;
+			}else if(i == 1 && t1.equals(a2[i+1][j].getTeacher()) && (t1.equals(a2[i+2][j].getTeacher()) ||
+					t1.equals(a2[i-1][j].getTeacher()))){
+				return false;
+			}else if(i == 5 && t1.equals(a2[i-1][j].getTeacher()) && (t1.equals(a2[i-2][j].getTeacher()) ||
+					t1.equals(a2[i+1][j].getTeacher()))){
+				return false;
+			}else if( (t1.equals(a2[i+1][j].getTeacher()) && (t1.equals(a2[i+2][j].getTeacher()))) ||
+					(t1.equals(a2[i-1][j].getTeacher()) && (t1.equals(a2[i-2][j].getTeacher()))) ||
+					(t1.equals(a2[i+1][j].getTeacher()) && (t1.equals(a2[i-1][j].getTeacher()))) ){
+				return false;
+			}
+			if(row_x2 == 0 && t2.equals(a2[row_x2+1][row_y2].getTeacher()) && t2.equals(a2[row_x2+2][row_y2].getTeacher())){
+				return false;
+			}else if(row_x2 == 6  && t2.equals(a2[row_x2-1][row_y2].getTeacher()) && t2.equals(a2[row_x2-2][row_y2].getTeacher())){
+				return false;
+			}else if(row_x2 == 1 && t2.equals(a2[row_x2+1][row_y2].getTeacher()) && (t2.equals(a2[row_x2+2][row_y2].getTeacher()) ||
+					t2.equals(a2[row_x2-1][row_y2].getTeacher()))){
+				return false;
+			}else if(row_x2 == 5 && t2.equals(a2[row_x2-1][row_y2].getTeacher()) && (t2.equals(a2[row_x2-2][row_y2].getTeacher()) ||
+					t2.equals(a2[row_x2+1][row_y2].getTeacher()))){
+				return false;
+			}else if( (t2.equals(a2[row_x2+1][row_y2].getTeacher()) && (t2.equals(a2[row_x2+2][row_y2].getTeacher()))) ||
+					(t2.equals(a2[row_x2-1][row_y2].getTeacher()) && (t2.equals(a2[row_x2-2][row_y2].getTeacher()))) ||
+					(t2.equals(a2[row_x2+1][row_y2].getTeacher()) && (t2.equals(a2[row_x2-1][row_y2].getTeacher()))) ){
+				return false;
+			}
+			
+		}else if(p == 3){
+		
+			Teacher t1 = a3[row_x3][row_y3].getTeacher();
+			Teacher t2 = a3[i][j].getTeacher();
+			if(i == 0 && t1.equals(a3[i+1][j].getTeacher()) && t1.equals(a3[i+2][j].getTeacher())){
+				return false;
+			}else if(i == 6  && t1.equals(a3[i-1][j].getTeacher()) && t1.equals(a3[i-2][j].getTeacher())){
+				return false;
+			}else if(i == 1 && t1.equals(a3[i+1][j].getTeacher()) && (t1.equals(a3[i+2][j].getTeacher()) ||
+					t1.equals(a3[i-1][j].getTeacher()))){
+				return false;
+			}else if(i == 5 && t1.equals(a3[i-1][j].getTeacher()) && (t1.equals(a3[i-2][j].getTeacher()) ||
+					t1.equals(a3[i+1][j].getTeacher()))){
+				return false;
+			}else if( (t1.equals(a3[i+1][j].getTeacher()) && (t1.equals(a3[i+2][j].getTeacher()))) ||
+					(t1.equals(a3[i-1][j].getTeacher()) && (t1.equals(a3[i-2][j].getTeacher()))) ||
+					(t1.equals(a3[i+1][j].getTeacher()) && (t1.equals(a3[i-1][j].getTeacher()))) ){
+				return false;
+			}
+			if(row_x3 == 0 && t2.equals(a3[row_x3+1][row_y3].getTeacher()) && t2.equals(a3[row_x3+2][row_y3].getTeacher())){
+				return false;
+			}else if(row_x3 == 6  && t2.equals(a3[row_x3-1][row_y3].getTeacher()) && t2.equals(a3[row_x3-2][row_y3].getTeacher())){
+				return false;
+			}else if(row_x3 == 1 && t2.equals(a3[row_x3+1][row_y3].getTeacher()) && (t2.equals(a3[row_x3+2][row_y3].getTeacher()) ||
+					t2.equals(a3[row_x3-1][row_y3].getTeacher()))){
+				return false;
+			}else if(row_x3 == 5 && t2.equals(a3[row_x3-1][row_y3].getTeacher()) && (t2.equals(a3[row_x3-2][row_y3].getTeacher()) ||
+					t2.equals(a3[row_x3+1][row_y3].getTeacher()))){
+				return false;
+			}else if( (t2.equals(a3[row_x3+1][row_y3].getTeacher()) && (t2.equals(a3[row_x3+2][row_y3].getTeacher()))) ||
+					(t2.equals(a3[row_x3-1][row_y3].getTeacher()) && (t2.equals(a3[row_x3-2][row_y3].getTeacher()))) ||
+					(t2.equals(a3[row_x3+1][row_y3].getTeacher()) && (t2.equals(a3[row_x3-1][row_y3].getTeacher()))) ){
+				return false;
+			}
+
+			
+		}else if(p == 4){
+			
+			Teacher t1 = b1[row_x4][row_y4].getTeacher();
+			Teacher t2 = b1[i][j].getTeacher();
+			if(i == 0 && t1.equals(b1[i+1][j].getTeacher()) && t1.equals(b1[i+2][j].getTeacher())){
+				return false;
+			}else if(i == 6  && t1.equals(b1[i-1][j].getTeacher()) && t1.equals(b1[i-2][j].getTeacher())){
+				return false;
+			}else if(i == 1 && t1.equals(b1[i+1][j].getTeacher()) && (t1.equals(b1[i+2][j].getTeacher()) ||
+					t1.equals(b1[i-1][j].getTeacher()))){
+				return false;
+			}else if(i == 5 && t1.equals(b1[i-1][j].getTeacher()) && (t1.equals(b1[i-2][j].getTeacher()) ||
+					t1.equals(b1[i+1][j].getTeacher()))){
+				return false;
+			}else if( (t1.equals(b1[i+1][j].getTeacher()) && (t1.equals(b1[i+2][j].getTeacher()))) ||
+					(t1.equals(b1[i-1][j].getTeacher()) && (t1.equals(b1[i-2][j].getTeacher()))) ||
+					(t1.equals(b1[i+1][j].getTeacher()) && (t1.equals(b1[i-1][j].getTeacher()))) ){
+				return false;
+			}
+			if(row_x4 == 0 && t2.equals(b1[row_x4+1][row_y4].getTeacher()) && t2.equals(b1[row_x4+2][row_y4].getTeacher())){
+				return false;
+			}else if(row_x4 == 6  && t2.equals(b1[row_x4-1][row_y4].getTeacher()) && t2.equals(b1[row_x4-2][row_y4].getTeacher())){
+				return false;
+			}else if(row_x4 == 1 && t2.equals(b1[row_x4+1][row_y4].getTeacher()) && (t2.equals(b1[row_x4+2][row_y4].getTeacher()) ||
+					t2.equals(b1[row_x4-1][row_y4].getTeacher()))){
+				return false;
+			}else if(row_x4 == 5 && t2.equals(b1[row_x4-1][row_y4].getTeacher()) && (t2.equals(b1[row_x4-2][row_y4].getTeacher()) ||
+					t2.equals(b1[row_x4+1][row_y4].getTeacher()))){
+				return false;
+			}else if( (t2.equals(b1[row_x4+1][row_y4].getTeacher()) && (t2.equals(b1[row_x4+2][row_y4].getTeacher()))) ||
+					(t2.equals(b1[row_x4-1][row_y4].getTeacher()) && (t2.equals(b1[row_x4-2][row_y4].getTeacher()))) ||
+					(t2.equals(b1[row_x4+1][row_y4].getTeacher()) && (t2.equals(b1[row_x4-1][row_y4].getTeacher()))) ){
+				return false;
+			}
+
+			
+		}else if(p == 5){
+			
+			Teacher t1 = b2[row_x5][row_y5].getTeacher();
+			Teacher t2 = b2[i][j].getTeacher();
+			if(i == 0 && t1.equals(b2[i+1][j].getTeacher()) && t1.equals(b2[i+2][j].getTeacher())){
+				return false;
+			}else if(i == 6  && t1.equals(b2[i-1][j].getTeacher()) && t1.equals(b2[i-2][j].getTeacher())){
+				return false;
+			}else if(i == 1 && t1.equals(b2[i+1][j].getTeacher()) && (t1.equals(b2[i+2][j].getTeacher()) ||
+					t1.equals(b2[i-1][j].getTeacher()))){
+				return false;
+			}else if(i == 5 && t1.equals(b2[i-1][j].getTeacher()) && (t1.equals(b2[i-2][j].getTeacher()) ||
+					t1.equals(b2[i+1][j].getTeacher()))){
+				return false;
+			}else if( (t1.equals(b2[i+1][j].getTeacher()) && (t1.equals(b2[i+2][j].getTeacher()))) ||
+					(t1.equals(b2[i-1][j].getTeacher()) && (t1.equals(b2[i-2][j].getTeacher()))) ||
+					(t1.equals(b2[i+1][j].getTeacher()) && (t1.equals(b2[i-1][j].getTeacher()))) ){
+				return false;
+			}
+			if(row_x5 == 0 && t2.equals(b2[row_x5+1][row_y5].getTeacher()) && t2.equals(b2[row_x5+2][row_y5].getTeacher())){
+				return false;
+			}else if(row_x5 == 6  && t2.equals(b2[row_x5-1][row_y5].getTeacher()) && t2.equals(b2[row_x5-2][row_y5].getTeacher())){
+				return false;
+			}else if(row_x5 == 1 && t2.equals(b2[row_x5+1][row_y5].getTeacher()) && (t2.equals(b2[row_x5+2][row_y5].getTeacher()) ||
+					t2.equals(b2[row_x5-1][row_y5].getTeacher()))){
+				return false;
+			}else if(row_x5 == 5 && t2.equals(b2[row_x5-1][row_y5].getTeacher()) && (t2.equals(b2[row_x5-2][row_y5].getTeacher()) ||
+					t2.equals(b2[row_x5+1][row_y5].getTeacher()))){
+				return false;
+			}else if( (t2.equals(b2[row_x5+1][row_y5].getTeacher()) && (t2.equals(b2[row_x5+2][row_y5].getTeacher()))) ||
+					(t2.equals(b2[row_x5-1][row_y5].getTeacher()) && (t2.equals(b2[row_x5-2][row_y5].getTeacher()))) ||
+					(t2.equals(b2[row_x5+1][row_y5].getTeacher()) && (t2.equals(b2[row_x5-1][row_y5].getTeacher()))) ){
+				return false;
+			}
+
+			
+		}else if(p == 6){
+			
+			Teacher t1 = b3[row_x6][row_y6].getTeacher();
+			Teacher t2 = b3[i][j].getTeacher();
+			if(i == 0 && t1.equals(b3[i+1][j].getTeacher()) && t1.equals(b3[i+2][j].getTeacher())){
+				return false;
+			}else if(i == 6  && t1.equals(b3[i-1][j].getTeacher()) && t1.equals(b3[i-2][j].getTeacher())){
+				return false;
+			}else if(i == 1 && t1.equals(b3[i+1][j].getTeacher()) && (t1.equals(b3[i+2][j].getTeacher()) ||
+					t1.equals(b3[i-1][j].getTeacher()))){
+				return false;
+			}else if(i == 5 && t1.equals(b3[i-1][j].getTeacher()) && (t1.equals(b3[i-2][j].getTeacher()) ||
+					t1.equals(b3[i+1][j].getTeacher()))){
+				return false;
+			}else if( (t1.equals(b3[i+1][j].getTeacher()) && (t1.equals(b3[i+2][j].getTeacher()))) ||
+					(t1.equals(b3[i-1][j].getTeacher()) && (t1.equals(b3[i-2][j].getTeacher()))) ||
+					(t1.equals(b3[i+1][j].getTeacher()) && (t1.equals(b3[i-1][j].getTeacher()))) ){
+				return false;
+			}
+			if(row_x6 == 0 && t2.equals(b3[row_x6+1][row_y6].getTeacher()) && t2.equals(b3[row_x6+2][row_y6].getTeacher())){
+				return false;
+			}else if(row_x6 == 6  && t2.equals(b3[row_x6-1][row_y6].getTeacher()) && t2.equals(b3[row_x6-2][row_y6].getTeacher())){
+				return false;
+			}else if(row_x6 == 1 && t2.equals(b3[row_x6+1][row_y6].getTeacher()) && (t2.equals(b3[row_x6+2][row_y6].getTeacher()) ||
+					t2.equals(b3[row_x6-1][row_y6].getTeacher()))){
+				return false;
+			}else if(row_x6 == 5 && t2.equals(b3[row_x6-1][row_y6].getTeacher()) && (t2.equals(b3[row_x6-2][row_y6].getTeacher()) ||
+					t2.equals(b3[row_x6+1][row_y6].getTeacher()))){
+				return false;
+			}else if( (t2.equals(b3[row_x6+1][row_y6].getTeacher()) && (t2.equals(b3[row_x6+2][row_y6].getTeacher()))) ||
+					(t2.equals(b3[row_x6-1][row_y6].getTeacher()) && (t2.equals(b3[row_x6-2][row_y6].getTeacher()))) ||
+					(t2.equals(b3[row_x6+1][row_y6].getTeacher()) && (t2.equals(b3[row_x6-1][row_y6].getTeacher()))) ){
+				return false;
+			}
+
+			
+		}else if(p == 7){
+			
+			Teacher t1 = c1[row_x7][row_y7].getTeacher();
+			Teacher t2 = c1[i][j].getTeacher();
+			if(i == 0 && t1.equals(c1[i+1][j].getTeacher()) && t1.equals(c1[i+2][j].getTeacher())){
+				return false;
+			}else if(i == 6  && t1.equals(c1[i-1][j].getTeacher()) && t1.equals(c1[i-2][j].getTeacher())){
+				return false;
+			}else if(i == 1 && t1.equals(c1[i+1][j].getTeacher()) && (t1.equals(c1[i+2][j].getTeacher()) ||
+					t1.equals(c1[i-1][j].getTeacher()))){
+				return false;
+			}else if(i == 5 && t1.equals(c1[i-1][j].getTeacher()) && (t1.equals(c1[i-2][j].getTeacher()) ||
+					t1.equals(c1[i+1][j].getTeacher()))){
+				return false;
+			}else if( (t1.equals(c1[i+1][j].getTeacher()) && (t1.equals(c1[i+2][j].getTeacher()))) ||
+					(t1.equals(c1[i-1][j].getTeacher()) && (t1.equals(c1[i-2][j].getTeacher()))) ||
+					(t1.equals(c1[i+1][j].getTeacher()) && (t1.equals(c1[i-1][j].getTeacher()))) ){
+				return false;
+			}
+			if(row_x7 == 0 && t2.equals(c1[row_x7+1][row_y7].getTeacher()) && t2.equals(c1[row_x7+2][row_y7].getTeacher())){
+				return false;
+			}else if(row_x7 == 6  && t2.equals(c1[row_x7-1][row_y7].getTeacher()) && t2.equals(c1[row_x7-2][row_y7].getTeacher())){
+				return false;
+			}else if(row_x7 == 1 && t2.equals(c1[row_x7+1][row_y7].getTeacher()) && (t2.equals(c1[row_x7+2][row_y7].getTeacher()) ||
+					t2.equals(c1[row_x7-1][row_y7].getTeacher()))){
+				return false;
+			}else if(row_x7 == 5 && t2.equals(c1[row_x7-1][row_y7].getTeacher()) && (t2.equals(c1[row_x7-2][row_y7].getTeacher()) ||
+					t2.equals(c1[row_x7+1][row_y7].getTeacher()))){
+				return false;
+			}else if( (t2.equals(c1[row_x7+1][row_y7].getTeacher()) && (t2.equals(c1[row_x7+2][row_y7].getTeacher()))) ||
+					(t2.equals(c1[row_x7-1][row_y7].getTeacher()) && (t2.equals(c1[row_x7-2][row_y7].getTeacher()))) ||
+					(t2.equals(c1[row_x7+1][row_y7].getTeacher()) && (t2.equals(c1[row_x7-1][row_y7].getTeacher()))) ){
+				return false;
+			}
+
+			
+		}else if(p == 8){
+			
+			Teacher t1 = c2[row_x8][row_y8].getTeacher();
+			Teacher t2 = c2[i][j].getTeacher();
+			if(i == 0 && t1.equals(c2[i+1][j].getTeacher()) && t1.equals(c2[i+2][j].getTeacher())){
+				return false;
+			}else if(i == 6  && t1.equals(c2[i-1][j].getTeacher()) && t1.equals(c2[i-2][j].getTeacher())){
+				return false;
+			}else if(i == 1 && t1.equals(c2[i+1][j].getTeacher()) && (t1.equals(c2[i+2][j].getTeacher()) ||
+					t1.equals(c2[i-1][j].getTeacher()))){
+				return false;
+			}else if(i == 5 && t1.equals(c2[i-1][j].getTeacher()) && (t1.equals(c2[i-2][j].getTeacher()) ||
+					t1.equals(c2[i+1][j].getTeacher()))){
+				return false;
+			}else if( (t1.equals(c2[i+1][j].getTeacher()) && (t1.equals(c2[i+2][j].getTeacher()))) ||
+					(t1.equals(c2[i-1][j].getTeacher()) && (t1.equals(c2[i-2][j].getTeacher()))) ||
+					(t1.equals(c2[i+1][j].getTeacher()) && (t1.equals(c2[i-1][j].getTeacher()))) ){
+				return false;
+			}
+			if(row_x8 == 0 && t2.equals(c2[row_x8+1][row_y8].getTeacher()) && t2.equals(c2[row_x8+2][row_y8].getTeacher())){
+				return false;
+			}else if(row_x8 == 6  && t2.equals(c2[row_x8-1][row_y8].getTeacher()) && t2.equals(c2[row_x8-2][row_y8].getTeacher())){
+				return false;
+			}else if(row_x8 == 1 && t2.equals(c2[row_x8+1][row_y8].getTeacher()) && (t2.equals(c2[row_x8+2][row_y8].getTeacher()) ||
+					t2.equals(c2[row_x8-1][row_y8].getTeacher()))){
+				return false;
+			}else if(row_x8 == 5 && t2.equals(c2[row_x8-1][row_y8].getTeacher()) && (t2.equals(c2[row_x8-2][row_y8].getTeacher()) ||
+					t2.equals(c2[row_x8+1][row_y8].getTeacher()))){
+				return false;
+			}else if( (t2.equals(c2[row_x8+1][row_y8].getTeacher()) && (t2.equals(c2[row_x8+2][row_y8].getTeacher()))) ||
+					(t2.equals(c2[row_x8-1][row_y8].getTeacher()) && (t2.equals(c2[row_x8-2][row_y8].getTeacher()))) ||
+					(t2.equals(c2[row_x8+1][row_y8].getTeacher()) && (t2.equals(c2[row_x8-1][row_y8].getTeacher()))) ){
+				return false;
+			}
+
+			
+		}else{
+			
+			Teacher t1 = c3[row_x9][row_y9].getTeacher();
+			Teacher t2 = c3[i][j].getTeacher();
+			if(i == 0 && t1.equals(c3[i+1][j].getTeacher()) && t1.equals(c3[i+2][j].getTeacher())){
+				return false;
+			}else if(i == 6  && t1.equals(c3[i-1][j].getTeacher()) && t1.equals(c3[i-2][j].getTeacher())){
+				return false;
+			}else if(i == 1 && t1.equals(c3[i+1][j].getTeacher()) && (t1.equals(c3[i+2][j].getTeacher()) ||
+					t1.equals(c3[i-1][j].getTeacher()))){
+				return false;
+			}else if(i == 5 && t1.equals(c3[i-1][j].getTeacher()) && (t1.equals(c3[i-2][j].getTeacher()) ||
+					t1.equals(c3[i+1][j].getTeacher()))){
+				return false;
+			}else if( (t1.equals(c3[i+1][j].getTeacher()) && (t1.equals(c3[i+2][j].getTeacher()))) ||
+					(t1.equals(c3[i-1][j].getTeacher()) && (t1.equals(c3[i-2][j].getTeacher()))) ||
+					(t1.equals(c3[i+1][j].getTeacher()) && (t1.equals(c3[i-1][j].getTeacher()))) ){
+				return false;
+			}
+			if(row_x9 == 0 && t2.equals(c3[row_x9+1][row_y9].getTeacher()) && t2.equals(c3[row_x9+2][row_y9].getTeacher())){
+				return false;
+			}else if(row_x9 == 6  && t2.equals(c3[row_x9-1][row_y9].getTeacher()) && t2.equals(c3[row_x9-2][row_y9].getTeacher())){
+				return false;
+			}else if(row_x9 == 1 && t2.equals(c3[row_x9+1][row_y9].getTeacher()) && (t2.equals(c3[row_x9+2][row_y9].getTeacher()) ||
+					t2.equals(c3[row_x9-1][row_y9].getTeacher()))){
+				return false;
+			}else if(row_x9 == 5 && t2.equals(c3[row_x9-1][row_y9].getTeacher()) && (t2.equals(c3[row_x9-2][row_y9].getTeacher()) ||
+					t2.equals(c3[row_x9+1][row_y9].getTeacher()))){
+				return false;
+			}else if( (t2.equals(c3[row_x9+1][row_y9].getTeacher()) && (t2.equals(c3[row_x9+2][row_y9].getTeacher()))) ||
+					(t2.equals(c3[row_x9-1][row_y9].getTeacher()) && (t2.equals(c3[row_x9-2][row_y9].getTeacher()))) ||
+					(t2.equals(c3[row_x9+1][row_y9].getTeacher()) && (t2.equals(c3[row_x9-1][row_y9].getTeacher()))) ){
+				return false;
+			}
+
+			
+		}
+		
+		return true;
+	}
+	
 	public Collection<? extends State> getChildren() throws FileNotFoundException, UnsupportedEncodingException, CloneNotSupportedException {
 		ArrayList<State> children = new ArrayList<State>();
 		this.cheatingTheSystem();
@@ -1850,94 +2332,94 @@ public class State implements Comparable<State> {
 			for(int i =0; i < 7;i++){
 				for(int j = 0; j < 5;j++){
 					if (p == 1  && row_x1 >= 0) {
-						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)){
+						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p) && isValidSpaces(i,j,p)){
 							child.swap(i,j,p);
 							child.euristic();
 							
-							System.out.printf("Swapped a1 %s with %s to %d,%d with new Score: %d \n",a1[row_x1][row_y1].getLesson().toString(),a1[i][j].getLesson().toString(),i,j,child.getScore());
+							//System.out.printf("Swapped a1 %s with %s to %d,%d with new Score: %d \n",a1[row_x1][row_y1].getLesson().toString(),a1[i][j].getLesson().toString(),i,j,child.getScore());
 							
 							children.add(child);
 							child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3,this.row_x1,this.row_x2,this.row_x3,this.row_x4,this.row_x5,this.row_x6,this.row_x7,this.row_x8,this.row_x9,this.row_y1,this.row_y2,this.row_y3,this.row_y4,this.row_y5,this.row_y6,this.row_y7,this.row_y8,this.row_y9);
 						}
 					}
 					if (p == 2  && row_x2 >= 0) {
-						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p) ){
+						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)  && isValidSpaces(i,j,p)){
 							child.swap(i,j,p);
 							child.euristic();
 							
-							System.out.printf("Swapped a2 %s with %s %d,%d with new Score: %d \n",a2[row_x2][row_y2].getLesson().toString(),a2[i][j].getLesson().toString(),i,j,child.getScore());
+							//System.out.printf("Swapped a2 %s with %s %d,%d with new Score: %d \n",a2[row_x2][row_y2].getLesson().toString(),a2[i][j].getLesson().toString(),i,j,child.getScore());
 							
 							children.add(child);
 							child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3,this.row_x1,this.row_x2,this.row_x3,this.row_x4,this.row_x5,this.row_x6,this.row_x7,this.row_x8,this.row_x9,this.row_y1,this.row_y2,this.row_y3,this.row_y4,this.row_y5,this.row_y6,this.row_y7,this.row_y8,this.row_y9);
 						}
 					}
 					if (p == 3  && row_x3 >= 0) {
-						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)){
+						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)  && isValidSpaces(i,j,p)){
 							child.swap(i,j,p);
 							child.euristic();
 							
-							System.out.printf("Swapped a3 %s with %s %d,%d with new Score: %d \n",a3[row_x3][row_y3].getLesson().toString(),a3[i][j].getLesson().toString(),i,j,child.getScore());
+							//System.out.printf("Swapped a3 %s with %s %d,%d with new Score: %d \n",a3[row_x3][row_y3].getLesson().toString(),a3[i][j].getLesson().toString(),i,j,child.getScore());
 							
 							children.add(child);
 							child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3,this.row_x1,this.row_x2,this.row_x3,this.row_x4,this.row_x5,this.row_x6,this.row_x7,this.row_x8,this.row_x9,this.row_y1,this.row_y2,this.row_y3,this.row_y4,this.row_y5,this.row_y6,this.row_y7,this.row_y8,this.row_y9);
 						}
 					}
 					if (p == 4  && row_x4 >= 0) {
-						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)){
+						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)  && isValidSpaces(i,j,p)){
 							child.swap(i,j,p);
 							child.euristic();	
 							
-							System.out.printf("Swapped b1 %s with %s %d,%d with new Score: %d\n",b1[row_x4][row_y4].getLesson().toString(),b1[i][j].getLesson().toString(),i,j,child.getScore());
+							//System.out.printf("Swapped b1 %s with %s %d,%d with new Score: %d\n",b1[row_x4][row_y4].getLesson().toString(),b1[i][j].getLesson().toString(),i,j,child.getScore());
 							
 							children.add(child);
 							child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3,this.row_x1,this.row_x2,this.row_x3,this.row_x4,this.row_x5,this.row_x6,this.row_x7,this.row_x8,this.row_x9,this.row_y1,this.row_y2,this.row_y3,this.row_y4,this.row_y5,this.row_y6,this.row_y7,this.row_y8,this.row_y9);
 						}
 					}
 					if (p == 5  && row_x5 >= 0) {
-						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p) ){
+						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)  && isValidSpaces(i,j,p) ){
 							child.swap(i,j,p);
 							child.euristic();	
 							
-							System.out.printf("Swapped b2 %s with %s %d,%d with new Score: %d\n",b2[row_x5][row_y5].getLesson().toString(),b2[i][j].getLesson().toString(),i,j,child.getScore());
+							//System.out.printf("Swapped b2 %s with %s %d,%d with new Score: %d\n",b2[row_x5][row_y5].getLesson().toString(),b2[i][j].getLesson().toString(),i,j,child.getScore());
 							
 							children.add(child);
 							child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3,this.row_x1,this.row_x2,this.row_x3,this.row_x4,this.row_x5,this.row_x6,this.row_x7,this.row_x8,this.row_x9,this.row_y1,this.row_y2,this.row_y3,this.row_y4,this.row_y5,this.row_y6,this.row_y7,this.row_y8,this.row_y9);
 						}
 					}
 					if (p == 6  && row_x6 >= 0) {
-						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)){
+						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)  && isValidSpaces(i,j,p)){
 							child.swap(i,j,p);
 							child.euristic();
 							
-							System.out.printf("Swapped b3 %s with %s %d,%d with new Score: %d\n",b3[row_x6][row_y6].getLesson().toString(),b3[i][j].getLesson().toString(),i,j,child.getScore());
+							//System.out.printf("Swapped b3 %s with %s %d,%d with new Score: %d\n",b3[row_x6][row_y6].getLesson().toString(),b3[i][j].getLesson().toString(),i,j,child.getScore());
 							
 							children.add(child);
 							child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3,this.row_x1,this.row_x2,this.row_x3,this.row_x4,this.row_x5,this.row_x6,this.row_x7,this.row_x8,this.row_x9,this.row_y1,this.row_y2,this.row_y3,this.row_y4,this.row_y5,this.row_y6,this.row_y7,this.row_y8,this.row_y9);
 						}
 					}
 					if (p == 7  && row_x7 >= 0) {
-						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)){
+						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)  && isValidSpaces(i,j,p)){
 							child.swap(i,j,p);
 							child.euristic();
-							System.out.printf("Swapped c1 %s with %s %d,%d with new Score: %d\n",c1[row_x7][row_y7].getLesson().toString(),c1[i][j].getLesson().toString(),i,j,child.getScore());
+							//System.out.printf("Swapped c1 %s with %s %d,%d with new Score: %d\n",c1[row_x7][row_y7].getLesson().toString(),c1[i][j].getLesson().toString(),i,j,child.getScore());
 							children.add(child);
 							child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3,this.row_x1,this.row_x2,this.row_x3,this.row_x4,this.row_x5,this.row_x6,this.row_x7,this.row_x8,this.row_x9,this.row_y1,this.row_y2,this.row_y3,this.row_y4,this.row_y5,this.row_y6,this.row_y7,this.row_y8,this.row_y9);
 						}
 					}
 					if (p == 8  && row_x8 >= 0) {
-						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)){
+						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)  && isValidSpaces(i,j,p)){
 							child.swap(i,j,p);
 							child.euristic();
-							System.out.printf("Swapped c2 %s with %s %d,%d with new Score: %d\n",c2[row_x8][row_y8].getLesson().toString(),c2[i][j].getLesson().toString(),i,j,child.getScore());
+							//System.out.printf("Swapped c2 %s with %s %d,%d with new Score: %d\n",c2[row_x8][row_y8].getLesson().toString(),c2[i][j].getLesson().toString(),i,j,child.getScore());
 							children.add(child);
 							child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3,this.row_x1,this.row_x2,this.row_x3,this.row_x4,this.row_x5,this.row_x6,this.row_x7,this.row_x8,this.row_x9,this.row_y1,this.row_y2,this.row_y3,this.row_y4,this.row_y5,this.row_y6,this.row_y7,this.row_y8,this.row_y9);
 						}
 					}
 					if (p == 9  && row_x9 >= 0) {
-						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p) ){
+						if(isValidSpaces(i,j,p) && isSwapValid(i,j,p)  && isValidSpaces(i,j,p)){
 							child.swap(i,j,p);
 							child.euristic();
-							System.out.printf("Swapped c3 %s with %s %d,%d with new Score: %d\n",c3[row_x9][row_y9].getLesson().toString(),c3[i][j].getLesson().toString(),i,j,child.getScore());
+							//System.out.printf("Swapped c3 %s with %s %d,%d with new Score: %d\n",c3[row_x9][row_y9].getLesson().toString(),c3[i][j].getLesson().toString(),i,j,child.getScore());
 							children.add(child);
 							child = new State(this.a1,this.a2,this.a3,this.b1,this.b2,this.b3,this.c1,this.c2,this.c3,this.row_x1,this.row_x2,this.row_x3,this.row_x4,this.row_x5,this.row_x6,this.row_x7,this.row_x8,this.row_x9,this.row_y1,this.row_y2,this.row_y3,this.row_y4,this.row_y5,this.row_y6,this.row_y7,this.row_y8,this.row_y9);
 						}
