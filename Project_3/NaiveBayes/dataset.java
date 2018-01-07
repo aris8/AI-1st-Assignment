@@ -462,6 +462,38 @@ public class dataset {
 			p_safety = data[s_high][vgood] /data[s_high][atr_total];
 		}
 		prob_vgood = p_price * p_maint * p_doors * p_persons * p_lug * p_safety * (data[class_total][vgood]/data[class_total][atr_total]);
+		
+		//find highest prob
+		double cls = Math.max(Math.max(prob_unacc,prob_acc),Math.max(prob_good,prob_vgood));
+		
+		//set class
+		if (cls == prob_unacc) {
+			if (car.getCar_class().equals("unacc")) setCorrect(getCorrect() + 1);
+		} else if (cls == prob_acc) {
+			if (car.getCar_class().equals("acc")) setCorrect(getCorrect() + 1);
+		} else if (cls == prob_good) {
+			if (car.getCar_class().equals("good")) setCorrect(getCorrect() + 1);
+		} else {
+			if (car.getCar_class().equals("vgood")) setCorrect(getCorrect() + 1);
+		}
+		setTotal_samples(getTotal_samples() + 1);
+		this.addTrainingSet(car);
 
+	}
+
+	public static int getCorrect() {
+		return correct;
+	}
+
+	public static void setCorrect(int correct) {
+		dataset.correct = correct;
+	}
+
+	public static int getTotal_samples() {
+		return total_samples;
+	}
+
+	public static void setTotal_samples(int total_samples) {
+		dataset.total_samples = total_samples;
 	}
 }

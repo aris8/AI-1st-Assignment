@@ -62,6 +62,12 @@ public class main {
     		data.addTrainingSet(car);
     	}
     	data.print();
+    	for(Car car: t_set){
+    		data.addTest(car);
+    	}
+    	System.out.println("Test set contains: " + data.getTotal_samples());
+    	System.out.println("Correct guesses: " + data.getCorrect());
+    	System.out.println("Accuracy: " + (data.getCorrect() / (float) data.getTotal_samples()) * 100);
 	}
 
 }
