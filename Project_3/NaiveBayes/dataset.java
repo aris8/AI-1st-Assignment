@@ -35,6 +35,11 @@ public class dataset {
 	private static int correct = 0;
 	private static int total_samples = 0;
 	
+	private static int g_unacc = 0;
+	private static int g_acc = 0;
+	private static int g_good = 0;
+	private static int g_vgood = 0;
+	
 	public dataset(){
 		data =  new int[23][6];
 		for(int i =0; i < 23;i++){
@@ -469,12 +474,17 @@ public class dataset {
 		//set class
 		if (cls == prob_unacc) {
 			if (car.getCar_class().equals("unacc")) setCorrect(getCorrect() + 1);
+			else g_unacc++;
+			
 		} else if (cls == prob_acc) {
 			if (car.getCar_class().equals("acc")) setCorrect(getCorrect() + 1);
+			else g_acc++;
 		} else if (cls == prob_good) {
 			if (car.getCar_class().equals("good")) setCorrect(getCorrect() + 1);
+			else g_good++;
 		} else {
 			if (car.getCar_class().equals("vgood")) setCorrect(getCorrect() + 1);
+			else g_vgood++;
 		}
 		setTotal_samples(getTotal_samples() + 1);
 		this.addTrainingSet(car);
@@ -495,5 +505,12 @@ public class dataset {
 
 	public static void setTotal_samples(int total_samples) {
 		dataset.total_samples = total_samples;
+	}
+	
+	public static void printInfo(){
+		System.out.printf("Times guessed unacc wrong: %d \n "
+				+ "Times guessed acc wrong: %d \n" 
+				+ "Times guessed good  wrong: %d \n"
+				+ "Times guessed vgood wrong: %d \n", g_unacc,g_acc,g_good,g_vgood);
 	}
 }

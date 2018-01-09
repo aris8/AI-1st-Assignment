@@ -68,6 +68,7 @@ public class main {
     	System.out.println("Test set contains: " + data.getTotal_samples());
     	System.out.println("Correct guesses: " + data.getCorrect());
     	System.out.println("Accuracy: " + (data.getCorrect() / (float) data.getTotal_samples()) * 100);
+    	data.printInfo();
 	}
 
 }
