@@ -10,6 +10,7 @@ public class Attribute {
 	private String[] atr_names;
 	private int[][] cls_map;
 	private String name;
+	private int elements;
 	
 	
 	public Attribute(int atr_numb,int cls_number,String name) {
@@ -22,6 +23,7 @@ public class Attribute {
 		this.classes = new int[cls_number];
 		this.cls_names = new String[cls_number];
 		cls_map = new int[atr_numb][cls_number];
+		elements = 0;
 	}
 
 
@@ -36,6 +38,7 @@ public class Attribute {
 				}
 			}
 		}
+		elements++;
 	}
 
 
@@ -116,7 +119,87 @@ public class Attribute {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	public int calMaxCls(String cls){
+		int iter = -1;
+		for(int i = 0;i<cls_numb;i++){
+			if(cls_names[i].equals(cls)){
+				iter = i;
+				break;
+			}
+		}
+		if(iter < 0){
+			return 0;
+		}
+		int max = 0;
+		for(int j=0;j<atr_numb;j++){
+			max += cls_map[j][iter];
+		}
+		return max;
+		
+	}
+	
+	public int getMaxElements(){
+		return elements;
+	}
+	
+	public double calcAtrEntropy(){
+		double entropy = 0;
+		for(int i=0; i < cls_numb; i++){
+			if(this.calMaxCls(cls_names[i]) != 0){
+				entropy += this.calMaxCls(cls_names[i])/this.getMaxElements() * log2(this.calMaxCls(cls_names[i])/this.getMaxElements()) ;
+			}
+		}
+		return entropy;
+	}
+	
+	public double calcAtrEntropy(String attr){
+		int iter = -1;
+		for(int i = 0;i < atr_numb;i++){
+			if(atr_names[i].equals(attr)){
+				iter = i;
+			}
+		}
+		if(iter < 0) return 0;
+		int atr_max = this.calMaxAtr(iter);
+		if(atr_max == 0) return 0;
+		
+		double entropy = 0;
+		for( int j = 0; j < cls_numb; j++){
+			if(cls_map[iter][j] != 0){
+				entropy += cls_map[iter][j]/atr_max * log2(cls_map[iter][j]/atr_max );
+			}
+			
+		}
+		return 0;
+	}
+	
+	
+	public double calcGain(){
+		double entropy = 0;
+		for(int i = 0; i <atr_numb;i++){
+			entropy += calcAtrEntropy(atr_names[i]);
+		}
+		return calcAtrEntropy() - entropy;
+	}
+	
+	
+	private int calMaxAtr(int iter) {
+		int max = 0;
+		for(int j = 0; j <cls_numb;j++){
+			max += cls_map[iter][j];
+		}
+		return 0;
+	}
 
+
+	public static double logb( double a, double b ){
+		return Math.log(a) / Math.log(b);
+	}
+
+	public static double log2( double a ){
+		return logb(a,2);
+	}
 
 	@Override
 	public String toString() {
