@@ -47,7 +47,7 @@ public class main {
     	
     	for(Car car: cars){
     		t_e = prob.nextInt(10);
-    		if(t_e < 7){
+    		if(t_e < 10){
     			e_set.add(car);
     			count_e++;
     		}else{
@@ -105,11 +105,37 @@ public class main {
 			e.printStackTrace();
 		}
     	
-    	for(Attribute atr : attrs){
-    		System.out.println(atr.toString());
+    	
+    	
+    	for(Car car: e_set) {
+    		for(Attribute atr : attrs){
+        		if(atr.getName().equals("buying")) {
+        			atr.addElement(car.getPrice(), car.getCar_class(), 1);
+        		}
+        		if(atr.getName().equals("maint")) {
+        			atr.addElement(car.getMaint(), car.getCar_class(), 1);
+        		}
+        		if(atr.getName().equals("doors")) {
+        			atr.addElement(car.getDoors(), car.getCar_class(), 1);
+        		}
+        		if(atr.getName().equals("persons")) {
+        			atr.addElement(car.getPersons(), car.getCar_class(), 1);
+        		}
+        		if(atr.getName().equals("lug_boot")) {
+        			atr.addElement(car.getLug_boot(), car.getCar_class(), 1);
+        		}
+        		if(atr.getName().equals("safety")) {
+        			atr.addElement(car.getSafety(), car.getCar_class(), 1);
+        		}
+        	}
     	}
     	
-    	
+    	for(Attribute atr : attrs){
+    		System.out.println(atr.toString());
+    		System.out.println(Arrays.deepToString(atr.getCls_map()));
+    	}
 	}
+	
+	
 
 }
