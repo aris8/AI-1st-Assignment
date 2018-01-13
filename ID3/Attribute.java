@@ -169,9 +169,11 @@ public class Attribute {
 		for( int j = 0; j < cls_numb; j++){
 			if(cls_map[iter][j] != 0){
 				entropy -= (float)cls_map[iter][j]/(float)atr_max * log2((float)cls_map[iter][j]/(float)atr_max );
+				
 			}
 			
 		}
+		System.out.println("Entropy of attr: " + atr_names[iter] + " is " + entropy);
 		return entropy;
 	}
 	
@@ -182,10 +184,11 @@ public class Attribute {
 		float ent = 0f;
 		for(int i = 0; i <atr_numb;i++){
 			max = calMaxAtr(i);
-			ent -= ((float) max / (float) elements) * calcAtrEntropy(atr_names[i]);
-			entropy += ent;
+			System.out.println(max + " / " + elements);
+			entropy -= ((float) max / (float) elements) * calcAtrEntropy(atr_names[i]);
+			
 		}
-		return calcAtrEntropy() - entropy;
+		return calcAtrEntropy() + entropy;
 	}
 	
 	
