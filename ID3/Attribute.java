@@ -143,17 +143,18 @@ public class Attribute {
 		return elements;
 	}
 	
-	public double calcAtrEntropy(){
-		double entropy = 0;
+	public float calcAtrEntropy(){
+		float entropy = 0;
 		for(int i=0; i < cls_numb; i++){
 			if(this.calMaxCls(cls_names[i]) != 0){
-				entropy += this.calMaxCls(cls_names[i])/this.getMaxElements() * log2(this.calMaxCls(cls_names[i])/this.getMaxElements()) ;
+				
+				entropy -= (float)this.calMaxCls(cls_names[i])/ (float)this.getMaxElements() * log2((float)(this.calMaxCls(cls_names[i])/(float)this.getMaxElements()));
 			}
 		}
 		return entropy;
 	}
 	
-	public double calcAtrEntropy(String attr){
+	public float calcAtrEntropy(String attr){
 		int iter = -1;
 		for(int i = 0;i < atr_numb;i++){
 			if(atr_names[i].equals(attr)){
@@ -164,21 +165,22 @@ public class Attribute {
 		int atr_max = this.calMaxAtr(iter);
 		if(atr_max == 0) return 0;
 		
-		double entropy = 0;
+		float entropy = 0;
+		System.out.println(atr_max);
 		for( int j = 0; j < cls_numb; j++){
 			if(cls_map[iter][j] != 0){
-				entropy += cls_map[iter][j]/atr_max * log2(cls_map[iter][j]/atr_max );
+				entropy -= (float)cls_map[iter][j]/(float)atr_max * log2((float)cls_map[iter][j]/(float)atr_max );
 			}
 			
 		}
-		return 0;
+		return entropy;
 	}
 	
 	
-	public double calcGain(){
-		double entropy = 0;
+	public float calcGain(){
+		float entropy = 0;
 		for(int i = 0; i <atr_numb;i++){
-			entropy += calcAtrEntropy(atr_names[i]);
+			entropy -= calcAtrEntropy(atr_names[i]);
 		}
 		return calcAtrEntropy() - entropy;
 	}
@@ -189,7 +191,7 @@ public class Attribute {
 		for(int j = 0; j <cls_numb;j++){
 			max += cls_map[iter][j];
 		}
-		return 0;
+		return max;
 	}
 
 

@@ -131,11 +131,14 @@ public class main {
     	}
     	
     	for(Attribute atr : attrs){
-    		
-    		System.out.println(atr.toString());
+    		System.out.println(atr.toString());    		
     		System.out.println(Arrays.deepToString(atr.getCls_map()));
     		System.out.println(atr.getMaxElements());
+    		System.out.println("Entropy: " + atr.calcAtrEntropy());
+    		System.out.println("Gain is " + atr.calcGain());
     	}
+    	
+    	
     	
     	
 	}
