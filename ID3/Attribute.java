@@ -166,7 +166,6 @@ public class Attribute {
 		if(atr_max == 0) return 0;
 		
 		float entropy = 0;
-		System.out.println(atr_max);
 		for( int j = 0; j < cls_numb; j++){
 			if(cls_map[iter][j] != 0){
 				entropy -= (float)cls_map[iter][j]/(float)atr_max * log2((float)cls_map[iter][j]/(float)atr_max );
@@ -179,8 +178,12 @@ public class Attribute {
 	
 	public float calcGain(){
 		float entropy = 0;
+		int max = 0;
+		float ent = 0f;
 		for(int i = 0; i <atr_numb;i++){
-			entropy -= calcAtrEntropy(atr_names[i]);
+			max = calMaxAtr(i);
+			ent -= ((float) max / (float) elements) * calcAtrEntropy(atr_names[i]);
+			entropy += ent;
 		}
 		return calcAtrEntropy() - entropy;
 	}
